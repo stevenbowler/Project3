@@ -85,15 +85,15 @@ class AppNavbar extends Component {
                 }}></img></NavbarToggler>
                 <Collapse isOpen={this.props.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                        <Button hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.register}>Register</Button>
-                        <Button hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.login}>Login</Button>
-                        <Button hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.logout}>Logout</Button>
-                        <Button hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.leaderBoard}>Modal</Button>
-                        <Button hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.tutorial}>Tutorial</Button>
+                        <Button color="dark" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.register}>Register</Button>
+                        <Button color="dark" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.login}>Login</Button>
+                        <Button color="dark" hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.logout}>Logout</Button>
+                        <Button color="dark" hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.leaderBoard}>Modal</Button>
+                        <Button color="dark" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.tutorial}>Tutorial</Button>
                         {/* <Button float="left" display="inline" onClick={this.unused}>Unused</Button> */}
-                        <Button float="left" type="color" display="inline" onClick={this.changeColor}>Color</Button>
+                        <Button float="left" color="dark" display="inline" href="/">Search</Button>
                         <NavItem>
-                            <NavLink display="inline" color="white" href="https://github.com/stevenbowler/MERNshellTwo">GitHub</NavLink>
+                            <NavLink display="inline" color="white" href="https://github.com/stevenbowler/Project3">GitHub</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>
