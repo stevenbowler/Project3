@@ -151,6 +151,7 @@ class App extends React.Component {
       .catch(function (error) {
         console.log(" Could not register from App.js: " + error.message);
       })
+      //@ts-ignore
       .finally(function () {
         finishRegister();
       })
@@ -198,6 +199,7 @@ class App extends React.Component {
         loginError = error;
         console.log("Error, could not login from App.js: ", loginError);
       })
+      //@ts-ignore
       .finally(function () {
         finishLogin();
       });
