@@ -77,7 +77,7 @@ class AppNavbar extends Component {
             // <div> //removed to get sticky navbar with reactstrap https://github.com/reactstrap/reactstrap/issues/1179
             <Navbar color="dark" expand="sm" className="mb-5 sticky-top">
                 {/* <Container> */}
-                <NavbarBrand href="/">MERNshellTwo</NavbarBrand>
+                <NavbarBrand href="/">Project 3</NavbarBrand>
                 <NavbarText className="text-warning" placeholder="test">{this.props.name}</ NavbarText>
                 <NavbarToggler color="dark" border="dark" onClick={this.toggle}><img src='hamburger.jpg' alt='Menu' style={{
                     height: "40px",
