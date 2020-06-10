@@ -1,9 +1,10 @@
-# MERNshellTwo
+# Project 3
 
 ### Overview
-This is a MERN stack app shell repo that can be used as a base for a project.  The purpose is to facilitate development, testing and deployment of a MERN app.  The repo code include the full login auth with validation, password encryption and JSON Web Token, and some user functionality to demonstrate the usage of the bare components provided. 
+This is a camping app that is designed to facilitate the finding and booking of campsites thru the [National Park Service](https://www.nps.gov/).
+Team members involved in the development are Gabrielle Byers, Kyla Fitzpatrick, Robert Alanis, and Steven Bowler. 
 
-### Overview
+### Boilerplate below much to be deleted
 
 The MERNshell enables the coder/team to focus on their app while providing register/login capability complete with input validation, password encryption and private routes protection with JSON Web Tokens.
 
