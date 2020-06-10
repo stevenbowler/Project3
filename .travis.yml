@@ -9,6 +9,9 @@ notifications:
   email:
     recipients:
     - stevenbowler@yahoo.com
+    - gabriellembyers@gmail.com
+    - kfitzpatrick44@gmail.com
+    - rxalanis@gmail.com
     on_success: always # fault: change
     on_failure: always # default: always
 # before_install:

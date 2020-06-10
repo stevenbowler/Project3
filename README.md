@@ -2,7 +2,7 @@
 
 ### Overview
 This is a camping app that is designed to facilitate the finding and booking of campsites thru the [National Park Service](https://www.nps.gov/).
-Team members involved in the development are Gabrielle Byers, Kyla Fitzpatrick, Robert Xavier, and Steven Bowler. 
+Team members involved in the development are Gabrielle Byers, Kyla Fitzpatrick, Robert Alanis, and Steven Bowler. 
 
 ### Boilerplate below much to be deleted
 
