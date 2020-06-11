@@ -6,7 +6,7 @@ const verify = require('../../privateRoutesAuth');
 
 
 
-// simple logger for this router's requests
+// simple logger for this router's requests 
 // all requests to this router will first hit this middleware (and could be used to check for valid token)
 /**
  * All requests to this router will first hit this "logger" middleware, log, check token if not username "Guest...Login"
