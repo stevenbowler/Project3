@@ -47,7 +47,7 @@ $ git clone https://github.com/yourGitHubId/newRepository.git
     2. `TOKEN_SECRET` unique random string that you chose, will be used to generate JSON Web Tokens.
 12. `.env` file should look like this:
 ````
-MONGODB_URL=your_mongodb_url_with_account_password_collection
+MONGODB_URI=your_mongodb_url_with_account_password_collection
 TOKEN_SECRET=your_unique_random_string
 ````
 13. From Git Bash prompt local directory (master) enter the following:
