@@ -4,12 +4,12 @@ import axios from "axios";
 
 export default {
 
-  /**
+    /**
    * Gets all books
-   * @function getBooks 
+   * @function getCampSites 
    * @param {*} username
    * */
-  getBooks: function (user) {
+  getCampSites: function (user) {
     var url = "/api/books/?name=" + user.username;
     if (user.username !== "Guest...Login") url = `/api/books/protected?name=${user.username}&email=${user.email}`; // used for protected routes in books.js
     var token = user.token;
@@ -21,27 +21,27 @@ export default {
 
   /**
    * Gets the book with the given id
-   * @function getBook
+   * @function getCampSite
    * @param {*} id*/
-  getBook: function (id) {
-    return axios.get("/api/books/" + id);
+  getCampSite: function (id) {
+    return axios.get("/api/campsites/" + id);
   },
 
   /**
    * Deletes the book with the given id
-   * @function deleteBook
+   * @function deleteCampSites
    * @param {*} id 
    */
-  deleteBook: function (id) {
+  deleteCampSites: function (id) {
     return axios.delete("/api/books/" + id);
   },
 
   /**
    * Saves a book to the database
-   * @function saveBook
-   * @param {*} bookData 
+   * @function saveCampSite
+   * @param {*} campSiteData 
    */
-  saveBook: function (bookData) {
-    return axios.post("/api/books", bookData);
+  saveCampSite: function (campSiteData) {
+    return axios.post("/api/books", campSiteData);
   }
 };

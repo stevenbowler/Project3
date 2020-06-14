@@ -26,7 +26,7 @@ class Search extends Component {
    * Initial loadsearch and set previous state variable to track login username change
    * @function componentDidMount */
   componentDidMount() {
-    this.loadsearch();
+    this.loadCampSites();
     this.previousName = this.props.username;
   }
 
@@ -35,7 +35,7 @@ class Search extends Component {
    * @function componentDidUpdate */
   componentDidUpdate() {
     if (this.previousName !== this.props.username) {  // if login or logout update books displayed
-      this.loadSearch();
+      this.loadCampSites();
       this.previousName = this.props.username;
     }
   }
@@ -43,9 +43,9 @@ class Search extends Component {
   /**
    * This is where the magic happens ... the infamous / route
    * @function loadBooks */
-  loadBooks = () => {
+  loadCampSites = () => {
     console.log("username: ", this.props.username);
-    API.getBooks({ username: this.props.username, token: this.props.token, email: this.props.email })
+    API.getCampSites({ username: this.props.username, token: this.props.token, email: this.props.email })
       .then(res => {
         this.setState({ books: res.data, title: "", author: "", synopsis: "" })
       }
@@ -58,7 +58,7 @@ class Search extends Component {
    * @function deleteBook */
   deleteBook = id => {
     API.deleteBook(id)
-      .then(res => this.loadBooks())
+      .then(res => this.loadCampSites())
       .catch(err => console.log(err));
   };
 
@@ -84,7 +84,7 @@ class Search extends Component {
         username: this.props.username,
         synopsis: this.state.synopsis
       })
-        .then(res => this.loadBooks())
+        .then(res => this.loadCampSites())
         .catch(err => console.log(err));
     }
   };

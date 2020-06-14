@@ -8,17 +8,17 @@ const searchSchema = new Schema({
   /**@name name*/
   //campsite name
   name: { type: String, required: true },
-  /**@name author*/
+  /**@name location*/
   location: { type: String, required: true },
-  /**@name username*/
-  rating: { type: String, required: true },
-  /**@name synopsis*/
+  /**@name rating*/
+  rating: { type: String, required: false },
+  /**@name description*/
   description: String,
-  /**@name date*/
+  /**@name availability*/
   availability: { type: Date, default: Date.now },
-   /**@name date*/
+   /**@name infoLink*/
    infoLink: {  type: String, required: true },
-    /**@name date*/
+    /**@name reservationURL*/
     reservationURL: {  type: String, required: true },
 });
 
