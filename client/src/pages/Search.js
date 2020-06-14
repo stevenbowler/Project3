@@ -12,17 +12,21 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 class Search extends Component {
   state = {
     campSites: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    name: "",
+    location: "",
+    rating: "",
+    description:"",
+    availability:"",
+    infoLink:"",
+    revervationURL:""
   };
   // previousName = this.props.username;
 
   /**
-   * Initial loadbooks and set previous state variable to track login username change
+   * Initial loadsearch and set previous state variable to track login username change
    * @function componentDidMount */
   componentDidMount() {
-    this.loadCampSites();
+    this.loadsearch();
     this.previousName = this.props.username;
   }
 
@@ -31,7 +35,7 @@ class Search extends Component {
    * @function componentDidUpdate */
   componentDidUpdate() {
     if (this.previousName !== this.props.username) {  // if login or logout update books displayed
-      this.loadBooks();
+      this.loadSearch();
       this.previousName = this.props.username;
     }
   }
