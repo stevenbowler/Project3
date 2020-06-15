@@ -16,6 +16,8 @@ const searchSchema = new Schema({
   description: String,
   /**@name availability*/
   availability: { type: Date, default: Date.now },
+  /**@name imageURL*/
+  imageURL: { type: String, required: false },
    /**@name infoLink*/
    infoLink: {  type: String, required: true },
     /**@name reservationURL*/

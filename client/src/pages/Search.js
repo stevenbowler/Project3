@@ -17,6 +17,7 @@ class Search extends Component {
     rating: "",
     description:"",
     availability:"",
+    imageURL:"",
     infoLink:"",
     revervationURL:""
   };
@@ -39,6 +40,12 @@ class Search extends Component {
       this.previousName = this.props.username;
     }
   }
+  bookSearch = (query) => {
+    query = `${this.state.query}`
+    API.search(query).then(res =>
+        this.setState({ result: res.data, books: res.data.items }))
+        .catch(err => console.log(err));
+}
 
   /**
    * This is where the magic happens ... the infamous / route
@@ -47,7 +54,14 @@ class Search extends Component {
     console.log("username: ", this.props.username);
     API.getCampSites({ username: this.props.username, token: this.props.token, email: this.props.email })
       .then(res => {
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ CampSites: res.data, name: "",
+        location: "",
+        rating: "",
+        description:"",
+        availability:"",
+        imageURL:"",
+        infoLink:"",
+        revervationURL:""  })
       }
       )
       .catch(err => console.log(err));
@@ -77,78 +91,76 @@ class Search extends Component {
    * @function handleFormSubmit */
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        username: this.props.username,
-        synopsis: this.state.synopsis
+    // if (this.state.title && this.state.author) {
+      API.saveCampSite({
+        name: this.state.name,
+        location: this.state.location,
+        rating: this.props.rating,
+        description: this.state.description,
+        availability: this.state.availability,
+        imageURL: this.state.imageURL,
+        infoLink: this.state.infoLink,
+        reservationURL: this.state.reservationURL
       })
         .then(res => this.loadCampSites())
         .catch(err => console.log(err));
-    }
+    // }
   };
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-6">
-            <Jumbotron>
-              <h1>What Books Should I Read?</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-                <h3>No Results to Display</h3>
-              )}
-          </Col>
-        </Row>
-      </Container>
+        <Container fluid>
+            <Row>
+                <Col size="md-12">
+                    <div>
+                        <Jumbotron>
+                            <h1>Google Books Search</h1>
+                            <h1>Search for and save your favorite books</h1>
+                        </Jumbotron>
+                        <input className="form-control form-control-lg" autoComplete="off" type="text" name="query" onChange={this.handleInputChange} />
+                        <button class="btn" type="submit" onClick={this.campSearch} >
+                            Search for Books
+      </button>
+
+                        {(this.state.books && this.state.books.length > 0) ?
+                            <CampSiteList>
+                                {this.state.books.map(book => {
+                                    // return (
+                                        <div>
+                                            <ListItem
+                                                key={book.id}
+                                                name={book.volumeInfo.name}
+                                                location={book.volumeInfo.location}
+                                                rating={book.volumeInfo.imageLinks.thumbnail}
+                                                description={book.volumeInfo.description}
+                                                availability={book.volumeInfo.availability}
+                                                infoLink={book.volumeInfo.availability}
+                                                reservationURL={book.volumeInfo.availability}
+                                            />
+                                            <SaveBtn
+
+                                                title={book.volumeInfo.title}
+                                                authors={book.volumeInfo.authors}
+                                                description={book.volumeInfo.description}
+                                                image={book.volumeInfo.imageLinks.thumbnail}
+                                                link={book.volumeInfo.previewLink}
+
+                                            />
+                                        </div>
+                                    )
+                                }
+                                )}
+                            </BookList>
+                            :
+                            <h2>No books to display</h2>
+                        }
+                    </div>
+                </Col>
+
+            </Row>
+        </Container>
     );
   }
 }
 
-export default Books;
+export default CampSites;
