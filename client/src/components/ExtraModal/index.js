@@ -32,7 +32,7 @@ class ExtraModal extends Component {
      * @function cancel
      */
     cancel = () => {
-        this.props.onCancel(this.userBestScore);
+        this.props.onCancel();
     }
 
     /**
