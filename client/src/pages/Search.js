@@ -12,6 +12,7 @@ import { CampGroundList, ListItem } from "../components/CampGroundList";
 class Search extends Component {
   state = {
     campGrounds: [],
+    entityId: "",
     campGround: "",
     location: "",
     rating: "",
@@ -55,10 +56,10 @@ class Search extends Component {
       .catch(err => console.log(err));
 
   }
-  handleSaveCampGround= event => {
-    event.preventDefault();
-      API.saveCampGround({
-        campGround: this.state.campGround,
+  saveCampGround = campGroundData => {
+    API.saveCampGround(campGroundData ={
+      entityId: this.state.entity_id,
+      campGround: this.state.campGround,
         location:this.state.location,
         rating: this.state.rating,
         description: this.state.description,
@@ -68,10 +69,37 @@ class Search extends Component {
         revervationURL: this.state.reservationURL,
         zipCode: this.state.zipCode,
         miles:this.state.miles
-      })
-        .then(res => this.campGroundSearch())
-        .catch(err => console.log(err));
-    };
+    })
+      .then(res => this.campGroundSearch())
+      .catch(err => console.log(err));
+  };
+  getEntityId= (query) => {
+    query = `camping/campgrounds/${this.state.entityId}/availability`
+    API.getEntityId(query).then(res =>{
+      //set state to 5 available days
+      this.setState({ result: res.data, campGrounds: res.data.results })
+      console.log(res.data.results)
+    })
+     
+      .catch(err => console.log(err));
+  }
+  // handleSaveCampGround= event => {
+  //   event.preventDefault();
+  //     API.saveCampGround({
+  //       campGround: this.state.campGround,
+  //       location:this.state.location,
+  //       rating: this.state.rating,
+  //       description: this.state.description,
+  //       availability: this.state.availability,
+  //       imageURL: this.state.imageURL,
+  //       infoLink: this.state.infoLink,
+  //       revervationURL: this.state.reservationURL,
+  //       zipCode: this.state.zipCode,
+  //       miles:this.state.miles
+  //     })
+  //       .then(res => this.campGroundSearch())
+  //       .catch(err => console.log(err));
+  //   };
 
   handleValidation(pattern ,value) {
     
@@ -129,9 +157,11 @@ class Search extends Component {
               {(this.state.isValidZipCode&&this.state.campGrounds && this.state.campGrounds.length > 0) ?
                 <CampGroundList>
                   {this.state.campGrounds.map((campGround, index) => {
-                  return (  <div key={index}>
+                  return (  
+                  <div key={index}>
                       <ListItem
-                        key={campGround.id}
+                        key={campGround._id}
+                        entityId={campGround.entity_id}
                         campGround={campGround.name}
                         location={campGround.location}
                         rating={campGround.average_rating}
@@ -139,9 +169,8 @@ class Search extends Component {
                         availability={campGround.availability}
                         imageURL={campGround.preview_image_url}
                         />
-                        <button  type="submit" onClick={this.handleSaveCampGround} >
-                Save
-      </button>
+                        <SaveBtn onClick={() => this.saveCampGround(campGround._id)}></SaveBtn>
+                      
                         {/* <SaveBtn
                         campGround={campGround.name}
                         location={campGround.location}

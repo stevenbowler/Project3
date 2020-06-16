@@ -5,6 +5,8 @@ const Schema = mongoose.Schema;
 
 /**@namespace campGroundSchema */
 const campGroundSchema = new Schema({
+  /**@name entityId*/
+  entityId= { type: String, required: true },
   /**@name campGround*/
   //campsite name
   campGround: { type: String, required: true },

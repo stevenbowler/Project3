@@ -4,14 +4,11 @@ import axios from "axios";
 // import "./style.css";
 
 export function SaveBtn (props) {
-
+  
   return (
-      <div style={{color:"white"}}>
-    <button className="btn" role="button" onClick={() =>
-    props.saveCampGround(props.index)}>
-    Save
-    </button>
-    </div>
+    <span style={{color:"white"}} className="save-btn" {...props} role="button" tabIndex="0">
+      Save
+    </span>
   );
 }
 
