@@ -1,7 +1,7 @@
 //@ts-check
 /**@module */
 const router = require("express").Router();
-const searchController = require("../../controllers/searchController");
+const campGroundController = require("../../controllers/campGroundController");
 const verify = require('../../privateRoutesAuth');
 
 
@@ -12,7 +12,7 @@ const verify = require('../../privateRoutesAuth');
  * All requests to this router will first hit this "logger" middleware, log, check token if not username "Guest...Login"
  * @function
  * @name route/
- * @memberof module:routes/api/search
+ * @memberof module:routes/api/campGround
  * @param {string} path - /
  * @returns {object}
  */
@@ -43,42 +43,42 @@ router.use(function (req, res, next) {
  * Register a new user
  * @function
  * @name route/
- * @memberof module:routes/api/search
+ * @memberof module:routes/api/campGround
  * @param {string} path - /
  * @returns {object}
  */
 router.route("/")
-  .get(searchController.findAll)
-  .post(searchController.create);
+  .get(campGroundController.findAll)
+  .post(campGroundController.create);
 
 
 /**
  * Get books associated with a logged-in user, just to demonstrate a protectedroute, 
- * delete src/utils/API.js getSearch line 14 to stop using
+ * delete src/utils/API.js getcampGround line 14 to stop using
  * @function
  * @name route/
- * @memberof module:routes/api/search
+ * @memberof module:routes/api/campGround
  * @param {string} path - /
  * @returns {object}
  */
 router.route("/protected")
-  .get(verify, searchController.findAll)     //route protected with call to verify
-  .post(searchController.create);
+  .get(verify, campGroundController.findAll)     //route protected with call to verify
+  .post(campGroundController.create);
 
 
 /**
- * Matches with "/api/search/:id"
+ * Matches with "/api/campGround/:id"
  * @function
  * @name route/:id
- * @memberof module:routes/api/search
+ * @memberof module:routes/api/campGround
  * @param {string} path - /:id
  * @returns {object}
  */
 router
   .route("/:id")
-  .get(searchController.findById)
-  .put(searchController.update)
-  .delete(searchController.remove);
+  .get(campGroundController.findById)
+  .put(campGroundController.update)
+  .delete(campGroundController.remove);
 
 
 

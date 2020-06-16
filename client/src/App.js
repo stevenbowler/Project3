@@ -13,8 +13,8 @@
 */
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
+import CampGrounds from "./pages/CampGrounds";
+// import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 // import Nav from "./components/Nav";  // was in original Week 20 Activity 11
 
@@ -282,9 +282,10 @@ class App extends React.Component {
             level={this.state.finalLevel}
           />
           <Switch>
-            <Route exact path="/" render={(props) => <Books {...props} username={this.state.name} token={this.token} email={this.email} />} />
-            <Route exact path="/books" component={Books} />
-            <Route exact path="/books/:id" component={Detail} />
+            <Route exact path="/" render={(props) => <CampGrounds {...props} username={this.state.name} token={this.token} email={this.email} />} />
+            {/* <Route exact path="/" component={Search} />
+          <Route exact path="/saved" component={Saved} /> */}
+          <Route exact path="/books/:id" component={null} />
             <Route component={NoMatch} />
           </Switch>
         </div>

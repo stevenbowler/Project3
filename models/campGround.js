@@ -3,11 +3,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-/**@namespace searchSchema */
-const searchSchema = new Schema({
-  /**@name name*/
+/**@namespace campGroundSchema */
+const campGroundSchema = new Schema({
+  /**@name campGround*/
   //campsite name
-  name: { type: String, required: true },
+  campGround: { type: String, required: true },
   /**@name location*/
   location: { type: String, required: true },
   /**@name rating*/
@@ -19,11 +19,11 @@ const searchSchema = new Schema({
   /**@name imageURL*/
   imageURL: { type: String, required: false },
    /**@name infoLink*/
-   infoLink: {  type: String, required: true },
+   infoLink: {  type: String, required: false },
     /**@name reservationURL*/
-    reservationURL: {  type: String, required: true },
+    reservationURL: {  type: String, required: false },
 });
 
-const Search = mongoose.model("Search", searchSchema);
+const CampGround = mongoose.model("CampGround", campGroundSchema);
 
-module.exports = Search; 
+module.exports = CampGround; 
