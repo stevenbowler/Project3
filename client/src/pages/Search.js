@@ -1,8 +1,8 @@
 //@ts-check
 /**@module*/
 import React, { Component } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
+import SaveBtn from "../components/SaveBtn";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -46,16 +46,32 @@ class Search extends Component {
   //   }
   // }
   campGroundSearch = (query) => {
-
-
     query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=2020-06-16T00%3A00%3A00Z&end_date=2020-06-20T00%3A00%3A00Z&include_unavailable=false?name=`
-    API.getCampSites(query).then(res =>{
+    API.getCampGrounds(query).then(res =>{
       this.setState({ result: res.data, campGrounds: res.data.results })
       console.log(res.data.results)
     })
      
       .catch(err => console.log(err));
+
   }
+  handleSaveCampGround= event => {
+    event.preventDefault();
+      API.saveCampGround({
+        campGround: this.state.campGround,
+        location:this.state.location,
+        rating: this.state.rating,
+        description: this.state.description,
+        availability: this.state.availability,
+        imageURL: this.state.imageURL,
+        infoLink: this.state.infoLink,
+        revervationURL: this.state.reservationURL,
+        zipCode: this.state.zipCode,
+        miles:this.state.miles
+      })
+        .then(res => this.campGroundSearch())
+        .catch(err => console.log(err));
+    };
 
   handleValidation(pattern ,value) {
     
@@ -88,7 +104,6 @@ class Search extends Component {
     }
   };
 
-  
    
 
   render() {
@@ -98,8 +113,8 @@ class Search extends Component {
           <Col size="md-12" >
             <div>
               <Jumbotron>
-                <h1>Campground Search</h1>
-                <h1>Search for and save your favorite campgrounds</h1>
+                <h1>Camp ground Search</h1>
+                <h1>Search for and save your favorite camp grounds</h1>
               </Jumbotron>
               <h1 style={{color:"white"}}>Find camping spots within <input className="form-control form-control-lg" autoComplete="off" type="text" name="miles" onChange={this.handleInputChange} value={this.state.miles} /> miles of zip code</h1>
               <input className="form-control form-control-lg" autoComplete="off" type="text" name="zipCode" onChange={this.handleInputChange} value={this.state.zipCode} />
@@ -124,6 +139,17 @@ class Search extends Component {
                         availability={campGround.availability}
                         imageURL={campGround.preview_image_url}
                         />
+                        <button  type="submit" onClick={this.handleSaveCampGround} >
+                Save
+      </button>
+                        {/* <SaveBtn
+                        campGround={campGround.name}
+                        location={campGround.location}
+                        rating={campGround.average_rating}
+                        description={campGround.description}
+                        availability={campGround.availability}
+                        imageURL={campGround.preview_image_url}
+                        /> */}
                      </div>
                   )
                    })}

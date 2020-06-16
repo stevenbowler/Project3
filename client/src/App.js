@@ -13,11 +13,11 @@
 */
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import CampGrounds from "./pages/CampGrounds";
 // import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 // import Nav from "./components/Nav";  // was in original Week 20 Activity 11
-
+import Saved from "./pages/Saved";
+import Search from "./pages/Search";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import './App.css';
@@ -282,9 +282,9 @@ class App extends React.Component {
             level={this.state.finalLevel}
           />
           <Switch>
-            <Route exact path="/" render={(props) => <CampGrounds {...props} username={this.state.name} token={this.token} email={this.email} />} />
-            {/* <Route exact path="/" component={Search} />
-          <Route exact path="/saved" component={Saved} /> */}
+            <Route exact path="/" render={(props) => <Search {...props} username={this.state.name} token={this.token} email={this.email} />} />
+            {/* <Route exact path="/" component={Search} />*/}
+          <Route exact path="/saved" component={Saved} /> 
           <Route exact path="/books/:id" component={null} />
             <Route component={NoMatch} />
           </Switch>
