@@ -21,8 +21,9 @@ export const register = (user) => {
     }
 }
 
-export const loginError = () => {
+export const loginError = (message) => {
     return {
-        type: actions.LOGIN_ERROR
+        type: actions.LOGIN_ERROR,
+        message
     }
 }
