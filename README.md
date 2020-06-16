@@ -1,8 +1,8 @@
 # Project 3
 
 ### Overview
-This is a camping app that is designed to facilitate the finding and booking of campsites thru the [National Park Service](https://www.nps.gov/).
-Team members involved in the development are Gabrielle Byers, Kyla Fitzpatrick, Robert Alanis, and Steven Bowler. 
+During the coronavirus lockdown period there is a need to locate peaceful and isolated locations outside the city.  Customers will want to conveniently find and reserve a campground often on a last-minute basis. The camping project app that is designed to facilitate the finding and booking of campsites thru the [National Park Service](https://www.nps.gov/).  Team members involved in the development are Gabrielle Byers, Kyla Fitzpatrick, Robert Alanis, and Steven Bowler.  
+
 
 ### Boilerplate below much to be deleted
 
@@ -15,7 +15,7 @@ This project has afforded this programmer the opportunity to gain experience in 
 
 1. Watch the video tutorial by clicking [this link](https://drive.google.com/file/d/1dXeXGydfJTvsE2GS7LnczJzTW0EKO-wS/view?usp=sharing). Then click [this link](https://drive.google.com/file/d/1_4N8HZdfe0iLeP5e1oFAKL5MQbadpiw6/view?usp=sharing).
 
-2. See example MERNshellTwo deployed by [clicking here](https://mernshelltwo.herokuapp.com/).
+2. See example MERNshellTwo deployed by [clicking here](https://campingproject3.herokuapp.com/).
 
 3. See another example of app fully deployed [clicking here](https://secure-citadel-76923.herokuapp.com/).
 
