@@ -51,9 +51,6 @@ export function ListItem(props) {
               </p>
              <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId}> INFO</a>
              <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId + "/availability"}> RESERVE</a>
-             <button onClick={() => props.saveCampGround(props.key)}>
-                Save
-              </button>
             </Col>
           </Row>
       </Container>

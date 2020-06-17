@@ -63,7 +63,7 @@ class Saved extends Component {
                 })}
               </CampGroundList>
               :
-              <h2>No camp grounds to display</h2>
+              <h2 style={{color:"white"}}>No camp grounds to display</h2>
             }
 
           </Col>
