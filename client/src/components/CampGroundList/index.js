@@ -47,8 +47,8 @@ export function ListItem(props) {
               <p style={{color:"white"}}>
                 {props.description}
               </p>
-             <a target="_blank" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId}> INFO</a>
-             <a target="_blank" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId + "/availability"}> RESERVE</a>
+             <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId}> INFO</a>
+             <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId + "/availability"}> RESERVE</a>
 
             </Col>
           </Row>

@@ -24,30 +24,32 @@ export const todoReducer = (state = initialState, action) => {
             return newState;
 
         case actions.REGISTER_USER:
-            console.log("REGISTER action.username: ", action.username);
-            newState.username = action.username;
-            newState.email = action.email;
-            newState.token = action.token;
+            console.log("REGISTER action.username: ", "Registered...OK");
+            newState.username = "Registered...OK";
+            newState.email = "";
+            // newState.token = action.token;
             newState.loggedIn = true;
             console.log("new state.username: ", newState.username);
             return newState;
 
         case actions.LOGIN_ERROR:
-            // console.log("LOGOUT action.username: ", action.username);
+            console.log("LOGOUT action.username: ", action);
             newState.username = "wrong email or pswd";
             newState.email = "";
             newState.token = "";
             newState.loggedIn = false;
-            console.log("new state.username: ", newState.username);
+            newState.errorMessage = action.message;
+            console.log("new LOGIN_ERROR state.username: ", newState.username);
+            console.log("new LOGOUT_USER newstate.errorMessage: ", newState.errorMessage);
             return newState;
 
         case actions.LOGOUT_USER:
-            // console.log("LOGOUT action.username: ", action.username);
+            // console.log("LOGOUT action.user: ", action);
             newState.username = "Guest...Login";
             newState.email = "";
             newState.token = "";
             newState.loggedIn = false;
-            console.log("new state.username: ", newState.username);
+            console.log("new LOGOUT_USER state.username: ", newState.username);
             return newState;
 
         case actions.SAVES_CAMPGROUNDS:
