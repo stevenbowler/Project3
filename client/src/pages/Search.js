@@ -15,7 +15,8 @@ class Search extends Component {
   state = {
     entityId: "",
     campGround: "",
-    location: "",
+    city:"",              state: "",
+    distance: "",
     rating: "",
     description: "",
     availability: "",
@@ -165,7 +166,11 @@ class Search extends Component {
                           key={campGround._id}
                           entityId={campGround.entity_id}
                           campGround={campGround.name}
-                          location={campGround.location}
+                          city={campGround.addresses[0].city}
+
+                          state={campGround.addresses[0].state_code}
+
+                          distance={campGround.distance}
                           rating={campGround.average_rating}
                           description={campGround.description}
                           availability={campGround.availability}

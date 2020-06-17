@@ -17,7 +17,7 @@ const campGroundSchema = new Schema({
   /**@name description*/
   description: String,
   /**@name availability*/
-  availability: { type: Date, default: Date.now },
+  availability: { type: String, required: true },
   /**@name imageURL*/
   imageURL: { type: String, required: false },
    /**@name infoLink*/
