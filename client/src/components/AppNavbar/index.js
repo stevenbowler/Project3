@@ -16,6 +16,7 @@ import {
     // Container,
     Button
 } from 'reactstrap';
+import { connect } from 'react-redux';
 
 
 
@@ -78,7 +79,7 @@ class AppNavbar extends Component {
             <Navbar color="dark" expand="sm" className="mb-5 sticky-top">
                 {/* <Container> */}
                 <NavbarBrand href="/">Project 3</NavbarBrand>
-                <NavbarText className="text-warning" placeholder="test">{this.props.name}</ NavbarText>
+                <NavbarText className="text-warning" placeholder="test">{this.props.username}</ NavbarText>
                 <NavbarToggler color="dark" border="dark" onClick={this.toggle}><img src='hamburger.jpg' alt='Menu' style={{
                     height: "40px",
                     width: "40px"
@@ -107,4 +108,15 @@ class AppNavbar extends Component {
 
 }
 
-export default AppNavbar;
+
+
+const mapStateToProps = (state) => {
+    return {
+        username: state.username,
+        email: state.email,
+        loggedIn: state.loggedIn
+    }
+}
+
+export default connect(mapStateToProps)(AppNavbar);
+// export default AppNavbar;
