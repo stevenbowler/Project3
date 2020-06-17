@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import { connect } from 'react-redux';
+
 
 class Books extends Component {
   state = {
@@ -40,7 +42,7 @@ class Books extends Component {
    * This is where the magic happens ... the infamous / route
    * @function loadBooks */
   loadBooks = () => {
-    console.log("username: ", this.props.username);
+    console.log("username: ", this.props.username);   // crashed the API call, what?
     API.getBooks({ username: this.props.username, token: this.props.token, email: this.props.email })
       .then(res => {
         this.setState({ books: res.data, title: "", author: "", synopsis: "" })
@@ -147,4 +149,15 @@ class Books extends Component {
   }
 }
 
-export default Books;
+
+const mapStateToProps = (state) => {
+  return {
+    username: state.username,
+    email: state.email,
+    token: state.token,
+    loggedIn: state.loggedIn
+  }
+}
+
+export default connect(mapStateToProps)(Books);
+// export default Books;
