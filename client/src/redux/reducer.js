@@ -5,7 +5,8 @@ const initialState = {
     username: "Guest...Login",
     email: "",
     token: "",
-    loggedIn: false
+    loggedIn: false,
+    campGrounds: []
 }
 
 
@@ -47,6 +48,10 @@ export const todoReducer = (state = initialState, action) => {
             newState.token = "";
             newState.loggedIn = false;
             console.log("new state.username: ", newState.username);
+            return newState;
+
+        case actions.SAVES_CAMPGROUNDS:
+            newState.campGrounds = action.campGrounds;
             return newState;
         default:
             return state;
