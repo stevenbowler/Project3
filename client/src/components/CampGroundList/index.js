@@ -18,6 +18,7 @@ export function ListItem(props) {
   return (
     <li>
       <Container>
+        {/* bootstrap */}
         {/* <Row>
           <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" alt={props.campGround} src={props.imageURL} />
@@ -39,9 +40,10 @@ export function ListItem(props) {
               <img alt={props.campGround} src={props.imageURL} />
               </Col>
               <Col size="xs8 sm8 m8">
+              
               <h3 style={{color:"white"}}>{props.campGround}</h3>
               <p style={{color:"white"}}>
-                {props.city}, {props.state} ({props.distance} miles away)</p>
+                {props.rating} {props.city}, {props.state} ({props.distance} miles away)</p>
              </Col>
                 <Col size="xs11 sm11 m11">
               <p style={{color:"white"}}>
@@ -49,7 +51,9 @@ export function ListItem(props) {
               </p>
              <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId}> INFO</a>
              <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId + "/availability"}> RESERVE</a>
-
+             <button onClick={() => props.saveCampGround(props.key)}>
+                Save
+              </button>
             </Col>
           </Row>
       </Container>

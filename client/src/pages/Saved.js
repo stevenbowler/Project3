@@ -16,15 +16,15 @@ class Saved extends Component {
         this.getCampGrounds();
       }
     
-      getBooks = () => {
+      getCampGrounds = () => {
         API.getCampGrounds()
           .then(res => {
             this.setState({ savedCampGrounds: res.data })
           })
           .catch((err => console.log(err)))
         }
-        deleteBook = () => {
-            API.deleteBook()
+        deleteCampGrounds = () => {
+            API.deleteCampGrounds()
               .then(res => {
                 this.setState({ savedCampGrounds: res.data })
               })
@@ -40,17 +40,19 @@ class Saved extends Component {
                                 <h1>Favorites</h1>
                             </h1>
                         </Jumbotron>
+                        {(this.state.savedCampGrounds && this.state.savedCampGrounds.length > 0) ?
+
                     <CampGroundList>
-                  {this.state.campGrounds.map((campGround, index) => {
+                  {this.state.savedCampGrounds.map((savedCampGround, index) => {
                   return (  <div key={index}>
                       <ListItem
-                        key={campGround.id}
-                        campGround={campGround.name}
-                        location={campGround.location}
-                        rating={campGround.average_rating}
-                        description={campGround.description}
-                        availability={campGround.availability}
-                        imageURL={campGround.preview_image_url}
+                        key={savedCampGround._id}
+                        campGround={savedCampGround.name}
+                        location={savedCampGround.location}
+                        rating={savedCampGround.average_rating}
+                        description={savedCampGround.description}
+                        availability={savedCampGround.availability}
+                        imageURL={savedCampGround.preview_image_url}
                         />
                      </div>
                   )
@@ -58,7 +60,7 @@ class Saved extends Component {
                             </CampGroundList>
                 :
                 <h2>No camp grounds to display</h2>
-              
+                  }
             
           </Col>
 

@@ -15,7 +15,8 @@ class Search extends Component {
   state = {
     entityId: "",
     campGround: "",
-    city:"",              state: "",
+    city:"",              
+    state: "",
     distance: "",
     rating: "",
     description: "",
