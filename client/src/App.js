@@ -13,11 +13,11 @@
 */
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Books from "./pages/Books";
-import Detail from "./pages/Detail";
+// import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 // import Nav from "./components/Nav";  // was in original Week 20 Activity 11
-
+import Saved from "./pages/Saved";
+import Search from "./pages/Search";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import './App.css';
@@ -286,11 +286,10 @@ class App extends React.Component {
           // userName={this.state.name}
           />
           <Switch>
-            {/* <Route exact path="/" render={(props) => <Books {...props} username={this.state.name} token={this.state.token} email={this.state.email} />} /> */}
-            <Route exact path="/" render={(props) => <Books {...props} />} />
-            {/* <Route exact path="/books" render={(props) => <Books {...props} username={this.state.name} token={this.state.token} email={this.state.email} />} /> */}
-            <Route exact path="/books" render={(props) => <Books {...props} />} />
-            <Route exact path="/books/:id" component={Detail} />
+            <Route exact path="/" render={(props) => <Search {...props} username={this.state.name} token={this.token} email={this.email} />} />
+            {/* <Route exact path="/" component={Search} />*/}
+          <Route exact path="/saved" component={Saved} /> 
+          <Route exact path="/books/:id" component={null} />
             <Route component={NoMatch} />
           </Switch>
         </div>
