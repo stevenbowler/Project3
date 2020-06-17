@@ -60,7 +60,7 @@ class Search extends Component {
       .catch(err => console.log(err));
 
   }
-  saveCampGround = campGroundData => {
+  saveCampGround = (campGroundData) => {
     API.saveCampGround(campGroundData = {
       entityId: this.state.entity_id,
       campGround: this.state.campGround,
@@ -74,19 +74,21 @@ class Search extends Component {
       zipCode: this.state.zipCode,
       miles: this.state.miles
     })
-      .then(res => this.campGroundSearch())
-      .catch(err => console.log(err));
-  };
-  getEntityId = (query) => {
-    query = `camping/campgrounds/${this.state.entityId}/availability`
-    API.getEntityId(query).then(res => {
-      //set state to 5 available days
-      this.setState({ result: res.data, campGrounds: res.data.results })
-      console.log(res.data.results)
-    })
-
-      .catch(err => console.log(err));
+      .then(res => {this.props.dispatch(savesCampGrounds(res.data.results))
+      
+  }).catch(err => console.log(err));
   }
+  //this is for geting each date
+  // getEntityId = (query) => {
+  //   query = `camping/campgrounds/${this.state.entityId}/availability`
+  //   API.getEntityId(query).then(res => {
+  //     //set state to 5 available days
+  //     this.setState({ result: res.data, campGrounds: res.data.results })
+  //     console.log(res.data.results)
+  //   })
+
+  //     .catch(err => console.log(err));
+  // }
   // handleSaveCampGround= event => {
   //   event.preventDefault();
   //     API.saveCampGround({
@@ -155,9 +157,6 @@ class Search extends Component {
       </button>
               {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
-
-
-
               {(this.state.isValidZipCode && this.props.campGrounds && this.props.campGrounds.length > 0) ?
                 <CampGroundList>
                   {this.props.campGrounds.map((campGround, index) => {
@@ -168,9 +167,7 @@ class Search extends Component {
                           entityId={campGround.entity_id}
                           campGround={campGround.name}
                           city={campGround.addresses[0].city}
-
                           state={campGround.addresses[0].state_code}
-
                           distance={campGround.distance}
                           rating={campGround.average_rating}
                           description={campGround.description}
