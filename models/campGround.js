@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 /**@namespace campGroundSchema */
 const campGroundSchema = new Schema({
   /**@name entityId*/
-  // entityId= { type: String, required: true },
+  entityId: { type: String, required: true },
   /**@name campGround*/
   //campsite name
   campGround: { type: String, required: true },
@@ -17,7 +17,7 @@ const campGroundSchema = new Schema({
   /**@name description*/
   description: String,
   /**@name availability*/
-  availability: { type: Date, default: Date.now },
+  availability: { type: String, required: true },
   /**@name imageURL*/
   imageURL: { type: String, required: false },
    /**@name infoLink*/

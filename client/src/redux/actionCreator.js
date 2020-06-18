@@ -27,3 +27,10 @@ export const loginError = (message) => {
         message
     }
 }
+
+export const savesCampGrounds = (campGrounds) => {
+    return {
+        type: actions.SAVES_CAMPGROUNDS,
+        campGrounds
+    }
+}
