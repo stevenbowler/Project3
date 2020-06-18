@@ -1,5 +1,6 @@
 //@ts-check
 /**@module*/
+import moment from "moment";
 import { savesCampGrounds } from "../redux/actionCreator";
 import { connect } from "react-redux";
 import React, { Component } from "react";
@@ -19,6 +20,8 @@ class Search extends Component {
     state: "",
     distance: "",
     rating: "",
+    startDate:moment().format("YYYY-MM-DD"),
+    endDate:moment(moment().format("YYYY-MM-DD"), "YYYY-MM-DD").add(5, "days").format("YYYY-MM-DD"),
     description: "",
     availability: "",
     imageURL: "",
@@ -30,13 +33,23 @@ class Search extends Component {
     result: {},
     isValidZipCode: false
   };
+setDates(){
+  this.setState({startDate: moment().format("DD-MM-YYYY"),endDate:moment(this.state.startDate).clone().add(5, 'days')
+})}
+
+  
   // previousName = this.props.username;
 
   /**
    * Initial loadsearch and set previous state variable to track login username change
   //  * @function componentDidMount */
   // componentDidMount() {
-  //   this.loadCampGrounds();
+    // this.setDates();
+    
+    // this.state.startDate = moment().format("DD-MM-YYYY")
+    // var end = moment(this.state.startDate, "DD-MM-YYYY").add(5, "days")
+    // this.state.endDate = end
+
   //   this.previousName = this.props.username;
   // }
 
@@ -50,16 +63,21 @@ class Search extends Component {
   //   }
   // }
   campGroundSearch = (query) => {
-    query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=2020-06-16T00%3A00%3A00Z&end_date=2020-06-20T00%3A00%3A00Z&include_unavailable=false?name=`
+    query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`
     API.getCampGrounds(query).then(res => {
       // this.setState({ result: res.data, campGrounds: res.data.results })
+      
       this.props.dispatch(savesCampGrounds(res.data.results))
       console.log(res.data.results)
-    })
+      
+      })
+          
 
       .catch(err => console.log(err));
 
   }
+
+  
   saveCampGround = (campGroundData) => {
     API.saveCampGround(campGroundData = {
       entityId: this.state.entity_id,
