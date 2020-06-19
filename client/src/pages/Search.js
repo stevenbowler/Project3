@@ -14,6 +14,7 @@ import { CampGroundList, ListItem } from "../components/CampGroundList";
 
 class Search extends Component {
   state = {
+    campGrounds: [],
     entityId: "",
     campGround: "",
     city:"",              
@@ -79,51 +80,14 @@ setDates(){
 
   
   saveCampGround = (campGroundData) => {
-    API.saveCampGround(campGroundData = {
-      entityId: this.state.entity_id,
-      campGround: this.state.campGround,
-      location: this.state.location,
-      rating: this.state.rating,
-      description: this.state.description,
-      availability: this.state.availability,
-      imageURL: this.state.imageURL,
-      infoLink: this.state.infoLink,
-      revervationURL: this.state.reservationURL,
-      zipCode: this.state.zipCode,
-      miles: this.state.miles
-    })
-      .then(res => {this.props.dispatch(savesCampGrounds(res.data.results))
+    API.saveCampGround(campGroundData)
+    
+      .then(res => console.log("save to mongo", res))
       
-  }).catch(err => console.log(err));
+      .catch(err => console.log(err));
   }
-  //this is for geting each date
-  // getEntityId = (query) => {
-  //   query = `camping/campgrounds/${this.state.entityId}/availability`
-  //   API.getEntityId(query).then(res => {
-  //     //set state to 5 available days
-  //     this.setState({ result: res.data, campGrounds: res.data.results })
-  //     console.log(res.data.results)
-  //   })
+  
 
-  //     .catch(err => console.log(err));
-  // }
-  // handleSaveCampGround= event => {
-  //   event.preventDefault();
-  //     API.saveCampGround({
-  //       campGround: this.state.campGround,
-  //       location:this.state.location,
-  //       rating: this.state.rating,
-  //       description: this.state.description,
-  //       availability: this.state.availability,
-  //       imageURL: this.state.imageURL,
-  //       infoLink: this.state.infoLink,
-  //       revervationURL: this.state.reservationURL,
-  //       zipCode: this.state.zipCode,
-  //       miles:this.state.miles
-  //     })
-  //       .then(res => this.campGroundSearch())
-  //       .catch(err => console.log(err));
-  //   };
 
   handleValidation(pattern, value) {
 
@@ -189,19 +153,21 @@ setDates(){
                           distance={campGround.distance}
                           rating={campGround.average_rating}
                           description={campGround.description}
-                          availability={campGround.availability}
                           imageURL={campGround.preview_image_url}
                         />
-                        <SaveBtn onClick={() => this.saveCampGround(campGround._id)}></SaveBtn>
-
-                        {/* <SaveBtn
-                        campGround={campGround.name}
-                        location={campGround.location}
-                        rating={campGround.average_rating}
-                        description={campGround.description}
-                        availability={campGround.availability}
-                        imageURL={campGround.preview_image_url}
-                        /> */}
+                        <SaveBtn onClick={() => this.saveCampGround({id:campGround.id, 
+                        username:this.props.username,
+                        entityId:campGround.entity_id,
+                        // campGround:campGround.name,
+                        // city:campGround.addresses[0].city,
+                        // state:campGround.addresses[0].state_code,
+                        // distance:campGround.distance,
+                        // rating:campGround.average_rating,
+                        // description:campGround.description,
+                        // imageURL:campGround.preview_image_url,
+                        // infoLink:campGround.
+                        // reservationURL:
+                        })}></SaveBtn>
                       </div>
                     )
                   })}
@@ -219,7 +185,8 @@ setDates(){
 }
 function mapStateToProps(state) {
   return {
-    campGrounds: state.campGrounds
+    campGrounds: state.campGrounds,
+    username: state.username
   }
 }
 export default connect(mapStateToProps) (Search);
