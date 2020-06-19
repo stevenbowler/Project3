@@ -17,9 +17,9 @@ const campGroundSchema = new Schema({
   /**@name state*/
   state: { type: String},
   /**@name distance*/
-  distance: { type: Integer},
+  distance: { type: Number},
   /**@name rating*/
-  rating: { type: String},
+  rating: { type: Number},
   /**@name description*/
   description: String,
   /**@name imageURL*/
