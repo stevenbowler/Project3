@@ -18,23 +18,6 @@ export function ListItem(props) {
   return (
     <li>
       <Container>
-        {/* bootstrap */}
-        {/* <Row>
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" alt={props.campGround} src={props.imageURL} />
-            <Card.Body>
-              <Card.Title><h3 style={{ color: "white" }}>{props.campGround}</h3>
-              </Card.Title>
-              <Card.Text>
-                <p style={{ color: "white" }}>
-                  {props.description}
-                </p>
-              </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Row> */}
- 
              <Row>
               <Col size="xs1 sm1 m1">
               <img alt={props.campGround} src={props.imageURL} />
