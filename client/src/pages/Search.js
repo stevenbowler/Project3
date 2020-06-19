@@ -82,7 +82,7 @@ setDates(){
   saveCampGround = (campGroundData) => {
     API.saveCampGround(campGroundData)
     
-      .then(res => console.log("save to mongo"))
+      .then(res => console.log("save to mongo", res))
       
       .catch(err => console.log(err));
   }
@@ -155,17 +155,16 @@ setDates(){
                           description={campGround.description}
                           imageURL={campGround.preview_image_url}
                         />
-                        <SaveBtn onClick={() => this.saveCampGround({id:campGround._id, 
-                        key:campGround._id,
+                        <SaveBtn onClick={() => this.saveCampGround({id:campGround.id, 
                         username:this.props.username,
-                        entityId:campGround._id,
-                        campGround:campGround.name,
-                        city:campGround.addresses[0].city,
-                        state:campGround.addresses[0].state_code,
-                        distance:campGround.distance,
-                        rating:campGround.average_rating,
-                        description:campGround.description,
-                        imageURL:campGround.preview_image_url,
+                        entityId:campGround.entity_id,
+                        // campGround:campGround.name,
+                        // city:campGround.addresses[0].city,
+                        // state:campGround.addresses[0].state_code,
+                        // distance:campGround.distance,
+                        // rating:campGround.average_rating,
+                        // description:campGround.description,
+                        // imageURL:campGround.preview_image_url,
                         // infoLink:campGround.
                         // reservationURL:
                         })}></SaveBtn>
