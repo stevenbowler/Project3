@@ -2,7 +2,8 @@ import React from "react";
 // import "./style.css";
 // import SaveBtn from "../SaveBtn"
 import { Col, Row, Container } from "../Grid";
-import { Button } from "reactstrap";
+import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+import Ratings from "react-ratings-declarative";
 
 // This file exports both the List and ListItem components
 
@@ -35,18 +36,39 @@ export function ListItem(props) {
         </Row> */}
 
 				<Row>
-					<Col size="xs1 sm1 m1">
-						<img style={{ width: "100%" }} alt={props.campGround} src={props.imageURL} />
-					</Col>
-					<Col size="xs8 sm8 m8">
-						<h3 style={{ color: "forestgreen" }}>{props.campGround}</h3>
-						<p style={{ color: "forestgreen" }}>
-							{props.rating} {props.city}, {props.state} ({props.distance} miles away)
-						</p>
-					</Col>
-					<Col size="xs11 sm11 m11">
-						<p style={{ color: "forestgreen" }}>{props.description}</p>
-						<Button>
+					<Col size="md-5">
+						<Card>
+							<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
+							<CardBody>
+								<CardTitle>
+									<h2>
+										{props.campGround}
+										<Ratings
+											rating={props.rating}
+											widgetRatedColors="green"
+											widgetEmptyColors="grey"
+											widgetDimensions="20px"
+											typeOfWidget="Point"
+											widgetSpacings="1px"
+										>
+											<Ratings.Widget />
+											<Ratings.Widget />
+											<Ratings.Widget />
+											<Ratings.Widget />
+											<Ratings.Widget />
+										</Ratings>
+									</h2>
+								</CardTitle>
+								<CardSubtitle>
+									<h5>
+										<span style={{ fontWeight: "bold" }}>
+											{props.city}, {props.state}
+										</span>{" "}
+										({props.distance} miles away)
+									</h5>
+								</CardSubtitle>
+                <CardText>{props.description}</CardText>
+                <Button>
 							<a
 								target="_blank"
 								rel="noopener noreferrer"
@@ -71,6 +93,9 @@ export function ListItem(props) {
 								RESERVE
 							</a>
 						</Button>
+
+							</CardBody>
+						</Card>
 					</Col>
 				</Row>
 			</Container>

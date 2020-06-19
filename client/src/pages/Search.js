@@ -176,8 +176,9 @@ class Search extends Component {
 
 								<h2>search campgrounds near you</h2>
 
+                <div className="search-input">
 
-								<Form inline>
+                <Form inline>
 									<FormGroup>
 										<Label for="exampleEmail" hidden>
 											Zip Code
@@ -212,9 +213,14 @@ class Search extends Component {
 									</FormGroup>{" "}
 								</Form>
 
-								<button type="submit" onClick={this.campGroundSearch}>
+                </div>
+
+
+								
+
+								<Button type="submit" onClick={this.campGroundSearch}>
 									Search
-								</button>
+								</Button>
 							</Jumbotron>
 
 							{console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
@@ -226,7 +232,6 @@ class Search extends Component {
 									{this.props.campGrounds.map((campGround, index) => {
 										return (
 											<div style={{ paddingTop: "100px" }} key={index}>
-                        <Card>
 												<ListItem
 													key={campGround._id}
 													entityId={campGround.entity_id}
@@ -249,7 +254,7 @@ class Search extends Component {
                         availability={campGround.availability}
                         imageURL={campGround.preview_image_url}
                         /> */}
-                        </Card>
+                      
 											</div>
                       
 										);
