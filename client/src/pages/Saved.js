@@ -6,6 +6,8 @@ import Jumbotron from "../components/Jumbotron";
 import DeleteBtn from "../components/DeleteBtn";
 import { CampGroundList, ListItem } from "../components/CampGroundList";
 import API from "../utils/API";
+import { savesCampGrounds } from "../redux/actionCreator";
+import { connect } from "react-redux";
 
 class Saved extends Component {
   state = {
@@ -13,13 +15,14 @@ class Saved extends Component {
   };
 
   componentDidMount() {
-    this.getCampGrounds();
+    this.getCampGround();
   }
 
-  getCampGround = () => {
-    API.getCampGround()
+  getCampGround = (campGroundData) => {
+    API.getCampGround(campGroundData)
       .then(res => {
-        this.setState({ savedCampGrounds: res.data })
+        this.props.dispatch(savesCampGrounds(res.data.results))
+        // this.setState({ savedCampGrounds: res })
       })
       .catch((err => console.log(err)))
   }
@@ -40,24 +43,23 @@ class Saved extends Component {
                 <h1>Favorites</h1>
               </h1>
             </Jumbotron>
-            {(this.state.savedCampGrounds && this.state.savedCampGrounds.length > 0) ?
+            {(this.props.campGrounds && this.props.campGrounds.length > 0) ?
 
               <CampGroundList>
-                {this.state.savedCampGrounds.map((savedCampGround, index) => {
+                 {this.props.campGrounds.map((campGround, index) => {
                   return (<div key={index}>
                     <ListItem
-                      key={savedCampGround._id}
-                      entityId={savedCampGround.entity_id}
-                      campGround={savedCampGround.name}
-                      city={savedCampGround.addresses[0].city}
-                      state={savedCampGround.addresses[0].state_code}
-                      distance={savedCampGround.distance}
-                      rating={savedCampGround.average_rating}
-                      description={savedCampGround.description}
-                      availability={savedCampGround.availability}
-                      imageURL={savedCampGround.preview_image_url}
+                      key={campGround._id}
+                      entityId={campGround.entity_id}
+                      campGround={campGround.name}
+                      city={campGround.addresses[0].city}
+                      state={campGround.addresses[0].state_code}
+                      distance={campGround.distance}
+                      rating={campGround.average_rating}
+                      description={campGround.description}
+                      imageURL={campGround.preview_image_url}
                     />
-                    <DeleteBtn onClick={() => this.deleteCampGround(savedCampGround._id)}></DeleteBtn>
+                    <DeleteBtn onClick={() => this.deleteCampGround(campGround._id)}></DeleteBtn>
                   </div>
                   )
                 })}
@@ -73,5 +75,10 @@ class Saved extends Component {
     );
   }
 }
-
-export default Saved;
+function mapStateToProps(state) {
+  return {
+    campGrounds: state.campGrounds,
+    username: state.username
+  }
+}
+export default connect(mapStateToProps) (Saved);
