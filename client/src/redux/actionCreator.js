@@ -34,3 +34,10 @@ export const savesCampGrounds = (campGrounds) => {
         campGrounds
     }
 }
+
+export const deleteCampGrounds = (campGrounds) => {
+    return {
+        type: actions.DELETES_CAMPGROUNDS,
+        campGrounds
+    }
+}

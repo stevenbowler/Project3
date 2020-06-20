@@ -288,7 +288,8 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" render={(props) => <Search {...props} username={this.state.name} token={this.token} email={this.email} />} />
             {/* <Route exact path="/" component={Search} />*/}
-          <Route exact path="/saved" component={Saved} /> 
+             <Route exact path="/saved" render={(props) => <Saved {...props} />}/>
+          {/* <Route exact path="/saved" component={Saved} />  */}
           <Route exact path="/books/:id" component={null} />
             <Route component={NoMatch} />
           </Switch>

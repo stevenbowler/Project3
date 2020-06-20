@@ -9,7 +9,7 @@ module.exports = {
   findAll: function (req, res) {
     db.CampGround
       // .find({ username: req.originalUrl.slice(13) })
-      .find({ username: req.query.name })
+      .find({})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

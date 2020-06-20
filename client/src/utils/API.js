@@ -40,8 +40,8 @@ export default {
    * Gets the book with the given id
    * @function getCampGround
    * @param {*} id*/
-  getCampGround: function (id) {
-    return axios.get("/api/campgrounds/" + id);
+  getCampGround: function (campGroundData) {
+    return axios.get("/api/campgrounds", campGroundData);
   },
 
   /**
@@ -49,8 +49,8 @@ export default {
    * @function deleteCampGround
    * @param {*} id 
    */
-  deleteCampGround: function (id) {
-    return axios.delete("/api/campground/" + id);
+  deleteCampGround: function (_id) {
+    return axios.delete("/api/campground/" + _id);
   },
 
   /**
