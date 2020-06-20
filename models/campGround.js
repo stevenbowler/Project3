@@ -8,6 +8,7 @@ const campGroundSchema = new Schema({
   /**@name userName*/
   username: { type: String},
   /**@name entityId*/
+
   entityId: { type: String},
   /**@name campGround*/
   //campsite name

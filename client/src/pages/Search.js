@@ -9,10 +9,25 @@ import SaveBtn from "../components/SaveBtn";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+import {
+	Button,
+	Form,
+	FormGroup,
+	Label,
+	Input,
+	Card,
+	CardImg,
+	CardText,
+	CardBody,
+	CardTitle,
+	CardSubtitle,
+} from "reactstrap";
 import { CampGroundList, ListItem } from "../components/CampGroundList";
+
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Search extends Component {
+
   state = {
     campGrounds: [],
     entityId: "",
@@ -50,9 +65,13 @@ class Search extends Component {
   //   this.previousName = this.props.username;
   // }
 
-  /**
+	//   this.previousName = this.props.username;
+	// }
+
+	/**
    * If there was a login then reload campGrounds with the newly logged in users choices
   //  * @function componentDidUpdate */
+
   // componentDidUpdate() {
   //   if (this.previousName !== this.props.username) {  // if login or logout update campGrounds displayed
   //     this.loadCampGrounds();

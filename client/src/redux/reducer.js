@@ -15,41 +15,37 @@ export const todoReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case actions.LOGIN_USER:
-            console.log("LOGIN action.username: ", action);
             newState.username = action.user.username;
             newState.email = action.user.email;
             newState.token = action.user.token;
             newState.loggedIn = true;
+            newState.errorMessage = null;
             console.log("new state.username: ", newState.username);
             return newState;
 
         case actions.REGISTER_USER:
-            console.log("REGISTER action.username: ", "Registered...OK");
             newState.username = "Registered...OK";
             newState.email = "";
             // newState.token = action.token;
             newState.loggedIn = true;
-            console.log("new state.username: ", newState.username);
+            // console.log("new state.username: ", newState.username);
             return newState;
 
         case actions.LOGIN_ERROR:
-            console.log("LOGOUT action.username: ", action);
             newState.username = "wrong email or pswd";
             newState.email = "";
             newState.token = "";
             newState.loggedIn = false;
             newState.errorMessage = action.message;
-            console.log("new LOGIN_ERROR state.username: ", newState.username);
-            console.log("new LOGOUT_USER newstate.errorMessage: ", newState.errorMessage);
+            // console.log("new LOGOUT_USER newstate.errorMessage: ", newState.errorMessage);
             return newState;
 
         case actions.LOGOUT_USER:
-            // console.log("LOGOUT action.user: ", action);
             newState.username = "Guest...Login";
             newState.email = "";
             newState.token = "";
             newState.loggedIn = false;
-            console.log("new LOGOUT_USER state.username: ", newState.username);
+            // console.log("new LOGOUT_USER state.username: ", newState.username);
             return newState;
 
         case actions.SAVES_CAMPGROUNDS:

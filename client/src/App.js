@@ -32,7 +32,7 @@ import { login, logout, loginError } from './redux/actionCreator';
 
 // set background color below navbar
 //@ts-ignore
-document.body.style = 'background: black;';
+//document.body.style = 'background: black;';
 
 
 class App extends React.Component {

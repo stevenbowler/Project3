@@ -14,9 +14,11 @@ import {
     NavItem,
     NavLink,
     // Container,
-    Button
+    Button,
+    ButtonGroup
 } from 'reactstrap';
 import { connect } from 'react-redux';
+import "./style.css";
 
 
 
@@ -76,26 +78,45 @@ class AppNavbar extends Component {
     render() {
         return (
             // <div> //removed to get sticky navbar with reactstrap https://github.com/reactstrap/reactstrap/issues/1179
-            <Navbar color="dark" expand="sm" className="mb-5 sticky-top">
+             <Navbar dark expand="md" className="mb-5 sticky-top nav-bar">
                 {/* <Container> */}
-                <NavbarBrand href="/">Project 3</NavbarBrand>
-                <NavbarText className="text-warning" placeholder="test">{this.props.username}</ NavbarText>
-                <NavbarToggler color="dark" border="dark" onClick={this.toggle}><img src='hamburger.jpg' alt='Menu' style={{
-                    height: "40px",
-                    width: "40px"
-                }}></img></NavbarToggler>
+                <NavbarBrand className="text-light mx-3 pt-3" href="/">CAMPsite</NavbarBrand>
+                {/**<NavbarText className="text-light" placeholder="test">{this.props.username}</ NavbarText>*/}
+
+                <NavbarToggler onClick={this.toggle}></NavbarToggler>
                 <Collapse isOpen={this.props.isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
-                        <Button color="dark" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.register}>Register</Button>
-                        <Button color="dark" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.login}>Login</Button>
-                        <Button color="dark" hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.logout}>Logout</Button>
-                        <Button color="dark" hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.leaderBoard}>Modal</Button>
-                        <Button color="dark" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.tutorial}>Tutorial</Button>
-                        {/* <Button float="left" display="inline" onClick={this.unused}>Unused</Button> */}
-                        <Button float="left" color="dark" display="inline" href="/">Search</Button>
-                        <NavItem>
-                            <NavLink display="inline" color="white" href="https://github.com/stevenbowler/Project3">GitHub</NavLink>
-                        </NavItem>
+                    <Nav className="ml-auto text-light" navbar>  
+                          
+
+                    <NavItem>
+                        <NavLink className="mx-2 pt-3 hover-underline" href="/">About</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="mx-2 pt-3 hover-underline" href="/">Search</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="mx-2 pt-3 hover-underline" href="/">Favorties</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="mx-2 pt-3 hover-underline" href="/">Contact</NavLink>
+                    </NavItem>
+
+            
+    
+
+                    <ButtonGroup block size="lg">
+                        <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.register}>Register</Button>
+                        <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.login}>Login</Button>
+                        <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.logout}>Logout</Button>
+                    </ButtonGroup>
+
+
+                    
+
+                     {/*<Button color="dark" hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.leaderBoard}>Modal</Button>*/}   
+        
+
+
                     </Nav>
                 </Collapse>
                 {/* </Container> */}

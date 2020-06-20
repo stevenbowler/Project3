@@ -7,15 +7,18 @@ import API from "../../utils/API";
 // import { connect } from "react-redux";
 
 
+import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+import Ratings from "react-ratings-declarative";
 
 // This file exports both the List and ListItem components
 
 export function CampGroundList({ children }) {
-  return (
-    <div className="list-overflow-container">
-      <ul className="list-group">{children}</ul>
-    </div>
-  );
+
+	return (
+		<div className="list-overflow-container">
+			<ul className="list-group">{children}</ul>
+		</div>
+	);
 }
 export function ListItem(props) {
   const saveCampGround = (campGroundData) => {
@@ -27,23 +30,65 @@ export function ListItem(props) {
   }
   return (
     <li>
-      <Container>
-             <Row>
-              <Col size="xs1 sm1 m1">
-              <img alt={props.campGround} src={props.imageURL} />
-              </Col>
-              <Col size="xs8 sm8 m8">
-              
-              <h3 style={{color:"white"}}>{props.campGround}</h3>
-              <p style={{color:"white"}}>
-                {props.rating} {props.city}, {props.state} ({props.distance} miles away)</p>
-             </Col>
-                <Col size="xs11 sm11 m11">
-              <p style={{color:"white"}}>
-                {props.description}
-              </p>
-             <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId}> INFO</a>
-             <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId + "/availability"}> RESERVE</a>
+      	<Container>
+      <Row className="mb-5">
+					<Col size="md-12">
+						<Card>
+							<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
+							<CardBody>
+								<CardTitle>
+									<h2>
+										{props.campGround}
+										<Ratings
+											rating={props.rating}
+											widgetRatedColors="green"
+											widgetEmptyColors="grey"
+											widgetDimensions="20px"
+											typeOfWidget="Point"
+											widgetSpacings="1px"
+										>
+											<Ratings.Widget />
+											<Ratings.Widget />
+											<Ratings.Widget />
+											<Ratings.Widget />
+											<Ratings.Widget />
+										</Ratings>
+									</h2>
+								</CardTitle>
+								<CardSubtitle>
+									<h5>
+										<span style={{ fontWeight: "bold" }}>
+											{props.city}, {props.state}
+										</span>{" "}
+										({props.distance} miles away)
+									</h5>
+								</CardSubtitle>
+                <CardText>{props.description}</CardText>
+                <Button>
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
+							>
+								{" "}
+								INFO
+							</a>
+						</Button>
+						<Button>
+							{" "}
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href={
+									"https://www.recreation.gov/camping/campgrounds/" +
+									props.entityId +
+									"/availability"
+								}
+							>
+								{" "}
+								RESERVE
+							</a>
+						</Button>
              <SaveBtn onClick={() => saveCampGround({id:props.id, 
                         username:props.username,
                         entityId:props.entityId,
@@ -55,11 +100,11 @@ export function ListItem(props) {
                         description:props.description,
                         imageURL:props.imageURL,
                         })}></SaveBtn>
-            </Col>
-          </Row>
-      </Container>
-    </li>
-
-  )
+							</CardBody>
+						</Card>
+					</Col>
+				</Row>
+			</Container>
+		</li>
+	);
 }
-
