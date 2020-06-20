@@ -9,8 +9,19 @@ import SaveBtn from "../components/SaveBtn";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { Button, Form, FormGroup, Label, Input, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle} from "reactstrap";
+import {
+	Button,
+	Form,
+	FormGroup,
+	Label,
+	Input,
+	Card,
+	CardImg,
+	CardText,
+	CardBody,
+	CardTitle,
+	CardSubtitle,
+} from "reactstrap";
 import { CampGroundList, ListItem } from "../components/CampGroundList";
 
 // import { Input, TextArea, FormBtn } from "../components/Form";
@@ -174,52 +185,55 @@ class Search extends Component {
 								</h1>
 								<hr></hr>
 
-								<h2>search campgrounds near you</h2>
+								<h2 className="pb-5">search campgrounds near you</h2>
 
-                <div className="search-input">
-
-                <Form inline>
-									<FormGroup>
-										<Label for="exampleEmail" hidden>
-											Zip Code
-										</Label>
-										<Input
-											style={{ marginRight: "10px" }}
-											type="text"
-											name="zipCode"
-											id="zipCodeInput"
-											placeholder="Zip Code"
-											className="form-control form-control-lg"
-											autoComplete="off"
-											onChange={this.handleInputChange}
-											value={this.state.zipCode}
-										/>
-									</FormGroup>{" "}
-									<FormGroup>
-										<Label for="examplePassword" hidden>
-											Mile Radius
-										</Label>
-										<Input
-											style={{ marginLeft: "10px" }}
-											type="text"
-											name="miles"
-											id="mileRadiusInput"
-											placeholder="Mile Radius"
-											className="form-control form-control-lg"
-											autoComplete="off"
-											onChange={this.handleInputChange}
-											value={this.state.miles}
-										/>
-									</FormGroup>{" "}
+								<Form>
+									<Row form>
+										<Col size="md-6">
+											<FormGroup>			
+												<Input
+													type="text"
+													name="zipCode"
+													id="zipCodeInput"
+													placeholder="Zip Code"
+													className="form-control form-control-lg"
+													autoComplete="off"
+													onChange={this.handleInputChange}
+													value={this.state.zipCode}
+												/>
+                        <Label style={{float:"left", paddingLeft:"12px"}} for="exampleEmail">
+													Zip Code
+												</Label>
+											</FormGroup>{" "}
+										</Col>
+                    
+										<Col size="md-6">
+											<FormGroup>
+												<Input
+													type="text"
+													name="miles"
+													id="mileRadiusInput"
+													placeholder="Mile Radius"
+													className="form-control form-control-lg"
+													autoComplete="off"
+													onChange={this.handleInputChange}
+													value={this.state.miles}
+												/>
+                        <Label style={{float:"left", paddingLeft:"12px"}} for="examplePassword">
+													Mile Radius
+												</Label>
+											</FormGroup>{" "}
+										</Col>
+									</Row>
 								</Form>
 
-                </div>
-
-
-								
-
-								<Button type="submit" onClick={this.campGroundSearch}>
-									Search
+								<Button
+									style={{ backgroundColor: "forestgreen" }}
+									type="submit"
+									onClick={this.campGroundSearch}
+									className="px-4 py-3 mb-5"
+								>
+									<h1>SEARCH</h1>
 								</Button>
 							</Jumbotron>
 
@@ -254,14 +268,12 @@ class Search extends Component {
                         availability={campGround.availability}
                         imageURL={campGround.preview_image_url}
                         /> */}
-                      
 											</div>
-                      
 										);
 									})}
 								</CampGroundList>
 							) : (
-								<h2 style={{ paddingTop: "100px", textAlign: "center" }}>
+								<h2 style={{ paddingTop: "250px", textAlign: "center" }}>
 									No camp grounds to display.
 								</h2>
 							)}

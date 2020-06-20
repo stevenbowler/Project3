@@ -35,8 +35,8 @@ export function ListItem(props) {
           </Card>
         </Row> */}
 
-				<Row>
-					<Col size="md-5">
+				<Row className="mb-5">
+					<Col size="md-12">
 						<Card>
 							<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
 							<CardBody>
