@@ -2,10 +2,10 @@ import * as actions from './actions';
 import { cloneDeep } from 'lodash';
 
 const initialState = {
-    username: "Guest...Login",
-    email: "",
-    token: "",
-    loggedIn: false,
+    username: sessionStorage.getItem("name"),
+    email: sessionStorage.getItem("email"),
+    token: sessionStorage.getItem("token"),
+    loggedIn: sessionStorage.getItem("loggedIn"),
     campGrounds: []
 }
 
@@ -15,10 +15,15 @@ export const todoReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case actions.LOGIN_USER:
+            console.log("reducer LOGIN_USER username: ", action.user.username);
             newState.username = action.user.username;
             newState.email = action.user.email;
             newState.token = action.user.token;
-            newState.loggedIn = true;
+            newState.loggedIn = "true";
+            sessionStorage.setItem("token", newState.token);
+            sessionStorage.setItem("email", newState.email);
+            sessionStorage.setItem("name", newState.username);
+            sessionStorage.setItem("loggedIn", newState.loggedIn);
             newState.errorMessage = null;
             console.log("new state.username: ", newState.username);
             return newState;
@@ -27,7 +32,7 @@ export const todoReducer = (state = initialState, action) => {
             newState.username = "Registered...OK";
             newState.email = "";
             // newState.token = action.token;
-            newState.loggedIn = true;
+            newState.loggedIn = "true";
             // console.log("new state.username: ", newState.username);
             return newState;
 
@@ -35,7 +40,7 @@ export const todoReducer = (state = initialState, action) => {
             newState.username = "wrong email or pswd";
             newState.email = "";
             newState.token = "";
-            newState.loggedIn = false;
+            newState.loggedIn = "false";
             newState.errorMessage = action.message;
             // console.log("new LOGOUT_USER newstate.errorMessage: ", newState.errorMessage);
             return newState;
@@ -44,13 +49,18 @@ export const todoReducer = (state = initialState, action) => {
             newState.username = "Guest...Login";
             newState.email = "";
             newState.token = "";
-            newState.loggedIn = false;
+            newState.loggedIn = "false";
+            sessionStorage.setItem("name", newState.username);
+            sessionStorage.setItem("email", newState.email);
+            sessionStorage.setItem("token", newState.token);
+            sessionStorage.setItem("loggedIn", "false");
             // console.log("new LOGOUT_USER state.username: ", newState.username);
             return newState;
 
         case actions.SAVES_CAMPGROUNDS:
             newState.campGrounds = action.campGrounds;
             return newState;
+
         case actions.DELETES_CAMPGROUNDS:
             newState.campGrounds = action.campGrounds;
             return newState;
