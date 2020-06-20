@@ -74,16 +74,6 @@ class Search extends Component {
 
   }
 
-  
-  saveCampGround = (campGroundData) => {
-    API.saveCampGround(campGroundData)
-    
-      .then(res => console.log("save to mongo", res))
-      
-      .catch(err => console.log(err));
-  }
-  
-
 
   handleValidation(pattern, value) {
 
@@ -151,19 +141,6 @@ class Search extends Component {
                           description={campGround.description}
                           imageURL={campGround.preview_image_url}
                         />
-                        <SaveBtn onClick={() => this.saveCampGround({id:campGround.id, 
-                        username:this.props.username,
-                        entityId:campGround.entity_id,
-                        campGround:campGround.name,
-                        city:campGround.addresses[0].city,
-                        state:campGround.addresses[0].state_code,
-                        distance:campGround.distance,
-                        rating:campGround.average_rating,
-                        description:campGround.description,
-                        imageURL:campGround.preview_image_url,
-                        // infoLink:campGround.
-                        // reservationURL:
-                        })}></SaveBtn>
                       </div>
                     )
                   })}

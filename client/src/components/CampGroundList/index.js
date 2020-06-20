@@ -1,7 +1,11 @@
 import React from "react";
 // import "./style.css";
-// import SaveBtn from "../SaveBtn"
+import SaveBtn from "../SaveBtn"
 import { Col, Row, Container } from "../Grid";
+import API from "../../utils/API";
+// import { savesCampGrounds } from "../redux/actionCreator";
+// import { connect } from "react-redux";
+
 
 
 // This file exports both the List and ListItem components
@@ -14,7 +18,13 @@ export function CampGroundList({ children }) {
   );
 }
 export function ListItem(props) {
-
+  const saveCampGround = (campGroundData) => {
+    API.saveCampGround(campGroundData)
+    
+      .then(res => console.log("save to mongo", res))
+      
+      .catch(err => console.log(err));
+  }
   return (
     <li>
       <Container>
@@ -34,6 +44,17 @@ export function ListItem(props) {
               </p>
              <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId}> INFO</a>
              <a target="_blank" rel="noopener noreferrer" href={"https://www.recreation.gov/camping/campgrounds/"+props.entityId + "/availability"}> RESERVE</a>
+             <SaveBtn onClick={() => saveCampGround({id:props.id, 
+                        username:props.username,
+                        entityId:props.entityId,
+                        campGround:props.campGround,
+                        city:props.city,
+                        state:props.state,
+                        distance:props.distance,
+                        rating:props.rating,
+                        description:props.description,
+                        imageURL:props.imageURL,
+                        })}></SaveBtn>
             </Col>
           </Row>
       </Container>

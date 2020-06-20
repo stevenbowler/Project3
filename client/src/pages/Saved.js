@@ -21,18 +21,21 @@ class Saved extends Component {
   getCampGround = (campGroundData) => {
     API.getCampGround(campGroundData)
       .then(res => {
-        this.props.dispatch(savesCampGrounds(res.data.results))
+        this.props.dispatch(savesCampGrounds(res.data))
         // this.setState({ savedCampGrounds: res })
       })
       .catch((err => console.log(err)))
   }
-  deleteCampGround = () => {
-    API.deleteCampGround()
-      .then(res => {
-        this.setState({ savedCampGrounds: res.data })
+  deleteCampGround = (campGroundData) => {
+    API.deleteCampGround(campGroundData)
+    
+      .then(res => { 
+        this.props.dispatch(savesCampGrounds(res.data.results))
       })
-      .catch((err => console.log(err)))
+      
+      .catch(err => console.log(err));
   }
+  
   render() {
     return (
       <Container fluid>
@@ -44,7 +47,6 @@ class Saved extends Component {
               </h1>
             </Jumbotron>
             {(this.props.campGrounds && this.props.campGrounds.length > 0) ?
-
               <CampGroundList>
                  {this.props.campGrounds.map((campGround, index) => {
                   return (<div key={index}>
@@ -52,12 +54,12 @@ class Saved extends Component {
                       key={campGround._id}
                       entityId={campGround.entity_id}
                       campGround={campGround.name}
-                      city={campGround.addresses[0].city}
-                      state={campGround.addresses[0].state_code}
+                      city={campGround.city}
+                      state={campGround.state_code}
                       distance={campGround.distance}
                       rating={campGround.average_rating}
                       description={campGround.description}
-                      imageURL={campGround.preview_image_url}
+                      imageURL={campGround.imageURL}
                     />
                     <DeleteBtn onClick={() => this.deleteCampGround(campGround._id)}></DeleteBtn>
                   </div>
