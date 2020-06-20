@@ -16,8 +16,8 @@ class Saved extends Component {
     this.getCampGrounds();
   }
 
-  getCampGrounds = () => {
-    API.getCampGrounds()
+  getCampGround = () => {
+    API.getCampGround()
       .then(res => {
         this.setState({ savedCampGrounds: res.data })
       })

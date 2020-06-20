@@ -41,7 +41,7 @@ export default {
    * @function getCampGround
    * @param {*} id*/
   getCampGround: function (id) {
-    return axios.get("/api/campGrounds/" + id);
+    return axios.get("/api/campgrounds/" + id);
   },
 
   /**
@@ -59,6 +59,7 @@ export default {
    * @param {*} campGroundData 
    */
   saveCampGround: function (campGroundData) {
-    return axios.post("/api/campground", campGroundData);
+    console.log("API savecampground: " , campGroundData);
+    return axios.post("/api/campgrounds", campGroundData);
   }
 };
