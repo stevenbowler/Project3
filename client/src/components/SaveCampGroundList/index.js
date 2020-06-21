@@ -3,10 +3,6 @@ import React from "react";
 import DeleteBtn from "../DeleteBtn"
 import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
-// import { savesCampGrounds } from "../redux/actionCreator";
-// import { connect } from "react-redux";
-
-
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import Ratings from "react-ratings-declarative";
 
@@ -21,13 +17,11 @@ export function CampGroundList({ children }) {
 	);
 }
 export function ListItem(props) {
-	const deleteCampGround = (campGroundData) => {
-		API.deleteCampGround(campGroundData)
+	const deleteCampGround = (id) => {
+		API.deleteCampGround(id)
 		
-		  .then(res => { 
-			this.props.dispatch(deleteCampGrounds(res.data.results))
-		  })
-		  
+		.then(res => console.log("delete from mongo", res)) 
+
 		  .catch(err => console.log(err));
 	  }
   return (
@@ -91,17 +85,8 @@ export function ListItem(props) {
 								RESERVE
 							</a>
 						</Button>
-             			<DeleteBtn onClick={() => deleteCampGround({id:props.id, 
-                        username:props.username,
-                        entityId:props.entityId,
-                        campGround:props.campGround,
-                        city:props.city,
-                        state:props.state,
-                        distance:props.distance,
-                        rating:props.rating,
-                        description:props.description,
-                        imageURL:props.imageURL,
-                        })}></DeleteBtn>
+             			<DeleteBtn onClick={() => deleteCampGround(props.id
+						)}></DeleteBtn>
 							</CardBody>
 						</Card>
 					</Col>
