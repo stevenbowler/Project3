@@ -25,10 +25,17 @@ import axios from 'axios';
 import './App.css';
 //import { Container } from 'reactstrap';   // was used in origial MERNshell
 import AppNavbar from './components/AppNavbar';
-import LoginRegisterModals from './components/LoginRegisterModals';
+import RegisterModal from './components/RegisterModal';
+import LoginModal from './components/LoginModal';
 import Modal from './components/ExtraModal';
 import { connect } from 'react-redux';
-import { login, logout, loginError } from './redux/actionCreator';
+import {
+  login,
+  logout,
+  loginError,
+  toggleLoginModal,
+  toggleRegisterModal
+} from './redux/actionCreator';
 
 
 
@@ -74,54 +81,6 @@ class App extends React.Component {
 
 
 
-  // STATE HANDLERS and related support functions FROM COMPONENTS
-
-  /**
-   * handle state.isOpenNavBar toggle for ReactStrap AppNavBar 
-   * @function handleToggleNavbar
-   */
-  handleToggleNavbar = () => {
-    this.setState({ isOpenNavBar: !this.state.isOpenNavBar });
-    if (this.state.isOpenNavBar) this.setState({ gameOn: false });
-  }
-
-
-  /**
-   * handle state.isOpenNavBar toggle for ReactStrap AppNavBar 
-   * @function handleToggleLeaderBoardModal
-   */
-  handleToggleLeaderBoardModal = () => {
-    // console.log("handleToggleLeaderBoard userBestScore:", userBestScore);
-    this.setState({ isOpenRegisterModal: false });
-    this.setState({ isOpenLoginModal: false });
-    this.setState({ isOpenLeaderBoardModal: !this.state.isOpenLeaderBoardModal });
-  }
-
-
-
-  /**
-   * handle state.isOpenNavBar toggle for ReactStrap AppNavBar
-   * @function handleToggleLoginRegisterModal
-   */
-  handleToggleLoginRegisterModal = () => {
-    this.setState({ isOpenRegisterModal: !this.state.isOpenRegisterModal });
-    this.setState({ isOpenLoginModal: false });
-    this.setState({ isOpenLeaderBoardModal: false });
-  }
-
-
-  /**
-   * handle state.isOpenNavBar toggle for ReactStrap AppNavBar 
-   * @function
-  */
-  handleToggleLoginModal = () => {
-    this.setState({ isOpenRegisterModal: !this.state.isOpenRegisterModal });
-    this.setState({ isOpenLeaderBoardModal: false });
-    this.setState({ isOpenLoginModal: !this.state.isOpenLoginModal });
-  }
-
-
-
   /**
    * this is object with registration data
    * @typedef {object} data
@@ -153,12 +112,12 @@ class App extends React.Component {
           loggedIn: "true"
         };
         this.props.dispatch(login(reduxPayload));
-        this.handleToggleLoginModal();
+        this.props.dispatch(toggleLoginModal());
       })
       .catch(error => {
         console.log("loginResponseError: ", error.response.data.statusMessage);
         this.props.dispatch(loginError(error.response.data.statusMessage));
-        this.handleToggleLoginModal();
+        this.props.dispatch(toggleLoginModal());
       });
   }
 
@@ -206,48 +165,10 @@ class App extends React.Component {
         console.log(" Could not register from App.js: " + error.message);
       })
       .finally(() => {
-        this.handleToggleLoginModal();
+        this.props.dispatch(toggleRegisterModal());
       });
   }
 
-
-
-
-
-
-  /**
-   * handle the logout event
-   * @function handleLogout
-   */
-  handleLogout = () => {
-    console.log(`logout: ${this.props.username}`);
-    this.props.dispatch(logout());
-  }
-
-
-  /**
-   * handle the Changecolor event from Navbar
-   * @function handleChangeColor
-   */
-  handleChangeColor = () => {
-    console.log("changeColor");
-    var randomRed = Math.floor(Math.random() * 255);
-    var randomGreen = Math.floor(Math.random() * 255);
-    var randomBlue = Math.floor(Math.random() * 255);
-    // console.log(randomGreen);
-    //@ts-ignore
-    document.body.style = `background-color: rgb(${randomRed}, ${randomGreen}, ${randomBlue});`;
-    this.setState({ backgroundColor: `rgb(${randomRed}, ${randomGreen}, ${randomBlue})` });
-  }
-
-  /**
-   * handle the Tutorial button event, play the tutorial for this app
-   * @function handleTutorial
-   */
-  handleTutorial = () => {
-    console.log("handleTutorial");
-    window.location.href = "https://drive.google.com/file/d/1dXeXGydfJTvsE2GS7LnczJzTW0EKO-wS/view?usp=sharing";
-  }
 
 
   render() {
@@ -255,30 +176,12 @@ class App extends React.Component {
       <Router>
         <div ref={this.wrapper}>
           <AppNavbar
-            isOpen={this.state.isOpenNavBar}
-            onRegister={this.handleToggleLoginRegisterModal}
-            onLogin={this.handleToggleLoginModal}
-            onLogout={this.handleLogout}
-            onLeaderBoard={this.handleToggleLeaderBoardModal}
-            onToggle={this.handleToggleNavbar}
-            onTutorial={this.handleTutorial}
-            onChangeColor={this.handleChangeColor}
           />
-          <LoginRegisterModals
-            isOpenLoginModal={this.state.isOpenLoginModal}
-            isOpenRegisterModal={this.state.isOpenRegisterModal}
-            onCancel={this.handleToggleLoginRegisterModal}
-            onRegister={this.handleRegister}
+          <LoginModal
             onLogin={this.handleLogin}
           />
-          <Modal
-            // loggedIn={this.state.loggedIn}
-            onLogout={this.handleLogout}
-            isOpenLeaderBoardModal={this.state.isOpenLeaderBoardModal}
-            onCancel={this.handleToggleLeaderBoardModal}
-          // token={this.state.token}
-          // email={this.state.email}
-          // userName={this.state.name}
+          <RegisterModal
+            onRegister={this.handleRegister}
           />
           <Switch>
             <Route exact path="/" render={(props) => <Search {...props} username={this.state.name} token={this.token} email={this.email} />} />

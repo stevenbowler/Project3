@@ -6,6 +6,10 @@ const initialState = {
     email: sessionStorage.getItem("email"),
     token: sessionStorage.getItem("token"),
     loggedIn: sessionStorage.getItem("loggedIn"),
+    isOpenNavbar: false,
+    isOpenExtraModal: false,
+    isOpenLoginModal: false,
+    isOpenRegisterModal: false,
     campGrounds: []
 }
 
@@ -55,6 +59,25 @@ export const todoReducer = (state = initialState, action) => {
             sessionStorage.setItem("token", newState.token);
             sessionStorage.setItem("loggedIn", "false");
             // console.log("new LOGOUT_USER state.username: ", newState.username);
+            return newState;
+        case actions.TOGGLE_NAVBAR:
+            newState.isOpenNavbar = !state.isOpenNavbar;
+            console.log("new TOGGLE_NAVBAR state.isOpenNavbar: ", newState.isOpenNavbar);
+            return newState;
+
+        case actions.TOGGLE_EXTRAMODAL:
+            newState.isOpenExtraModal = !state.isOpenExtraModal;
+            console.log("new TOGGLE_EXTRAMODAL state.isOpenExtraModal: ", newState.isOpenExtraModal);
+            return newState;
+
+        case actions.TOGGLE_LOGINMODAL:
+            newState.isOpenLoginModal = !state.isOpenLoginModal;
+            console.log("new TOGGLE_EXTRAMODAL state.isOpenLoginModal: ", newState.isOpenLoginModal);
+            return newState;
+
+        case actions.TOGGLE_REGISTERMODAL:
+            newState.isOpenRegisterModal = !state.isOpenRegisterModal;
+            console.log("new TOGGLE_EXTRAMODAL state.isOpenRegisterModal: ", newState.isOpenRegisterModal);
             return newState;
 
         case actions.SAVES_CAMPGROUNDS:
