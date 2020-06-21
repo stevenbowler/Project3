@@ -13,28 +13,19 @@
 */
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-// import Nav from "./components/Nav";  // was in original Week 20 Activity 11
 import Saved from "./pages/Saved";
 import Search from "./pages/Search";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-//import { Container } from 'reactstrap';   // was used in origial MERNshell
 import AppNavbar from './components/AppNavbar';
 import RegisterModal from './components/RegisterModal';
 import LoginModal from './components/LoginModal';
 import { connect } from 'react-redux';
 import { logout } from './redux/actionCreator';
 
-
-
-
-// set background color below navbar
-//@ts-ignore
-//document.body.style = 'background: black;';
 
 
 class App extends React.Component {
@@ -63,17 +54,13 @@ class App extends React.Component {
   }
 
 
-
   render() {
     return (
       <Router>
         <div ref={this.wrapper}>
-          <AppNavbar
-          />
-          <LoginModal
-          />
-          <RegisterModal
-          />
+          <AppNavbar />
+          <LoginModal />
+          <RegisterModal />
           <Switch>
             <Route exact path="/" component={Search} />
             <Route exact path="/search" component={Search} />
