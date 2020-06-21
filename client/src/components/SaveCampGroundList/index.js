@@ -6,6 +6,8 @@ import API from "../../utils/API";
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import Ratings from "react-ratings-declarative";
 
+
+
 // This file exports both the List and ListItem components
 
 export function CampGroundList({ children }) {
@@ -17,13 +19,22 @@ export function CampGroundList({ children }) {
 	);
 }
 export function ListItem(props) {
-	const deleteCampGround = (id) => {
-		API.deleteCampGround(id)
-		
+	
+
+    const deleteCampGround = (event) => {
+		API.deleteCampGround(event)
 		.then(res => console.log("delete from mongo", res)) 
 
-		  .catch(err => console.log(err));
-	  }
+	 	  .catch(err => console.log(err));
+	   }
+    
+	// const deleteCampGround = (id) => {
+	// 	API.deleteCampGround(id)
+		
+	// 	.then(res => console.log("delete from mongo", res)) 
+
+	// 	  .catch(err => console.log(err));
+	//   }
   return (
     <li>
       	<Container>
@@ -85,8 +96,12 @@ export function ListItem(props) {
 								RESERVE
 							</a>
 						</Button>
-             			<DeleteBtn onClick={() => deleteCampGround(props.id
-						)}></DeleteBtn>
+					
+						{/* <DeleteBtn onClick={() => deleteCampGround(props._id)}></DeleteBtn> */}
+				 
+						 <DeleteBtn onClick={() => deleteCampGround(props.id)}>
+						</DeleteBtn>
+						
 							</CardBody>
 						</Card>
 					</Col>

@@ -43,13 +43,15 @@ class Saved extends Component {
                  {this.props.campGrounds.map((campGround, index) => {
                   return (<div key={index}>
                     <ListItem
-                      key={campGround._id}
-                      entityId={campGround.entity_id}
-                      campGround={campGround.name}
+                      key={campGround.id}
+                      id={campGround._id}
+                      username={campGround.username}
+                      entityId={campGround.entityId}
+                      campGround={campGround.campGround}
                       city={campGround.city}
-                      state={campGround.state_code}
+                      state={campGround.state}
                       distance={campGround.distance}
-                      rating={campGround.average_rating}
+                      rating={campGround.rating}
                       description={campGround.description}
                       imageURL={campGround.imageURL}
                     />
