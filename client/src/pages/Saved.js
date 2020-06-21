@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import DeleteBtn from "../components/DeleteBtn";
-import { CampGroundList, ListItem } from "../components/CampGroundList";
+import { CampGroundList, ListItem } from "../components/SaveCampGroundList";
 import API from "../utils/API";
 import { savesCampGrounds } from "../redux/actionCreator";
 import { connect } from "react-redux";
@@ -26,15 +26,7 @@ class Saved extends Component {
       })
       .catch((err => console.log(err)))
   }
-  deleteCampGround = (campGroundData) => {
-    API.deleteCampGround(campGroundData)
-    
-      .then(res => { 
-        this.props.dispatch(savesCampGrounds(res.data.results))
-      })
-      
-      .catch(err => console.log(err));
-  }
+  
   
   render() {
     return (
@@ -61,7 +53,6 @@ class Saved extends Component {
                       description={campGround.description}
                       imageURL={campGround.imageURL}
                     />
-                    <DeleteBtn onClick={() => this.deleteCampGround(campGround._id)}></DeleteBtn>
                   </div>
                   )
                 })}

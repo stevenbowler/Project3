@@ -22,7 +22,7 @@ import {
 	CardTitle,
 	CardSubtitle,
 } from "reactstrap";
-import { CampGroundList, ListItem } from "../components/CampGroundList";
+import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
 
 // import { Input, TextArea, FormBtn } from "../components/Form";
 

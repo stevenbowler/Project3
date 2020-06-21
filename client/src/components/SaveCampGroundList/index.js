@@ -1,6 +1,6 @@
 import React from "react";
 // import "./style.css";
-import SaveBtn from "../SaveBtn"
+import DeleteBtn from "../DeleteBtn"
 import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
 // import { savesCampGrounds } from "../redux/actionCreator";
@@ -21,13 +21,15 @@ export function CampGroundList({ children }) {
 	);
 }
 export function ListItem(props) {
-  const saveCampGround = (campGroundData) => {
-    API.saveCampGround(campGroundData)
-    
-      .then(res => console.log("save to mongo", res))
-      
-      .catch(err => console.log(err));
-  }
+	const deleteCampGround = (campGroundData) => {
+		API.deleteCampGround(campGroundData)
+		
+		  .then(res => { 
+			this.props.dispatch(deleteCampGrounds(res.data.results))
+		  })
+		  
+		  .catch(err => console.log(err));
+	  }
   return (
     <li>
       	<Container>
@@ -89,7 +91,7 @@ export function ListItem(props) {
 								RESERVE
 							</a>
 						</Button>
-             <SaveBtn onClick={() => saveCampGround({id:props.id, 
+             			<DeleteBtn onClick={() => deleteCampGround({id:props.id, 
                         username:props.username,
                         entityId:props.entityId,
                         campGround:props.campGround,
@@ -99,7 +101,7 @@ export function ListItem(props) {
                         rating:props.rating,
                         description:props.description,
                         imageURL:props.imageURL,
-                        })}></SaveBtn>
+                        })}></DeleteBtn>
 							</CardBody>
 						</Card>
 					</Col>
