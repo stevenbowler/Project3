@@ -15,6 +15,8 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleLoginModal } from '../../redux/actionCreator';
+import API from '../../utils/userAPI';
+
 
 
 const { passwordValidation, emailValidation, nameValidation } = require('../../utils/validationNameEmailPassword');
@@ -73,7 +75,7 @@ class LoginModal extends Component {
 
         if (this.validEmail && this.validPassword) {
             // console.log("handleSubmit Login with email: " + event.target.email.value + "password: " + event.target.password.value);
-            this.props.onLogin(data);
+            API.loginAPI(data, this.props.dispatch);
             this.validEmail = false;
             this.validPassword = false;
             event.preventDefault();

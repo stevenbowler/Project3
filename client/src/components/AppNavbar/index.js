@@ -75,10 +75,10 @@ class AppNavbar extends Component {
                             <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/">Search</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/search">Search</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/">Favorties</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Contact</NavLink>

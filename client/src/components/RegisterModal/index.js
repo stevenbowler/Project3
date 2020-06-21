@@ -15,6 +15,8 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleRegisterModal } from '../../redux/actionCreator';
+import API from '../../utils/userAPI';
+
 
 
 const { passwordValidation, emailValidation, nameValidation } = require('../../utils/validationNameEmailPassword');
@@ -54,7 +56,7 @@ class RegisterModal extends Component {
             password: event.target.password.value
         }
         if (this.validName && this.validEmail && this.validPassword) {
-            this.props.onRegister(data);
+            API.registerAPI(data, this.props.dispatch);
             this.validName = false;
             this.validEmail = false;
             this.validPassword = false;
