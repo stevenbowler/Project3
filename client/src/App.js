@@ -27,6 +27,7 @@ import AppNavbar from './components/AppNavbar';
 import RegisterModal from './components/RegisterModal';
 import LoginModal from './components/LoginModal';
 import { connect } from 'react-redux';
+import { logout } from './redux/actionCreator';
 
 
 
@@ -57,11 +58,7 @@ class App extends React.Component {
 
   componentDidMount() {
     if (!sessionStorage["name"]) {
-      console.log("app.js componentDidMount: ", this.state.name);
-      sessionStorage.setItem("name", "Guest...Login");
-      sessionStorage.setItem("token", "");
-      sessionStorage.setItem("email", "");
-      sessionStorage.setItem("loggedIn", "false");
+      this.props.dispatch(logout());    // on load, reset all user settings, only when not already set
     } else console.log("sessionStorage.name already exists");
   }
 

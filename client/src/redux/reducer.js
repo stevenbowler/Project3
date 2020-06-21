@@ -60,6 +60,7 @@ export const todoReducer = (state = initialState, action) => {
             sessionStorage.setItem("loggedIn", "false");
             // console.log("new LOGOUT_USER state.username: ", newState.username);
             return newState;
+
         case actions.TOGGLE_NAVBAR:
             newState.isOpenNavbar = !state.isOpenNavbar;
             console.log("new TOGGLE_NAVBAR state.isOpenNavbar: ", newState.isOpenNavbar);
