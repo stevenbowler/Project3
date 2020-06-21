@@ -37,6 +37,23 @@ class LoginModal extends Component {
     }
 
 
+    /**
+     * handle cancel onclick event
+    * @function handleCancel
+    */
+    handleCancel = () => {
+        this.validEmail = false;
+        this.invalidEmail = false;
+        this.validName = false;
+        this.invalidName = false;
+        this.validPassword = false;
+        this.invalidPassword = false;
+        this.invalidEmailMessage = "";
+        this.invalidNameMessage = "";
+        this.invalidPasswordMessage = "";
+        this.props.dispatch(toggleLoginModal());
+    }
+
 
     componentDidMount() {
     }
@@ -193,7 +210,7 @@ class LoginModal extends Component {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="secondary" onClick={() => this.props.dispatch(toggleLoginModal())}>Cancel</Button>
+                        <Button color="secondary" onClick={this.handleCancel}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>

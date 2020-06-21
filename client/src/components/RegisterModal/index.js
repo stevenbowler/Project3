@@ -149,6 +149,22 @@ class RegisterModal extends Component {
         }
     }
 
+    /**
+     * handle cancel onclick event
+    * @function handleCancel
+    */
+    handleCancel = () => {
+        this.validEmail = false;
+        this.invalidEmail = false;
+        this.validName = false;
+        this.invalidName = false;
+        this.validPassword = false;
+        this.invalidPassword = false;
+        this.invalidEmailMessage = "";
+        this.invalidNameMessage = "";
+        this.invalidPasswordMessage = "";
+        this.props.dispatch(toggleRegisterModal());
+    }
 
     render() {
         return (
@@ -208,7 +224,7 @@ class RegisterModal extends Component {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="secondary" onClick={() => this.props.dispatch(toggleRegisterModal())}>Cancel</Button>
+                        <Button color="secondary" onClick={this.handleCancel}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>
