@@ -13,14 +13,12 @@ import {
     Nav,
     NavItem,
     NavLink,
-    // Container,
     Button,
     ButtonGroup
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import {
     toggleNavbar,
-    toggleExtraModal,
     logout,
     toggleLoginModal,
     toggleRegisterModal
