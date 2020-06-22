@@ -15,6 +15,8 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleLoginModal } from '../../redux/actionCreator';
+import API from '../../utils/userAPI';
+
 
 
 const { passwordValidation, emailValidation, nameValidation } = require('../../utils/validationNameEmailPassword');
@@ -37,6 +39,23 @@ class LoginModal extends Component {
     }
 
 
+    /**
+     * handle cancel onclick event
+    * @function handleCancel
+    */
+    handleCancel = () => {
+        this.validEmail = false;
+        this.invalidEmail = false;
+        this.validName = false;
+        this.invalidName = false;
+        this.validPassword = false;
+        this.invalidPassword = false;
+        this.invalidEmailMessage = "";
+        this.invalidNameMessage = "";
+        this.invalidPasswordMessage = "";
+        this.props.dispatch(toggleLoginModal());
+    }
+
 
     componentDidMount() {
     }
@@ -56,7 +75,7 @@ class LoginModal extends Component {
 
         if (this.validEmail && this.validPassword) {
             // console.log("handleSubmit Login with email: " + event.target.email.value + "password: " + event.target.password.value);
-            this.props.onLogin(data);
+            API.loginAPI(data, this.props.dispatch);
             this.validEmail = false;
             this.validPassword = false;
             event.preventDefault();
@@ -193,7 +212,7 @@ class LoginModal extends Component {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="secondary" onClick={() => this.props.dispatch(toggleLoginModal())}>Cancel</Button>
+                        <Button color="secondary" onClick={this.handleCancel}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>

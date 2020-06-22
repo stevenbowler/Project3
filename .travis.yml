@@ -13,7 +13,7 @@ notifications:
     - kfitzpatrick44@gmail.com
     - rxalanis@gmail.com
     on_success: always # fault: change
- co   on_failure: always # default: always
+    on_failure: always # default: always
 # before_install:
 #  - mysql -e 'CREATE DATABASE IF NOT EXISTS testdb;'
 cache:

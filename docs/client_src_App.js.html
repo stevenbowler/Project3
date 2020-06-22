@@ -49,21 +49,13 @@ import Contact from "./pages/Contact";
 import Saved from "./pages/Saved";
 import Search from "./pages/Search";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
 import './App.css';
 //import { Container } from 'reactstrap';   // was used in origial MERNshell
 import AppNavbar from './components/AppNavbar';
 import RegisterModal from './components/RegisterModal';
 import LoginModal from './components/LoginModal';
-import Modal from './components/ExtraModal';
 import { connect } from 'react-redux';
-import {
-  login,
-  logout,
-  loginError,
-  toggleLoginModal,
-  toggleRegisterModal
-} from './redux/actionCreator';
+
 
 
 
@@ -101,102 +93,6 @@ class App extends React.Component {
     } else console.log("sessionStorage.name already exists");
   }
 
-  // componentDidUpdate() {
-  // }
-
-  // componentWillUnmount() {
-  // }
-
-
-
-  /**
-   * this is object with registration data
-   * @typedef {object} data
-   * @property {string} name - 8+ digit user name regex alpha-numeric
-   * @property {string} email - email format string
-   * @property {string} password - minimum 8 digit password regex alpha-numeric
-   * 
-  */
-
-
-  /**
-   * @function handleLogin
-   * @param {data} data
-   */
-  handleLogin = (data) => {
-    axios
-      .post(
-        '/api/users/login',
-        {
-          email: data.email,
-          password: data.password
-        })
-      .then(response => {
-        console.log(`login user: ${response.data.user.email}`);
-        var reduxPayload = {
-          token: response.data.token,
-          username: response.data.user.name,
-          email: response.data.user.email,
-          loggedIn: "true"
-        };
-        this.props.dispatch(login(reduxPayload));
-        this.props.dispatch(toggleLoginModal());
-      })
-      .catch(error => {
-        console.log("loginResponseError: ", error.response.data.statusMessage);
-        this.props.dispatch(loginError(error.response.data.statusMessage));
-        this.props.dispatch(toggleLoginModal());
-      });
-  }
-
-
-
-
-  /**
-   * called from LoginRegisterModals component to handle registration request attribute changes
-   * @function handleRegister
-   * @param {data} data 
-   * */
-  handleRegister = (data) => {
-    axios
-      .post(
-        '/api/users/register',        // first register
-        {
-          name: data.name,
-          email: data.email,
-          password: data.password
-        })
-      .then(response => {
-        console.log(`register user: ${response.data.name} ${response.data.date}`);
-        axios
-          .post(
-            '/api/users/login',       // then login
-            {
-              email: data.email,
-              password: data.password
-            })
-          .then(response => {
-            console.log(`login user: ${response.data.user.name}`);
-            this.props.dispatch(login({
-              token: response.data.token,
-              email: response.data.user.email,
-              username: response.data.user.name,
-              loggedIn: true
-            }));
-            // this.props.dispatch(toggleLoginModal());
-          }).catch(error => {
-            console.log("Could not login after register")
-            this.props.dispatch(loginError(error.response.data.statusMessage));
-          });
-      })
-      .catch(error => {
-        console.log(" Could not register from App.js: " + error.message);
-      })
-      .finally(() => {
-        this.props.dispatch(toggleRegisterModal());
-      });
-  }
-
 
 
   render() {
@@ -206,17 +102,13 @@ class App extends React.Component {
           &lt;AppNavbar
           />
           &lt;LoginModal
-            onLogin={this.handleLogin}
           />
           &lt;RegisterModal
-            onRegister={this.handleRegister}
           />
           &lt;Switch>
-            &lt;Route exact path="/" render={(props) => &lt;Search {...props} username={this.state.name} token={this.token} email={this.email} />} />
-            {/* &lt;Route exact path="/" component={Search} />*/}
-            &lt;Route exact path="/saved" render={(props) => &lt;Saved {...props} />} />
-            {/* &lt;Route exact path="/saved" component={Saved} />  */}
-            &lt;Route exact path="/books/:id" component={null} />
+            &lt;Route exact path="/" component={Search} />
+            &lt;Route exact path="/search" component={Search} />
+            &lt;Route exact path="/saved" component={Saved} />
             &lt;Route exact path="/about" component={About} />
             &lt;Route exact path="/contact" component={Contact} />
             &lt;Route component={NoMatch} />
@@ -237,10 +129,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(App);
-
-// export default App;
-</code></pre>
+export default connect(mapStateToProps)(App);</code></pre>
         </article>
     </section>
 
@@ -250,13 +139,13 @@ export default connect(mapStateToProps)(App);
 </div>
 
 <nav>
-    <h2><a href="index.html">Campsite Project</a></h2><h3>Modules</h3><ul><li><a href="module-client_src_App.html">client/src/App</a></li><li><a href="module-client_src_components_AppNavbar_index.html">client/src/components/AppNavbar/index</a></li><li><a href="module-client_src_components_DeleteBtn_index.html">client/src/components/DeleteBtn/index</a></li><li><a href="module-client_src_components_ExtraModal_index.html">client/src/components/ExtraModal/index</a></li><li><a href="module-client_src_components_Form_index.html">client/src/components/Form/index</a></li><li><a href="module-client_src_components_Grid_index.html">client/src/components/Grid/index</a></li><li><a href="module-client_src_components_Jumbotron_index.html">client/src/components/Jumbotron/index</a></li><li><a href="module-client_src_components_List_index.html">client/src/components/List/index</a></li><li><a href="module-client_src_components_LoginModal_index.html">client/src/components/LoginModal/index</a></li><li><a href="module-client_src_components_RegisterModal_index.html">client/src/components/RegisterModal/index</a></li><li><a href="module-client_src_pages_About.html">client/src/pages/About</a></li><li><a href="module-client_src_pages_Books.html">client/src/pages/Books</a></li><li><a href="module-client_src_pages_Contact.html">client/src/pages/Contact</a></li><li><a href="module-client_src_pages_Detail.html">client/src/pages/Detail</a></li><li><a href="module-client_src_pages_NoMatch.html">client/src/pages/NoMatch</a></li><li><a href="module-client_src_pages_Search.html">client/src/pages/Search</a></li><li><a href="module-client_src_utils_API.html">client/src/utils/API</a></li><li><a href="module-client_src_utils_validationNameEmailPassword.html">client/src/utils/validationNameEmailPassword</a></li><li><a href="module-controllers_booksController.html">controllers/booksController</a></li><li><a href="module-controllers_campGroundController.html">controllers/campGroundController</a></li><li><a href="module-controllers_usersController.html">controllers/usersController</a></li><li><a href="module-models_book.html">models/book</a></li><li><a href="module-models_campGround.html">models/campGround</a></li><li><a href="module-models_user.html">models/user</a></li><li><a href="module-privateRoutesAuth.html">privateRoutesAuth</a></li><li><a href="module-routes_api_books.html">routes/api/books</a></li><li><a href="module-routes_api_campGrounds.html">routes/api/campGrounds</a></li><li><a href="module-routes_api_users.html">routes/api/users</a></li><li><a href="module-server.html">server</a></li><li><a href="module-validation.html">validation</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-client_src_utils_validationNameEmailPassword-emaileValidation.html">emaileValidation</a></li><li><a href="module-client_src_utils_validationNameEmailPassword-nameValidation.html">nameValidation</a></li><li><a href="module-client_src_utils_validationNameEmailPassword-passwordValidation.html">passwordValidation</a></li><li><a href="module-controllers_usersController-create.html">create</a></li><li><a href="module-controllers_usersController-findAll.html">findAll</a></li><li><a href="module-controllers_usersController-findById.html">findById</a></li><li><a href="module-controllers_usersController-remove.html">remove</a></li><li><a href="module-controllers_usersController-update.html">update</a></li><li><a href="module-models_book-bookSchema.html">bookSchema</a></li><li><a href="module-models_campGround-campGroundSchema.html">campGroundSchema</a></li><li><a href="module-models_user-UserSchema.html">UserSchema</a></li><li><a href="module-validation-loginValidation.html">loginValidation</a></li><li><a href="module-validation-registerValidation.html">registerValidation</a></li></ul>
+    <h2><a href="index.html">Campsite Project</a></h2><h3>Modules</h3><ul><li><a href="module-client_src_App.html">client/src/App</a></li><li><a href="module-client_src_components_AppNavbar_index.html">client/src/components/AppNavbar/index</a></li><li><a href="module-client_src_components_DeleteBtn_index.html">client/src/components/DeleteBtn/index</a></li><li><a href="module-client_src_components_ExtraModal_index.html">client/src/components/ExtraModal/index</a></li><li><a href="module-client_src_components_Form_index.html">client/src/components/Form/index</a></li><li><a href="module-client_src_components_Grid_index.html">client/src/components/Grid/index</a></li><li><a href="module-client_src_components_Jumbotron_index.html">client/src/components/Jumbotron/index</a></li><li><a href="module-client_src_components_List_index.html">client/src/components/List/index</a></li><li><a href="module-client_src_components_LoginModal_index.html">client/src/components/LoginModal/index</a></li><li><a href="module-client_src_components_RegisterModal_index.html">client/src/components/RegisterModal/index</a></li><li><a href="module-client_src_pages_About.html">client/src/pages/About</a></li><li><a href="module-client_src_pages_Books.html">client/src/pages/Books</a></li><li><a href="module-client_src_pages_Contact.html">client/src/pages/Contact</a></li><li><a href="module-client_src_pages_Detail.html">client/src/pages/Detail</a></li><li><a href="module-client_src_pages_NoMatch.html">client/src/pages/NoMatch</a></li><li><a href="module-client_src_pages_Search.html">client/src/pages/Search</a></li><li><a href="module-client_src_utils_API.html">client/src/utils/API</a></li><li><a href="module-client_src_utils_validationNameEmailPassword.html">client/src/utils/validationNameEmailPassword</a></li><li><a href="module-controllers_booksController.html">controllers/booksController</a></li><li><a href="module-controllers_campGroundController.html">controllers/campGroundController</a></li><li><a href="module-controllers_usersController.html">controllers/usersController</a></li><li><a href="module-models_book.html">models/book</a></li><li><a href="module-models_campGround.html">models/campGround</a></li><li><a href="module-models_user.html">models/user</a></li><li><a href="module-privateRoutesAuth.html">privateRoutesAuth</a></li><li><a href="module-routes_api_books.html">routes/api/books</a></li><li><a href="module-routes_api_campGrounds.html">routes/api/campGrounds</a></li><li><a href="module-routes_api_users.html">routes/api/users</a></li><li><a href="module-server.html">server</a></li><li><a href="module-validation.html">validation</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-client_src_utils_validationNameEmailPassword-emaileValidation.html">emaileValidation</a></li><li><a href="module-client_src_utils_validationNameEmailPassword-nameValidation.html">nameValidation</a></li><li><a href="module-client_src_utils_validationNameEmailPassword-passwordValidation.html">passwordValidation</a></li><li><a href="module-controllers_usersController-create.html">create</a></li><li><a href="module-controllers_usersController-findAll.html">findAll</a></li><li><a href="module-controllers_usersController-findById.html">findById</a></li><li><a href="module-controllers_usersController-remove.html">remove</a></li><li><a href="module-controllers_usersController-update.html">update</a></li><li><a href="module-models_book-bookSchema.html">bookSchema</a></li><li><a href="module-models_campGround-campGroundSchema.html">campGroundSchema</a></li><li><a href="module-models_user-UserSchema.html">UserSchema</a></li><li><a href="module-validation-loginValidation.html">loginValidation</a></li><li><a href="module-validation-registerValidation.html">registerValidation</a></li></ul><h3>Global</h3><ul><li><a href="global.html#handleLogin">handleLogin</a></li><li><a href="global.html#handleRegister">handleRegister</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Jun 20 2020 19:25:21 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Jun 21 2020 05:54:46 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
