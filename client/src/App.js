@@ -33,15 +33,7 @@ class App extends React.Component {
     super(props);
 
     this.wrapper = React.createRef();
-    this.loggedIn = false;
-    this.name = "";
-    this.timerOn = false;
-    this.state = {
-      isOpenNavBar: false,
-      isOpenLoginModal: false,
-      isOpenRegisterModal: false,
-      isOpenLeaderBoardModal: false,
-    };
+
   }
 
 
