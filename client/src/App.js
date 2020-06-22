@@ -32,7 +32,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.wrapper = React.createRef();
+    this.wrapper = React.createRef();   //Facebook workaround
 
   }
 
