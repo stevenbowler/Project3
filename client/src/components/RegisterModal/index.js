@@ -15,6 +15,8 @@ import {
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleRegisterModal } from '../../redux/actionCreator';
+import API from '../../utils/userAPI';
+
 
 
 const { passwordValidation, emailValidation, nameValidation } = require('../../utils/validationNameEmailPassword');
@@ -54,7 +56,7 @@ class RegisterModal extends Component {
             password: event.target.password.value
         }
         if (this.validName && this.validEmail && this.validPassword) {
-            this.props.onRegister(data);
+            API.registerAPI(data, this.props.dispatch);
             this.validName = false;
             this.validEmail = false;
             this.validPassword = false;
@@ -149,6 +151,22 @@ class RegisterModal extends Component {
         }
     }
 
+    /**
+     * handle cancel onclick event
+    * @function handleCancel
+    */
+    handleCancel = () => {
+        this.validEmail = false;
+        this.invalidEmail = false;
+        this.validName = false;
+        this.invalidName = false;
+        this.validPassword = false;
+        this.invalidPassword = false;
+        this.invalidEmailMessage = "";
+        this.invalidNameMessage = "";
+        this.invalidPasswordMessage = "";
+        this.props.dispatch(toggleRegisterModal());
+    }
 
     render() {
         return (
@@ -208,7 +226,7 @@ class RegisterModal extends Component {
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="secondary" onClick={() => this.props.dispatch(toggleRegisterModal())}>Cancel</Button>
+                        <Button color="secondary" onClick={this.handleCancel}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
             </div>
