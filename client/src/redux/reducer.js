@@ -44,7 +44,7 @@ export const todoReducer = (state = initialState, action) => {
             newState.token = "";
             newState.loggedIn = "false";
             newState.errorMessage = action.message;
-            console.log("LOGOUT_USER: ", newState.errorMessage);
+            console.log("LOGIN_ERROR: ", newState.errorMessage);
             return newState;
 
         case actions.LOGOUT_USER:
