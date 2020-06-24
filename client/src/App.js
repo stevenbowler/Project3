@@ -25,6 +25,7 @@ import RegisterModal from './components/RegisterModal';
 import LoginModal from './components/LoginModal';
 import { connect } from 'react-redux';
 import { logout } from './redux/actionCreator';
+import locationAPI from "./utils/locationAPI";
 
 
 
@@ -40,6 +41,7 @@ class App extends React.Component {
   // LIFECYCLE METHODS and related support functions
 
   componentDidMount() {
+    locationAPI.findZipCode(this.props.dispatch);
     if (!sessionStorage["name"]) {
       this.props.dispatch(logout());    // on load, reset all user settings, only when not already set
     } else console.log("sessionStorage.name already exists");

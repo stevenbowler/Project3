@@ -10,7 +10,8 @@ const initialState = {
     isOpenExtraModal: false,
     isOpenLoginModal: false,
     isOpenRegisterModal: false,
-    campGrounds: []
+    campGrounds: [],
+    currentLocationZipCode: "78550"
 }
 
 
@@ -87,6 +88,11 @@ export const todoReducer = (state = initialState, action) => {
             newState.campGrounds.splice(action.index, 1);
             // newState.campGrounds = action.campGrounds;
             return newState;
+
+        case actions.SET_ZIPCODE:
+            newState.currentLocationZipCode = action.zipCode;
+            return newState;
+
         default:
             return state;
     }
