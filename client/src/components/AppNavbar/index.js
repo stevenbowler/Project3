@@ -21,10 +21,10 @@ import {
     toggleNavbar,
     logout,
     toggleLoginModal,
-    toggleRegisterModal
+    toggleRegisterModal,
 } from '../../redux/actionCreator';
 import "./style.css";
-
+import { Badge } from 'reactstrap';
 
 
 class AppNavbar extends Component {
@@ -52,7 +52,10 @@ class AppNavbar extends Component {
      * @function logout
      */
     logout = () => this.props.dispatch(logout());
+    
+   
 
+  
     render() {
         return (
             // <div> //removed to get sticky navbar with reactstrap https://github.com/reactstrap/reactstrap/issues/1179
