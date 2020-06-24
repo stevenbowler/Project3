@@ -99,7 +99,7 @@ export function ListItem(props) {
                         rating:props.rating,
                         description:props.description,
 						imageURL:props.imageURL
-                        }), notification()}></SaveBtn>
+                        })}></SaveBtn>
 							</CardBody>
 						</Card>
 					</Col>

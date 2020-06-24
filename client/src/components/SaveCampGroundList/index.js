@@ -97,7 +97,6 @@ export function ListItem(props) {
 				 
 						<DeleteBtn onClick={() => deleteCampGround(props.id)}>
 						</DeleteBtn>
-						{/* <DeleteBtn onClick={deleteCampGround}></DeleteBtn> */}
 							</CardBody>
 						</Card>
 					</Col>
