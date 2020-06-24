@@ -21,10 +21,11 @@ import {
     toggleNavbar,
     logout,
     toggleLoginModal,
-    toggleRegisterModal
+    toggleRegisterModal,
+    notification
 } from '../../redux/actionCreator';
 import "./style.css";
-
+import { Badge } from 'reactstrap';
 
 
 class AppNavbar extends Component {
@@ -52,7 +53,11 @@ class AppNavbar extends Component {
      * @function logout
      */
     logout = () => this.props.dispatch(logout());
-
+    /**
+    * Onclick request to logout
+    * @function notification
+    */
+   notification = () => this.props.dispatch(notification());
     render() {
         return (
             // <div> //removed to get sticky navbar with reactstrap https://github.com/reactstrap/reactstrap/issues/1179
@@ -75,7 +80,8 @@ class AppNavbar extends Component {
                             <NavLink className="mx-2 pt-3 hover-underline" href="/search">Search</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties<Badge color="danger" pill><span>{this.props.count}</span></Badge>
+</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Contact</NavLink>

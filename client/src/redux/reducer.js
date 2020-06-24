@@ -10,7 +10,9 @@ const initialState = {
     isOpenExtraModal: false,
     isOpenLoginModal: false,
     isOpenRegisterModal: false,
-    campGrounds: []
+    campGrounds: [],
+    
+
 }
 
 
@@ -87,6 +89,11 @@ export const todoReducer = (state = initialState, action) => {
             newState.campGrounds.splice(action.index, 1);
             // newState.campGrounds = action.campGrounds;
             return newState;
+
+        case actions.NOTIFICATION:
+                newState.campGrounds = action.campGrounds;
+                // newState.campGrounds = action.campGrounds;
+                return newState;
         default:
             return state;
     }

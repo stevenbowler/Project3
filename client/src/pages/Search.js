@@ -23,7 +23,6 @@ import {
 	CardSubtitle,
 } from "reactstrap";
 import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
-
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Search extends Component {
@@ -47,7 +46,8 @@ class Search extends Component {
     miles: "",
     query: "",
     result: {},
-    isValidZipCode: false
+    isValidZipCode: false,
+    count:""
   };
 
   // previousName = this.props.username;

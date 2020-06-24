@@ -96,7 +96,8 @@ export function ListItem(props) {
                         distance:props.distance,
                         rating:props.rating,
                         description:props.description,
-                        imageURL:props.imageURL,
+						imageURL:props.imageURL,
+						count:props.count
                         })}></SaveBtn>
 							</CardBody>
 						</Card>
