@@ -66,9 +66,8 @@ export const deleteCampGrounds = (index) => {
         index
     }
 }
-export const notification = (campGrounds) => {
+export const notification = () => {
     return {
-        type: actions.NOTIFICATION,
-        campGrounds
+        type: actions.NOTIFICATION
     }
 }

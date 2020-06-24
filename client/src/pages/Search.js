@@ -178,7 +178,8 @@ class Search extends Component {
 function mapStateToProps(state) {
   return {
     campGrounds: state.campGrounds,
-    username: state.username
+    username: state.username,
+    count: state.count
   }
 }
 export default connect(mapStateToProps) (Search);

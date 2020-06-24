@@ -11,7 +11,7 @@ const initialState = {
     isOpenLoginModal: false,
     isOpenRegisterModal: false,
     campGrounds: [],
-    
+    count:0
 
 }
 
@@ -91,7 +91,7 @@ export const todoReducer = (state = initialState, action) => {
             return newState;
 
         case actions.NOTIFICATION:
-                newState.campGrounds = action.campGrounds;
+                newState.count = action.state.count +1;
                 // newState.campGrounds = action.campGrounds;
                 return newState;
         default:

@@ -3,8 +3,8 @@ import React from "react";
 import SaveBtn from "../SaveBtn"
 import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
-// import { savesCampGrounds } from "../redux/actionCreator";
-// import { connect } from "react-redux";
+import { notification } from "../../redux/actionCreator";
+import { connect } from "react-redux";
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import Ratings from "react-ratings-declarative";
 
@@ -26,6 +26,8 @@ export function ListItem(props) {
       
       .catch(err => console.log(err));
   }
+
+  
   return (
     <li>
       	<Container>
@@ -96,9 +98,8 @@ export function ListItem(props) {
                         distance:props.distance,
                         rating:props.rating,
                         description:props.description,
-						imageURL:props.imageURL,
-						count:props.count
-                        })}></SaveBtn>
+						imageURL:props.imageURL
+                        }), notification()}></SaveBtn>
 							</CardBody>
 						</Card>
 					</Col>
