@@ -1,0 +1,33 @@
+
+
+.nav-bar{
+    background-color: darkgreen !important;
+    color: forestgreen;
+}
+
+.authentication-buttons{
+    font-weight: bold;
+}
+
+
+.collapse {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 15px;
+    background-color: darkgreen;
+}
+
+
+.hover-underline{
+    border-bottom: solid 5px darkgreen;
+}
+
+
+:hover.hover-underline{
+    border-bottom: solid 5px white;
+}
+
+
+a{
+    color: white !important;
+}

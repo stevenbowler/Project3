@@ -13,95 +13,82 @@ import {
     Nav,
     NavItem,
     NavLink,
-    // Container,
-    Button
+    Button,
+    ButtonGroup
 } from 'reactstrap';
 import { connect } from 'react-redux';
+import {
+    toggleNavbar,
+    logout,
+    toggleLoginModal,
+    toggleRegisterModal
+} from '../../redux/actionCreator';
+import "./style.css";
 
 
 
 class AppNavbar extends Component {
-    /**
-     * Toggle the navbar modal variable
-     * @function toggleModal */
-    toggleModal = () => this.modal = !this.modal;
-
-    /** 
-     * Unused
-     */
-    registerInput = () => this.toggleModal();
 
     /**
      * Send back toggle signal to App.js, to open/close navbar
      * @function toggle
      */
-    toggle = () => this.props.onToggle();
+    toggleNavbar = () => this.props.dispatch(toggleNavbar());
 
     /**
      * Onclick request to register
      * @function register
      */
-    register = () => this.props.onRegister();
+    register = () => this.props.dispatch(toggleRegisterModal());
 
     /**
      * Onclick request to login
      * @function login
      */
-    login = () => this.props.onLogin();
+    login = () => this.props.dispatch(toggleLoginModal());
 
     /**
      * Onclick request to logout
      * @function logout
      */
-    logout = () => this.props.onLogout();
-
-    /**
-     * Onclick toggle leaderboard
-     * @function leaderBoard
-     */
-    leaderBoard = () => this.props.onLeaderBoard();
-
-    /**
-     * Onclick request tutorial video
-     * @function tutorial
-     */
-    tutorial = () => this.props.onTutorial();
-
-    /**
-     * Onclick request to change background color
-     * @function changeColor
-     */
-    changeColor = () => this.props.onChangeColor();
+    logout = () => this.props.dispatch(logout());
 
     render() {
         return (
             // <div> //removed to get sticky navbar with reactstrap https://github.com/reactstrap/reactstrap/issues/1179
-            <Navbar color="dark" expand="sm" className="mb-5 sticky-top">
-                {/* <Container> */}
-                <NavbarBrand href="/">Project 3</NavbarBrand>
-                <NavbarText className="text-warning" placeholder="test">{this.props.username}</ NavbarText>
-                <NavbarToggler color="dark" border="dark" onClick={this.toggle}><img src='hamburger.jpg' alt='Menu' style={{
+            <Navbar dark expand="md" className="mb-5 sticky-top nav-bar">
+                <NavbarBrand className="text-light mx-3 pt-3" href="/">CAMPsite</NavbarBrand>
+                <NavbarText className="text-light" placeholder="test"><small>{this.props.username}</small></ NavbarText>
+
+                <NavbarToggler onClick={this.toggleNavbar}><img src='./hamburger.jpg' alt='Menu' style={{
                     height: "40px",
                     width: "40px"
                 }}></img></NavbarToggler>
-                <Collapse isOpen={this.props.isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
-                        <Button color="dark" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.register}>Register</Button>
-                        <Button color="dark" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.login}>Login</Button>
-                        <Button color="dark" hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.logout}>Logout</Button>
-                        <Button color="dark" hidden={this.props.loggedIn ? false : true} float="left" display="inline" onClick={this.leaderBoard}>Modal</Button>
-                        <Button color="dark" hidden={this.props.loggedIn ? true : false} float="left" display="inline" onClick={this.tutorial}>Tutorial</Button>
-                        {/* <Button float="left" display="inline" onClick={this.unused}>Unused</Button> */}
-                        <Button float="left" color="dark" display="inline" href="/">Search</Button>
+                <Collapse isOpen={this.props.isOpenNavbar} navbar>
+                    <Nav className="ml-auto text-light" navbar>
+
+
                         <NavItem>
-                            <NavLink display="inline" color="white" href="https://github.com/stevenbowler/Project3">GitHub</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/search">Search</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Contact</NavLink>
+                        </NavItem>
+
+                        <ButtonGroup block size="lg">
+                            <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? true : false} float="left" display="inline" onClick={this.register}>Register</Button>
+                            <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? true : false} float="left" display="inline" onClick={this.login}>Login</Button>
+                            <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? false : true} float="left" display="inline" onClick={this.logout}>Logout</Button>
+                        </ButtonGroup>
                     </Nav>
                 </Collapse>
-                {/* </Container> */}
-
             </Navbar>
-
             // </div >  //removed to get sticky navbar with reactstrap https://github.com/reactstrap/reactstrap/issues/1179
         );
     }
@@ -114,7 +101,8 @@ const mapStateToProps = (state) => {
     return {
         username: state.username,
         email: state.email,
-        loggedIn: state.loggedIn
+        loggedIn: state.loggedIn,
+        isOpenNavbar: state.isOpenNavbar
     }
 }
 

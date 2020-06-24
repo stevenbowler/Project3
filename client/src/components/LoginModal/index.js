@@ -13,10 +13,16 @@ import {
     Col,
     Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap';
+import { connect } from 'react-redux';
+import { toggleLoginModal } from '../../redux/actionCreator';
+import API from '../../utils/userAPI';
+
+
+
 const { passwordValidation, emailValidation, nameValidation } = require('../../utils/validationNameEmailPassword');
 
 
-class LoginRegisterModals extends Component {
+class LoginModal extends Component {
     constructor(props) {
         super(props);
         this.validEmail = false;
@@ -29,44 +35,14 @@ class LoginRegisterModals extends Component {
         this.invalidNameMessage = "";
         this.invalidPasswordMessage = "";
         this.login = false;
+        this.wrapper = React.createRef();
     }
 
-    componentDidMount() {
-
-
-    }
-    /**
-     * @function handleSubmit
-     * @param {*} event
-     */
-    handleSubmit = (event) => {
-        // console.log("App.js handleSubmit logging in with: ", event.target.email.value);
-        const data = {
-            name: event.target.name.value,
-            email: event.target.email.value,
-            password: event.target.password.value
-        }
-        if (this.validName && this.validEmail && this.validPassword) {
-            this.props.onRegister(data);
-            this.validName = false;
-            this.validEmail = false;
-            this.validPassword = false;
-            event.preventDefault();         // TODO register modal stays open with this
-        }
-        else if (this.validEmail && this.validPassword && this.props.isOpenLoginModal) {
-            // console.log("handleSubmit Login with email: " + event.target.email.value + "password: " + event.target.password.value);
-            this.props.onLogin({ email: event.target.email.value, password: event.target.password.value });
-            this.validEmail = false;
-            this.validPassword = false;
-            event.preventDefault();
-        }
-        else event.preventDefault();
-    }
 
     /**
-     * handle Cancel event button
-     * @function handleCancel
-     */
+     * handle cancel onclick event
+    * @function handleCancel
+    */
     handleCancel = () => {
         this.validEmail = false;
         this.invalidEmail = false;
@@ -77,7 +53,34 @@ class LoginRegisterModals extends Component {
         this.invalidEmailMessage = "";
         this.invalidNameMessage = "";
         this.invalidPasswordMessage = "";
-        this.props.onCancel();
+        this.props.dispatch(toggleLoginModal());
+    }
+
+
+    componentDidMount() {
+    }
+
+
+    /**
+     * @function handleSubmit
+     * @param {*} event
+     */
+    handleSubmit = (event) => {
+        // console.log("App.js handleSubmit logging in with: ", event.target.email.value);
+        const data = {
+            // name: event.target.name.value,
+            email: event.target.email.value,
+            password: event.target.password.value
+        }
+
+        if (this.validEmail && this.validPassword) {
+            // console.log("handleSubmit Login with email: " + event.target.email.value + "password: " + event.target.password.value);
+            API.loginAPI(data, this.props.dispatch);
+            this.validEmail = false;
+            this.validPassword = false;
+            event.preventDefault();
+        }
+        else event.preventDefault();
     }
 
 
@@ -169,27 +172,11 @@ class LoginRegisterModals extends Component {
 
     render() {
         return (
-            <div>
-                <Modal isOpen={this.props.isOpenRegisterModal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }} toggle={this.toggleModal} >
-                    <ModalHeader toggle={this.toggleModal}>{this.props.isOpenLoginModal ? "Login" : "Register"}</ModalHeader>
+            <div ref={this.wrapper}>
+                <Modal isOpen={this.props.isOpenLoginModal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }} >
+                    <ModalHeader>Login</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleSubmit}>
-                            <FormGroup hidden={this.props.isOpenLoginModal ? true : false}>
-                                <Label for="nameInput" sm={20}>Name:</Label>
-                                <Col sm={100}>
-                                    <Input
-                                        type="search"
-                                        id="nameInput"
-                                        defaultValue={this.props.isOpenLoginModal ? "Not Logged In" : ""}
-                                        name="name"
-                                        onChange={this.handleNameChange}
-                                        placeholder="8 characters minumum"
-                                        valid={this.validName ? true : false}
-                                        invalid={this.invalidName ? true : false}>
-                                    </Input>
-                                    <FormText>{this.invalidNameMessage}</FormText>
-                                </Col>
-                            </FormGroup>
                             <FormGroup>
                                 <Label for="emailInput" sm={20}>Email (Login ID):</Label>
                                 <Col sm={100}>
@@ -234,4 +221,14 @@ class LoginRegisterModals extends Component {
     }
 
 }
-export default LoginRegisterModals;
+
+const mapStateToProps = (state) => {
+    return {
+        username: state.username,
+        email: state.email,
+        loggedIn: state.loggedIn,
+        isOpenLoginModal: state.isOpenLoginModal
+    }
+}
+
+export default connect(mapStateToProps)(LoginModal);

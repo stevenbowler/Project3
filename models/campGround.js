@@ -5,25 +5,30 @@ const Schema = mongoose.Schema;
 
 /**@namespace campGroundSchema */
 const campGroundSchema = new Schema({
+  /**@name userName*/
+  username: { type: String},
   /**@name entityId*/
-  // entityId= { type: String, required: true },
+
+  entityId: { type: String},
   /**@name campGround*/
   //campsite name
-  campGround: { type: String, required: true },
-  /**@name location*/
-  location: { type: String, required: true },
+  campGround: { type: String},
+  /**@name city*/
+  city: { type: String},
+  /**@name state*/
+  state: { type: String},
+  /**@name distance*/
+  distance: { type: Number},
   /**@name rating*/
-  rating: { type: String, required: false },
+  rating: { type: Number},
   /**@name description*/
   description: String,
-  /**@name availability*/
-  availability: { type: Date, default: Date.now },
   /**@name imageURL*/
-  imageURL: { type: String, required: false },
+  imageURL: { type: String},
    /**@name infoLink*/
-   infoLink: {  type: String, required: false },
-    /**@name reservationURL*/
-    reservationURL: {  type: String, required: false },
+  //  infoLink: {  type: String},
+  //   /**@name reservationURL*/
+  //   reservationURL: {  type: String}
 });
 
 const CampGround = mongoose.model("CampGround", campGroundSchema);

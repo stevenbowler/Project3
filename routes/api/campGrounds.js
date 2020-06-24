@@ -12,7 +12,7 @@ const verify = require('../../privateRoutesAuth');
  * All requests to this router will first hit this "logger" middleware, log, check token if not username "Guest...Login"
  * @function
  * @name route/
- * @memberof module:routes/api/campGround
+ * @memberof module:routes/api/campground
  * @param {string} path - /
  * @returns {object}
  */
@@ -43,7 +43,7 @@ router.use(function (req, res, next) {
  * Register a new user
  * @function
  * @name route/
- * @memberof module:routes/api/campGround
+ * @memberof module:routes/api/campground
  * @param {string} path - /
  * @returns {object}
  */
@@ -58,7 +58,7 @@ router.route("/")
  * delete src/utils/API.js getcampGround line 14 to stop using
  * @function
  * @name route/
- * @memberof module:routes/api/campGround
+ * @memberof module:routes/api/campground
  * @param {string} path - /
  * @returns {object}
  */
@@ -71,7 +71,7 @@ router.route("/protected")
  * Matches with "/api/campGround/:id"
  * @function
  * @name route/:id
- * @memberof module:routes/api/campGround
+ * @memberof module:routes/api/campground
  * @param {string} path - /:id
  * @returns {object}
  */
