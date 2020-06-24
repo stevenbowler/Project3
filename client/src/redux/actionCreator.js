@@ -60,9 +60,9 @@ export const savesCampGrounds = (campGrounds) => {
     }
 }
 
-export const deleteCampGrounds = (campGrounds) => {
+export const deleteCampGrounds = (index) => {
     return {
         type: actions.DELETES_CAMPGROUNDS,
-        campGrounds
+        index
     }
 }

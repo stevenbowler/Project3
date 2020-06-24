@@ -1,14 +1,14 @@
 import React from "react";
 // import "./style.css";
-import SaveBtn from "../SaveBtn"
+import DeleteBtn from "../DeleteBtn"
 import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
-// import { savesCampGrounds } from "../redux/actionCreator";
-// import { connect } from "react-redux";
-
-
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import Ratings from "react-ratings-declarative";
+import { deleteCampGround } from '../../redux/actionCreator';
+
+
+
 
 // This file exports both the List and ListItem components
 
@@ -21,13 +21,17 @@ export function CampGroundList({ children }) {
 	);
 }
 export function ListItem(props) {
-  const saveCampGround = (campGroundData) => {
-    API.saveCampGround(campGroundData)
-    
-      .then(res => console.log("save to mongo", res))
-      
-      .catch(err => console.log(err));
-  }
+	
+
+    const deleteCampGround = (id) => {
+		API.deleteCampGround(id)
+		.then(res => {
+		 	console.log("delete from mongo", res)
+		   window.location.reload()
+		}) 
+	 	  .catch(err => console.log(err));
+	   }
+   
   return (
     <li>
       	<Container>
@@ -37,6 +41,7 @@ export function ListItem(props) {
 							<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
 							<CardBody>
 								<CardTitle>
+								
 									<h2>
 										{props.campGround}
 										<Ratings
@@ -89,17 +94,10 @@ export function ListItem(props) {
 								RESERVE
 							</a>
 						</Button>
-             <SaveBtn onClick={() => saveCampGround({id:props.id, 
-                        username:props.username,
-                        entityId:props.entityId,
-                        campGround:props.campGround,
-                        city:props.city,
-                        state:props.state,
-                        distance:props.distance,
-                        rating:props.rating,
-                        description:props.description,
-                        imageURL:props.imageURL,
-                        })}></SaveBtn>
+				 
+						<DeleteBtn onClick={() => deleteCampGround(props.id)}>
+						</DeleteBtn>
+						{/* <DeleteBtn onClick={deleteCampGround}></DeleteBtn> */}
 							</CardBody>
 						</Card>
 					</Col>

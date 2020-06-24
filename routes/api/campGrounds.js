@@ -75,6 +75,7 @@ router.route("/protected")
  * @param {string} path - /:id
  * @returns {object}
  */
+// console.log("campGroundController", campGroundController.remove())
 router
   .route("/:id")
   .get(campGroundController.findById)

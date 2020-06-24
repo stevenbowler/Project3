@@ -12,9 +12,9 @@ import "./style.css";
  */
 function DeleteBtn(props) {
   return (
-    <span className="delete-btn" {...props} role="button" tabIndex="0">
-      ✗
-    </span>
+    <button className="delete-btn" {...props} role="button" tabIndex="0">
+      Delete
+    </button>
   );
 }
 
