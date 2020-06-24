@@ -1,0 +1,166 @@
+[{
+  "_id": {
+    "$oid": "5ee18f8f2dda6d9488b965d6"
+  },
+  "username": "Guest...Login",
+  "title": "99: Stories of the Game",
+  "authors": "Wayne Gretzky",
+  "image": "http://books.google.com/books/content?id=TyKfCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  "link": "http://books.google.com/books?id=TyKfCwAAQBAJ&printsec=frontcover&dq=Hockey+Gretzky&hl=&cd=2&source=gbs_api",
+  "description": "“The Great One” weaves memories of his legendary career with an inside look at the sport of professional hockey, and the heroes and stories that inspired him. From minor-hockey phenomenon to Hall of Fame sensation, Wayne Gretzky rewrote the record books, his accomplishments becoming the stuff of legend. Dubbed “The Great One,” he is considered by many to be the greatest hockey player who ever lived. No one has seen more of the game than he has—but he has never discussed in depth just what it was he saw. For the first time, Gretzky discusses candidly what the game looks like to him and introduces us to the people who inspired and motivated him: mentors, teammates, rivals, the famous and the lesser known. Weaving together lives and moments from an extraordinary career, he reflects on the players who inflamed his imagination when he was a kid, the way he himself figured in the dreams of so many who came after; takes us onto the ice and into the dressing rooms to meet the friends who stood by him and the rivals who spurred him to greater heights; shows us some of the famous moments in hockey history through the eyes of someone who regularly made that history. Warm, direct, and revelatory, it is a book that gives us number 99, the man and the player, like never before. From the Hardcover edition.",
+  "date": {
+    "$date": "2020-06-11T01:57:35.569Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee18fea2dda6d9488b965d7"
+  },
+  "username": "testuser",
+  "title": "Wayne Gretzky's Ghost",
+  "authors": "Roy MacGregor",
+  "image": "http://books.google.com/books/content?id=PEWRKkLhkpAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  "link": "http://books.google.com/books?id=PEWRKkLhkpAC&pg=PA339&dq=Hockey+Gretzky&hl=&cd=5&source=gbs_api",
+  "description": "For nearly 40 years, Roy MacGregor has brought our national sport alive on the pages of Canada's newspapers and magazines, and now the best of this writing is available in a volume that's a must-read for any hockey fan. He covers a list of hockey legends--players like Borje Salming, Jean Beliveau, Bobby Clarke--and legends in the making--Sidney Crosby, Alexander Ovechkin, the Sedin twins. While many of their stories play out on the ice, some of the most compelling take place away from it--Ted Nolan's struggle for acceptance, Swift Current's remarkable rise, the many tribulations of Bob Gainey and Guy Lafleur. Who could offer a better perspective on the game than a writer who, playing as a youngster, had to face an onrushing phenom from Parry Sound named Bobby Orr? When it comes to hockey, Roy MacGregor has seen (and in some cases, done) it all; in Wayne Gretzky's Ghost, with newly added updates and reflections on each article, he shares these and many other highlights from his storied career.",
+  "date": {
+    "$date": "2020-06-11T01:59:06.751Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee190182dda6d9488b965d8"
+  },
+  "username": "testuser",
+  "title": "Hockey's G.O.A.T.",
+  "authors": "Jon M. Fishman",
+  "image": "http://books.google.com/books/content?id=TdaGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  "link": "http://books.google.com/books?id=TdaGDwAAQBAJ&printsec=frontcover&dq=Hockey+Gretzky&hl=&cd=6&source=gbs_api",
+  "description": "Get to know the top ten hockey players of all time! Readers will explore exciting stats and learn about some of the most celebrated athletes in the history of the sport.",
+  "date": {
+    "$date": "2020-06-11T01:59:52.096Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee1950d95fca96ad82f6a65"
+  },
+  "username": "testuser",
+  "title": "Wayne Gretzky",
+  "authors": "Craig Thomas Wolff",
+  "image": "http://books.google.com/books/content?id=Q6fIbm2XdGEC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "link": "http://books.google.com/books?id=Q6fIbm2XdGEC&q=Hockey+Gretzky&dq=Hockey+Gretzky&hl=&cd=7&source=gbs_api",
+  "description": "A biography of the \"Great Wayne Gretzky\" of the Edmonton Oilers, who at the age of twenty-one is already hailed as the greatest hockey player ever.",
+  "date": {
+    "$date": "2020-06-11T02:21:01.761Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee196c43948101c7c0d02e3"
+  },
+  "username": "testuser",
+  "title": "Wayne Gretzky, Hockey All-Star",
+  "authors": "Rob Kirkpatrick",
+  "image": "http://books.google.com/books/content?id=8UDtxvUxkGsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  "link": "http://books.google.com/books?id=8UDtxvUxkGsC&pg=PP8&dq=Hockey+Gretzky&hl=&cd=1&source=gbs_api",
+  "description": "Presents the life and record-setting career of the hockey player known as \"the Great One.\"",
+  "date": {
+    "$date": "2020-06-11T02:28:20.552Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee211a0268a3062345e9c2f"
+  },
+  "username": "Guest...Login",
+  "title": "Field Hockey",
+  "authors": "Helen Connolly",
+  "image": "http://books.google.com/books/content?id=3BNMr7U8e9wC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  "link": "http://books.google.com/books?id=3BNMr7U8e9wC&pg=PA33&dq=Hockey&hl=&cd=3&source=gbs_api",
+  "description": "Offers a brief introduction to the history, techniques, equipment, and rules of field hockey, the oldest known ball-and-stick game.",
+  "date": {
+    "$date": "2020-06-11T11:12:32.277Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee228ca9b0bf0b5fc6b41d4"
+  },
+  "username": "Guest...Login",
+  "title": "Hockey",
+  "authors": "Gretzky6",
+  "image": "",
+  "link": "",
+  "description": "",
+  "date": {
+    "$date": "2020-06-11T12:51:22.698Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee22bfa403be4659828b1d8"
+  },
+  "username": "Guest...Login",
+  "title": "Wayne Gretzky",
+  "authors": "Thomas R. Raber",
+  "image": "http://books.google.com/books/content?id=RW_CLb6bXkUC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+  "link": "http://books.google.com/books?id=RW_CLb6bXkUC&q=Hockey+Gretzky&dq=Hockey+Gretzky&hl=&cd=9&source=gbs_api",
+  "description": "A biography of professional hockey star Wayne Gretzky, the man who led his teams to four Stanley Cup championships, the man they call \"The Great One.\"",
+  "date": {
+    "$date": "2020-06-11T13:04:58.272Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee234729f55099ef89f05f9"
+  },
+  "username": "testuser",
+  "title": "The Bible Book",
+  "authors": "DK",
+  "image": "http://books.google.com/books/content?id=NuFBDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  "link": "http://books.google.com/books?id=NuFBDwAAQBAJ&printsec=frontcover&dq=The+Bible&hl=&cd=4&source=gbs_api",
+  "description": "The stories, events, and teachings contained in the scriptures of the Old and New Testaments of the Bible, from Genesis to Revelations explained with accessible text and bold graphics. The Bible Book explores the ideas and beliefs key to the teachings of the most widely printed religious book of all time. This highly visual book highlights more than 100 of the most important Biblical passages and explains their theological significance and key concepts. Profiles of primary figures-from Adam and Eve, to Peter and Paul-and places of the Bible, such as Jerusalem and Rome, add context to the scriptures. Essential theological concepts, such as the Trinity, God's omnipresence, and the salvation of Jesus' death, are explained in detail. Infographics illuminate the most significant concepts clearly and simply. The Bible Book is perfect for anyone with an interest in religion and the foundational text of Christianity and Judaism.",
+  "date": {
+    "$date": "2020-06-11T13:41:06.565Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ee55f677cc1162ab0f5c6dd"
+  },
+  "username": "Guest...Login",
+  "title": "Safety in Ice Hockey",
+  "authors": "Alan B. Ashare",
+  "image": "http://books.google.com/books/content?id=p-rsTP8ELVsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+  "link": "http://books.google.com/books?id=p-rsTP8ELVsC&pg=PA19&dq=Hockey&hl=&cd=4&source=gbs_api",
+  "date": {
+    "$date": "2020-06-13T23:21:11.487Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eeb5e2569f23777d08e6734"
+  },
+  "username": "Guest...Login",
+  "title": "Hockey Made Easy : Instructional Manual",
+  "authors": "John Shorey",
+  "link": "http://books.google.ca/books?id=HostIKQ4-6oC&pg=PR3&dq=Hockey&hl=&cd=2&source=gbs_api",
+  "date": {
+    "$date": "2020-06-18T12:29:25.161Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eeb75e23fde2e94448fd726"
+  },
+  "username": "Guest...Login",
+  "title": "Hockey",
+  "authors": "Gretzky",
+  "image": "Moses Image",
+  "link": "Moses LInk",
+  "description": "",
+  "date": {
+    "$date": "2020-06-18T14:10:42.739Z"
+  },
+  "__v": 0
+}]
