@@ -1,0 +1,430 @@
+[{
+  "_id": {
+    "$oid": "5e111378bfe3a624ecade152"
+  },
+  "name": "Super Daddy",
+  "email": "stevenbowler@yahoo.com",
+  "password": "123456",
+  "date": {
+    "$date": "2020-01-04T22:36:40.397Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e1127ee39be0d21f0553c26"
+  },
+  "name": "Super Fella",
+  "email": "alanbowler78@yahoo.com",
+  "password": "123456",
+  "date": {
+    "$date": "2020-01-05T00:03:58.349Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e114e73bcdabc2cb00c2ba7"
+  },
+  "name": "Super Person",
+  "email": "harry@yahoo.com",
+  "password": "12345678",
+  "date": {
+    "$date": "2020-01-05T02:48:19.664Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e114ee5bcdabc2cb00c2ba8"
+  },
+  "name": "Super New",
+  "email": "david@yahoo.com",
+  "password": "12345678",
+  "date": {
+    "$date": "2020-01-05T02:50:13.545Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e114febd1d6a44690ba1c4c"
+  },
+  "name": "Super New 2",
+  "email": "ralph@yahoo.com",
+  "password": "kjdf9845",
+  "date": {
+    "$date": "2020-01-05T02:54:35.205Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e115018d1d6a44690ba1c4d"
+  },
+  "name": "Super New 3",
+  "email": "henry@yahoo.com",
+  "password": "jfjfjfjf",
+  "date": {
+    "$date": "2020-01-05T02:55:20.118Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e134dbd79b50152547945bf"
+  },
+  "name": "Super Bcrypt pswd test",
+  "email": "alex@yahoo.com",
+  "password": "jfjfjfjf",
+  "date": {
+    "$date": "2020-01-06T15:09:49.459Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e134f2a5df453441cfd701c"
+  },
+  "name": "Super Bcrypt pswd test2",
+  "email": "alexx@yahoo.com",
+  "password": "$2a$10$AjghcaEPqQmCAsW7qm1/d.pR.jW9qkDk0VRqHIJblhrR1jK73YxCi",
+  "date": {
+    "$date": "2020-01-06T15:15:54.514Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e13be6ff742f46becf8ef07"
+  },
+  "name": "FredFred",
+  "email": "Flintstone@yahoo.com",
+  "password": "$2a$10$8OGR27uOxbgsT3ytYF.64uUgdW9ssLt1DXudMtm96E1hi0Dbk0rHa",
+  "date": {
+    "$date": "2020-01-06T23:10:39.399Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e13beceab22822994db75cc"
+  },
+  "name": "AlanAlan",
+  "email": "alanbowler@yahoo.com",
+  "password": "$2a$10$hEJTau1XbisnXXjI7LLiwegPKMW5a7XcvBDeCUbSm3BBGaC6Ks/rC",
+  "date": {
+    "$date": "2020-01-06T23:12:14.483Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e13d2d4542dcd5514ca3789"
+  },
+  "name": "AlanAlanAlan",
+  "email": "alanbowler987@yahoo.com",
+  "password": "$2a$10$w5ZPfvRhfeGa/VOegwaJgeD3MG0B/iIvoGbUF8kvKa8YOA5Cj/RW2",
+  "date": {
+    "$date": "2020-01-07T00:37:40.010Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e163444eb43a75614f36cd7"
+  },
+  "name": "stevenbowler",
+  "email": "This@email.com",
+  "password": "$2a$10$8U8Erb6XzLB21Gljr4dpN.m2znPiJIHBnZhVjTFWTa86bembD6gVS",
+  "date": {
+    "$date": "2020-01-08T19:57:56.465Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e17274ddc1f304884676b2f"
+  },
+  "name": "superdabby",
+  "email": "superdabby@yahoo.com",
+  "password": "$2a$10$rmasN58LqD2LQNx.FVaJR.mN62tfx0JmqknIX55d6c2WEUP7KjT5q",
+  "date": {
+    "$date": "2020-01-09T13:14:53.042Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e174b3f45b47651301c802d"
+  },
+  "name": "superfella",
+  "email": "superfella@yahoo.com",
+  "password": "$2a$10$Fyo0iOk3rUYabI.QOef0kOtAuOoUv6rUC/1g7yEo6sFD1UkV8t1Wu",
+  "date": {
+    "$date": "2020-01-09T15:48:15.417Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e17ac210d0e032404fd48ed"
+  },
+  "name": "testuser23",
+  "email": "testuser23@yahoo.com",
+  "password": "$2a$10$wJGpSh2nVGMRJC7AzqEO3uWg2pzbXeH1IEIu2OAfMSsgnSSOwHmgG",
+  "date": {
+    "$date": "2020-01-09T22:41:37.109Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e17ac8e2c4c04029046a744"
+  },
+  "name": "testuser24",
+  "email": "testuser24@yahoo.com",
+  "password": "$2a$10$v5NhwISnOyRPXlvD.fpaYOLtEL.I0SX.md.y6.DRmKVyTf.Pp0Lum",
+  "date": {
+    "$date": "2020-01-09T22:43:26.453Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e186e76c51e095a0858a971"
+  },
+  "name": "testuser25",
+  "email": "testuser25@yahoo.com",
+  "password": "$2a$10$5Nsdk.RON.g0sRf4xJMmHezdj/XkZfhYhwB8JtauosfNB8ufpsuUa",
+  "date": {
+    "$date": "2020-01-10T12:30:46.185Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e187475bed1e6340cc0cddc"
+  },
+  "name": "testuser26",
+  "email": "testuser@yahoo.com",
+  "password": "$2a$10$A8x6W8LAyDkXQr1f3Z012.h5RMapcEjGlWcn.kwguoHFGYrBbU6yi",
+  "date": {
+    "$date": "2020-01-10T12:56:21.867Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e18b723604d470064907a39"
+  },
+  "name": "testuser27",
+  "email": "testuser27@yahoo.com",
+  "password": "$2a$10$zTokV90DsWdet0tZpjIBie2n2utOhZyKPhhB0YydX7CXNmMOKRwnm",
+  "date": {
+    "$date": "2020-01-10T17:40:51.077Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e18c0d873dfd535cca9cbf9"
+  },
+  "name": "testuser28",
+  "email": "testuser28@yahoo.com",
+  "password": "$2a$10$bg55K36EdRQexM5XmMN.LO8NrTJ3SBysMqxt.4bvIybQLYpW4EjH6",
+  "date": {
+    "$date": "2020-01-10T18:22:16.703Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e1c535d5ebc2d33a8a4ce06"
+  },
+  "name": "testuser30",
+  "email": "testuser30@yahoo.com",
+  "password": "$2a$10$sbzGc.YUa6A2YrjIWgmPTO1DWPPWj71byHacJPXzh8yye4qlaeH52",
+  "date": {
+    "$date": "2020-01-13T11:24:13.133Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e2089d9b45d3f00176d2ede"
+  },
+  "name": "Muhammad",
+  "email": "qtyeert@yahoo.com",
+  "password": "$2a$10$By47nXyOLasmi2D1vQADSOm8uX3hlYFvhDl75.YQ/YhGr4K0hkQo2",
+  "date": {
+    "$date": "2020-01-16T16:05:45.983Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5e20c10d51533100170ecb3b"
+  },
+  "name": "Sbayreder",
+  "email": "sbayreder@gmail.com",
+  "password": "$2a$10$Kvdt0U19RfDLPQH0.XJGF.x5ybb/Ae1prDMT3abdKz0ur8Grzr4lW",
+  "date": {
+    "$date": "2020-01-16T20:01:17.311Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed6c2c931783c0fec48fde3"
+  },
+  "name": "testuser32",
+  "email": "testuser32@yahoo.com",
+  "password": "$2a$10$Uk2DJUs9NPUP41fAPB9hfOZHA0LeyxtqCEIfWuc7exCOQq19VgTlm",
+  "date": {
+    "$date": "2020-06-02T21:21:13.851Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed6c57ec53a3500175730a7"
+  },
+  "name": "testuser33",
+  "email": "testuser33@yahoo.com",
+  "password": "$2a$10$WIEEbt6US0kwbnOZgAqFIOoXnNmNhXv0FyBOA6YID.QQBgWDTOCTq",
+  "date": {
+    "$date": "2020-06-02T21:32:46.850Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed6c6bac53a3500175730a8"
+  },
+  "name": "testuser34",
+  "email": "testuser34@yahoo.com",
+  "password": "$2a$10$SE.nd27jagbuTGkdSXutk.rMU/dlno9fiN8d8SHdTv./L/8/MGxR6",
+  "date": {
+    "$date": "2020-06-02T21:38:02.029Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed6c711c53a3500175730a9"
+  },
+  "name": "testuser35",
+  "email": "testuser35@yahoo.com",
+  "password": "$2a$10$zjFprdc.5yPk/xziGGPnH.oG.qnOF6kR2Od.EpeYpHXRmdNWRzqhG",
+  "date": {
+    "$date": "2020-06-02T21:39:29.335Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed6cab4c53a3500175730aa"
+  },
+  "name": "testuser36",
+  "email": "testuser36@yahoo.com",
+  "password": "$2a$10$3s4RQALlnVsAMEj2vrr9JemPkc3Jxd/cc7iLRDTZF1glVDylPBrLS",
+  "date": {
+    "$date": "2020-06-02T21:55:00.794Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed6cbd8c53a3500175730ab"
+  },
+  "name": "testuser37",
+  "email": "testuser37@yahoo.com",
+  "password": "$2a$10$IaK9UUZz.fTYw/uT/Nufk.TKVtRuQUx199GASBl98Xa/WhPajuDB6",
+  "date": {
+    "$date": "2020-06-02T21:59:52.645Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed77833fba6a75fdc679bd8"
+  },
+  "name": "testjune1",
+  "email": "testjune1@yahoo.com",
+  "password": "$2a$10$LwlRhXVcW9CkTXNq6nQn5OnsEql.F./qglHyIsS.xRwq2htEOTTOq",
+  "date": {
+    "$date": "2020-06-03T10:15:15.143Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed77aa68898165fbcc5abd3"
+  },
+  "name": "testjune2",
+  "email": "testjune2@yahoo.com",
+  "password": "$2a$10$t782O8dEXRd7/nZiNvr56uoBAu12BkV0vq4rVT1S9m/uV20OdESz2",
+  "date": {
+    "$date": "2020-06-03T10:25:42.611Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed77ae05c697366a8f5b144"
+  },
+  "name": "testjune3",
+  "email": "testjune3@yahoo.com",
+  "password": "$2a$10$l0vuLsfmZIVWG28XUn.kje9S3deWvA66LoJhdZY9ZskHXnTxg5Ely",
+  "date": {
+    "$date": "2020-06-03T10:26:40.026Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed77bbe1682c226449fed5f"
+  },
+  "name": "testjune4",
+  "email": "testjune4@yahoo.com",
+  "password": "$2a$10$SEKPrBdeeBncgX9tR72IEe0eJlQduhFehjK5.4HYB66844Qa5ugNa",
+  "date": {
+    "$date": "2020-06-03T10:30:22.696Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ed82fa89b59bf5d04391cb0"
+  },
+  "name": "SteveTester",
+  "email": "testuser41@yahoo.com",
+  "password": "$2a$10$Z9VCPpqbxy3dZDXXFdMqnuii19zeHIWZj2FDkTrircoyw935QaBWm",
+  "date": {
+    "$date": "2020-06-03T23:18:00.527Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eda896a7121029500107eb6"
+  },
+  "name": "testuser45",
+  "email": "testuser45@yahoo.com",
+  "password": "$2a$10$0cYGJm.H2WqfGgM1wM/L3OqEq1Ppq0xjQYLOPFMEnfw5NbO8uJb4.",
+  "date": {
+    "$date": "2020-06-05T18:05:30.298Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5edaff9b94a470941cab990b"
+  },
+  "name": "testuser47",
+  "email": "testuser47@yahoo.com",
+  "password": "$2a$10$K114t1aN2cg7IxZj6l5fEew5WtmpbjotBqI6XdbcJBVUjWKvlXQS6",
+  "date": {
+    "$date": "2020-06-06T02:29:47.500Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ede81cff955aa5418d83d18"
+  },
+  "name": "testuser49",
+  "email": "testuser49@yahoo.com",
+  "password": "$2a$10$x9bLNTAEH9dMca.LdGMJdOSUDBCLazBRetnBlVYyrRdJ88UI7QwM6",
+  "date": {
+    "$date": "2020-06-08T18:22:07.229Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ede8e00a1e89000179e61cf"
+  },
+  "name": "testuser50",
+  "email": "testuser50@yahoo.com",
+  "password": "$2a$10$xwVaLpcBMp1VWXKpw4Apu.uo8NmPRUgeIZH4/Ppxvbmiav6MGjwfu",
+  "date": {
+    "$date": "2020-06-08T19:14:08.298Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ede8e42a1e89000179e61d1"
+  },
+  "name": "testuser51",
+  "email": "testuser51@yahoo.com",
+  "password": "$2a$10$wAG/juKZgWGF7W172qfgheh6D/pyJQgGn3kgCxr3s1LRS3R7fw12S",
+  "date": {
+    "$date": "2020-06-08T19:15:14.308Z"
+  },
+  "__v": 0
+}]
