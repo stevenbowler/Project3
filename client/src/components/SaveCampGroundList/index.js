@@ -24,11 +24,12 @@ export function ListItem(props) {
 	
 
     const deleteCampGround = (id) => {
+		const { dispatch } = props;
+        // const id = parseInt(event.target.id);
+
 		API.deleteCampGround(id)
-		.then(res => {
-		 	console.log("delete from mongo", res)
-		   window.location.reload()
-		}) 
+		.then(res => console.log("delete from mongo", res)) 
+		dispatch(deleteCampGrounds(id))
 	 	  .catch(err => console.log(err));
 	   }
    
@@ -95,9 +96,9 @@ export function ListItem(props) {
 							</a>
 						</Button>
 				 
-						<DeleteBtn onClick={() => deleteCampGround(props.id)}>
-						</DeleteBtn>
-						{/* <DeleteBtn onClick={deleteCampGround}></DeleteBtn> */}
+						{/* <DeleteBtn onClick={() => deleteCampGround(props.id)}>
+						</DeleteBtn> */}
+						<DeleteBtn onClick={deleteCampGround}></DeleteBtn>
 							</CardBody>
 						</Card>
 					</Col>
