@@ -5,8 +5,6 @@ import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import Ratings from "react-ratings-declarative";
-import { deleteCampGround } from '../../redux/actionCreator';
-
 
 
 
@@ -23,16 +21,20 @@ export function CampGroundList({ children }) {
 export function ListItem(props) {
 	
 
-    const deleteCampGround = (id) => {
-		const { dispatch } = props;
-        // const id = parseInt(event.target.id);
-
-		API.deleteCampGround(id)
+    const deleteCampGround = (event) => {
+		API.deleteCampGround(event)
 		.then(res => console.log("delete from mongo", res)) 
-		dispatch(deleteCampGrounds(id))
+
 	 	  .catch(err => console.log(err));
 	   }
-   
+    
+	// const deleteCampGround = (id) => {
+	// 	API.deleteCampGround(id)
+		
+	// 	.then(res => console.log("delete from mongo", res)) 
+
+	// 	  .catch(err => console.log(err));
+	//   }
   return (
     <li>
       	<Container>
@@ -42,7 +44,6 @@ export function ListItem(props) {
 							<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
 							<CardBody>
 								<CardTitle>
-								
 									<h2>
 										{props.campGround}
 										<Ratings
@@ -95,10 +96,12 @@ export function ListItem(props) {
 								RESERVE
 							</a>
 						</Button>
+					
+						{/* <DeleteBtn onClick={() => deleteCampGround(props._id)}></DeleteBtn> */}
 				 
-						{/* <DeleteBtn onClick={() => deleteCampGround(props.id)}>
-						</DeleteBtn> */}
-						<DeleteBtn onClick={deleteCampGround}></DeleteBtn>
+						 <DeleteBtn onClick={() => deleteCampGround(props.id)}>
+						</DeleteBtn>
+						
 							</CardBody>
 						</Card>
 					</Col>
