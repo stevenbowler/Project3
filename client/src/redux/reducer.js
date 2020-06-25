@@ -86,8 +86,7 @@ export const todoReducer = (state = initialState, action) => {
             return newState;
 
         case actions.DELETES_CAMPGROUNDS:
-            newState.campGrounds.splice(action.index, 1);
-            // newState.campGrounds = action.campGrounds;
+            newState.campGrounds = action.campGrounds;
             return newState;
 
         case actions.NOTIFICATION:
