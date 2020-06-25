@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: routes/api/campGrounds</title>
+    <title>JSDoc: Source: client/src/utils/locationAPI.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,52 +17,63 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: routes/api/campGrounds</h1>
+    <h1 class="page-title">Source: client/src/utils/locationAPI.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>//@ts-check
+/**@module */
+import axios from "axios";
+import { setZipCode } from '../redux/actionCreator';
+require('dotenv').config();
 
-<article>
-    <div class="container-overview">
-    
-        
 
-        
-    
-    </div>
+/** 
+* this is object with registration data
+* @typedef {object} data
+* @property {string} [name] - 8+ digit user name regex alpha-numeric only use name on register
+* @property {string} email - email format string
+* @property {string} password - minimum 8 digit password regex alpha-numeric
+*/
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+export default {
+    /**Called from App.js componentDidMount to set currentLocationZipCode
+    * @function findZipcode
+    * @param {function} dispatch passed thru from Redux initialized Component
+    * */
+    findZipCode: function (dispatch) {
+        // TODO Google "Geolocation API" call, key must be approved for this API
+        console.log("process.env.GOOGLE_API_KEY: ", process.env.REACT_APP_GOOGLE_API_KEY);
+        var urlFindLatLng = `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
+        axios
+            .post(urlFindLatLng)
+            .then(response => {
+                // console.log("findZipcode latlng response:", response.data.location.lat);
+                var latitude = response.data.location.lat;
+                var longitude = response.data.location.lng;
+                // TODO Google "Geocoding API" call, key must be approved for this API
+                var urlFindZip = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&amp;key=${process.env.REACT_APP_GOOGLE_API_KEY}`
+                axios
+                    .post(urlFindZip)
+                    .then(response => {
+                        // console.log("findZipcode zipcode response: ", response.data.results[0].address_components[6].long_name);
+                        dispatch(setZipCode(response.data.results[0].address_components[6].long_name));
+                    }).catch(error => {
+                        console.log("Could not get zipcode from GeocodeAPI call in locationAPI.js", error);
+                    });
+            })
+            .catch(error => {
+                console.log(" Could not get lat long from GeolocationAPI call in locationAPI.js: " + error.message);
+            });
+    }
+}</code></pre>
+        </article>
+    </section>
 
 
 
