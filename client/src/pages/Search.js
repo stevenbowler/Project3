@@ -131,7 +131,7 @@ class Search extends Component {
 		return (
 			<Container fluid>
 				<Row>
-					<Col size="md-12">
+					<Col>
 						<div>
 							<Jumbotron>
 								<h1 style={{ fontSize: "60px" }}>
@@ -195,38 +195,50 @@ class Search extends Component {
 							</Form>
 
 							<div style={{ textAlign: "center" }}>
-								<button type="submit" onClick={this.campGroundSearch} style={{border:"none", color:"white", backgroundColor:"forestgreen", padding:"15px", fontSize:"25px"}}>
+								<button
+									type="submit"
+									onClick={this.campGroundSearch}
+									style={{
+										border: "none",
+										color: "white",
+										backgroundColor: "forestgreen",
+										padding: "15px",
+                    fontSize: "25px",
+                    marginBottom: "20px"
+									}}
+								>
 									SEARCH
 								</button>
 							</div>
 
 							{console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
-							{this.state.isValidZipCode &&
-							this.props.campGrounds &&
-							this.props.campGrounds.length > 0 ? (
-								<CampGroundList>
-									{this.props.campGrounds.map((campGround, index) => {
-										return (
-											<div key={index}>
-												<ListItem
-													key={campGround._id}
-													entityId={campGround.entity_id}
-													campGround={campGround.name}
-													city={campGround.addresses[0].city}
-													state={campGround.addresses[0].state_code}
-													distance={campGround.distance}
-													rating={campGround.average_rating}
-													description={campGround.description}
-													imageURL={campGround.preview_image_url}
-												/>
-											</div>
-										);
-									})}
-								</CampGroundList>
-							) : (
-								<h2>No camp grounds to display</h2>
-							)}
+										{this.state.isValidZipCode &&
+										this.props.campGrounds &&
+										this.props.campGrounds.length > 0 ? (
+											<CampGroundList>
+												{this.props.campGrounds.map((campGround, index) => {
+													return (
+														< Col xs={12} sm={6} md={4} key={index}>
+															<ListItem
+																key={campGround._id}
+																entityId={campGround.entity_id}
+																campGround={campGround.name}
+																city={campGround.addresses[0].city}
+																state={campGround.addresses[0].state_code}
+																distance={campGround.distance}
+																rating={campGround.average_rating}
+																description={campGround.description}
+																imageURL={campGround.preview_image_url}
+															/>
+														</Col>
+													);
+												})}
+											</CampGroundList>
+										) : (
+											<h2 style={{textAlign:"center"}}>No campgrounds to display.</h2>
+										)}
+
 						</div>
 					</Col>
 				</Row>
