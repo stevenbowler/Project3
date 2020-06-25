@@ -5,14 +5,6 @@ import { setZipCode } from '../redux/actionCreator';
 require('dotenv').config();
 
 
-/** 
-* this is object with registration data
-* @typedef {object} data
-* @property {string} [name] - 8+ digit user name regex alpha-numeric only use name on register
-* @property {string} email - email format string
-* @property {string} password - minimum 8 digit password regex alpha-numeric
-*/
-
 export default {
     /**Called from App.js componentDidMount to set currentLocationZipCode
     * @function findZipcode
