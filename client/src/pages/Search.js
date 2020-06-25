@@ -10,17 +10,17 @@ import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
+	Button,
+	Form,
+	FormGroup,
+	Label,
+	Input,
+	Card,
+	CardImg,
+	CardText,
+	CardBody,
+	CardTitle,
+	CardSubtitle,
 } from "reactstrap";
 import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
 
@@ -32,12 +32,12 @@ class Search extends Component {
     campGrounds: [],
     entityId: "",
     campGround: "",
-    city: "",
+    city:"",              
     state: "",
     distance: "",
     rating: "",
-    startDate: moment().format("YYYY-MM-DD"),
-    endDate: moment(moment().format("YYYY-MM-DD"), "YYYY-MM-DD").add(5, "days").format("YYYY-MM-DD"),
+    startDate:moment().format("YYYY-MM-DD"),
+    endDate:moment(moment().format("YYYY-MM-DD"), "YYYY-MM-DD").add(5, "days").format("YYYY-MM-DD"),
     description: "",
     availability: "",
     imageURL: "",
@@ -56,17 +56,17 @@ class Search extends Component {
    * Initial loadsearch and set previous state variable to track login username change
   //  * @function componentDidMount */
   // componentDidMount() {
-  // this.setDates();
-
-  // this.state.startDate = moment().format("DD-MM-YYYY")
-  // var end = moment(this.state.startDate, "DD-MM-YYYY").add(5, "days")
-  // this.state.endDate = end
-
-  //   this.previousName = this.props.username;
-  // }
+    // this.setDates();
+    
+    // this.state.startDate = moment().format("DD-MM-YYYY")
+    // var end = moment(this.state.startDate, "DD-MM-YYYY").add(5, "days")
+    // this.state.endDate = end
 
   //   this.previousName = this.props.username;
   // }
+
+	//   this.previousName = this.props.username;
+	// }
 
 	/**
    * If there was a login then reload campGrounds with the newly logged in users choices
@@ -82,12 +82,12 @@ class Search extends Component {
     query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`
     API.getCampGrounds(query).then(res => {
       // this.setState({ result: res.data, campGrounds: res.data.results })
-
+      
       this.props.dispatch(savesCampGrounds(res.data.results))
       console.log(res.data.results)
-
-    })
-
+      
+      })
+          
 
       .catch(err => console.log(err));
 
@@ -138,7 +138,7 @@ class Search extends Component {
                 <h1>Search for and save your favorite camp grounds</h1>
               </Jumbotron>
               <h1 style={{ color: "white" }}>Find camping spots within <input className="form-control form-control-lg" autoComplete="off" type="text" name="miles" onChange={this.handleInputChange} value={this.state.miles} /> miles of zip code</h1>
-              <input className="form-control form-control-lg" autoComplete="off" type="text" placeholder={this.props.currentLocationZipCode} name="zipCode" onChange={this.handleInputChange} value={this.state.zipCode} />
+              <input className="form-control form-control-lg" autoComplete="off" type="text" name="zipCode" onChange={this.handleInputChange} value={this.state.zipCode} />
               <button type="submit" onClick={this.campGroundSearch} >
                 Search
       </button>
@@ -178,8 +178,7 @@ class Search extends Component {
 function mapStateToProps(state) {
   return {
     campGrounds: state.campGrounds,
-    username: state.username,
-    currentLocationZipCode: state.currentLocationZipCode
+    username: state.username
   }
 }
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps) (Search);

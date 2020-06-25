@@ -66,10 +66,3 @@ export const deleteCampGrounds = (index) => {
         index
     }
 }
-
-export const setZipCode = (zipCode) => {
-    return {
-        type: actions.SET_ZIPCODE,
-        zipCode
-    }
-}
