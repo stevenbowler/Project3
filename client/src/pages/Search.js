@@ -172,16 +172,16 @@ class Search extends Component {
 												placeholder="password placeholder"
 												value={this.state.miles}
 											>
-												<option>10</option>
-												<option>20</option>
-												<option>30</option>
-												<option>40</option>
-												<option>50</option>
-												<option>100</option>
-												<option>200</option>
-												<option>300</option>
-												<option>400</option>
-												<option>500+</option>
+												<option >10</option>
+												<option >20</option>
+												<option >30</option>
+												<option >40</option>
+												<option >50</option>
+												<option >100</option>
+												<option >200</option>
+												<option >300</option>
+												<option >400</option>
+												<option >500+</option>
 											</Input>
 											<Label
 												for="exampleEmail"

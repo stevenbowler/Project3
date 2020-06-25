@@ -19,6 +19,7 @@ import {
 	CardSubtitle,
 } from "reactstrap";
 import Ratings from "react-ratings-declarative";
+import "./style.css";
 
 // This file exports both the List and ListItem components
 

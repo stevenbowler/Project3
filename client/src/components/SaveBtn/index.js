@@ -6,7 +6,7 @@ import axios from "axios";
 export function SaveBtn (props) {
   
   return (
-    <span style={{color:"white"}} className="save-btn" {...props} role="button" tabIndex="0">
+    <span className="save-btn" {...props} role="button" tabIndex="0">
       Save
     </span>
   );

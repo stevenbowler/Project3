@@ -63,25 +63,23 @@ class AppNavbar extends Component {
                 <NavbarBrand className="text-light mx-3 pt-3" href="/">CAMPsite</NavbarBrand>
                 <NavbarText className="text-light" placeholder="test"><small>{this.props.username}</small></ NavbarText>
 
-                <NavbarToggler onClick={this.toggleNavbar}><img src='./hamburger.jpg' alt='Menu' style={{
-                    height: "40px",
-                    width: "40px"
-                }}></img></NavbarToggler>
+                <NavbarToggler onClick={this.toggleNavbar}></NavbarToggler>
                 <Collapse isOpen={this.props.isOpenNavbar} navbar>
                     <Nav className="ml-auto text-light" navbar>
 
 
-                        <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
-                        </NavItem>
+
                         <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/search">Search</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorites</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Contact</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Explore</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
                         </NavItem>
 
                         <ButtonGroup block size="lg">

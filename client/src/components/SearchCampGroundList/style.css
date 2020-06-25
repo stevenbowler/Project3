@@ -1,0 +1,9 @@
+button {
+    background-color: forestgreen !important;
+    border: none !important;
+    margin-right: 5px !important;
+}
+
+.card{
+    margin-bottom: 20px;
+}
