@@ -10,7 +10,8 @@ const initialState = {
     isOpenExtraModal: false,
     isOpenLoginModal: false,
     isOpenRegisterModal: false,
-    campGrounds: []
+    campGrounds: [],
+    count: 0
 }
 
 

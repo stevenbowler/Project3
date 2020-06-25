@@ -3,7 +3,6 @@ import React from 'react';
 import {
     notification
 }from '../../redux/actionCreator';
-import { render } from '../../../../routes/api/users';
 
 class Notification extends React.Component {
  /**
