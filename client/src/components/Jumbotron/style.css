@@ -1,0 +1,26 @@
+h1 {
+    font-size: 70px;
+}
+
+.button-container {
+    margin: auto !important;
+    align-items: center !important;
+}
+
+.title {
+    font-size: 60px!important;
+    font-weight: bold;
+}
+
+hr {
+    border: 2px solid forestgreen !important;
+    border-radius: 2px;
+}
+
+.button{
+    background-color: forestgreen !important;
+    margin: auto !important;
+    align-items: center;
+}
+
+
