@@ -69,17 +69,18 @@ class AppNavbar extends Component {
 
 
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
-                        </NavItem>
-                        <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/search">Search</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Contact</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Explore</NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
+                        </NavItem>
+
 
                         <ButtonGroup block size="lg">
                             <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? true : false} float="left" display="inline" onClick={this.register}>Register</Button>
