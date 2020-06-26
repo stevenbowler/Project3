@@ -8,7 +8,7 @@ import API from "../../utils/API";
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import "./style.css";
 import StarRating from "../StarRating";
-import CardTabs from "../CardTabs"
+import Description from "../Description"
 
 // This file exports both the List and ListItem components
 
@@ -20,6 +20,8 @@ export function CampGroundList({ children }) {
 	);
 }
 export function ListItem(props) {
+
+
 	const saveCampGround = (campGroundData) => {
 		API.saveCampGround(campGroundData)
 
@@ -32,22 +34,22 @@ export function ListItem(props) {
 			<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
 			<CardBody>
 				<CardTitle>
-					<h2>
+					<h3>
 						{props.campGround}
 						<StarRating>{props.rating}</StarRating>
-					</h2>
+					</h3>
 				</CardTitle>
 				
 				<CardSubtitle>
-					<h5>
+					<h6>
 						<span style={{ fontWeight: "bold" }}>
 							{props.city}, {props.state}
 						</span>{" "}
 						({props.distance} miles away)
-					</h5>
+					</h6>
 				</CardSubtitle>
 				<hr></hr>
-				<CardTabs description={props.description}></CardTabs>
+				
 				{/*<CardText>{props.description}</CardText>*/}
 				<Button>
 					<a
@@ -88,6 +90,7 @@ export function ListItem(props) {
 						})
 					}
 				></SaveBtn>
+				<Description>{props.description}</Description>
 			</CardBody>
 		</Card>
 	);
