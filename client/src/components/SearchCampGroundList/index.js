@@ -6,7 +6,6 @@ import API from "../../utils/API";
 // import { savesCampGrounds } from "../redux/actionCreator";
 // import { connect } from "react-redux";
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
-import Ratings from "react-ratings-declarative";
 import "./style.css";
 import StarRating from "../StarRating";
 
@@ -37,6 +36,7 @@ export function ListItem(props) {
 						<StarRating>{props.rating}</StarRating>
 					</h2>
 				</CardTitle>
+				
 				<CardSubtitle>
 					<h5>
 						<span style={{ fontWeight: "bold" }}>
@@ -45,6 +45,7 @@ export function ListItem(props) {
 						({props.distance} miles away)
 					</h5>
 				</CardSubtitle>
+				<hr></hr>
 				<CardText>{props.description}</CardText>
 				<Button>
 					<a
