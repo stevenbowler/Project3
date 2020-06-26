@@ -5,13 +5,15 @@ import {
 }from '../../redux/actionCreator';
 
 class Notification extends React.Component {
+    // export function notification(props) {
+
  /**
     * Onclick request to logout
     * @function notification
     */
    notification = () => this.props.dispatch(notification());
 
-render() {
+   render(){
     return(
         <Badge color="danger" pill><span>{this.props.count}</span></Badge>
     )
