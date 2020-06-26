@@ -70,9 +70,8 @@ export function ListItem(props) {
 						</span>{" "}
 						({props.distance} miles away)
 					</h5>
+					<hr></hr>
 				</CardSubtitle>
-				<Description>{props.description}</Description>
-				{/* <CardText>{props.description}</CardText> */}
 				<Button>
 					<a
 						target="_blank"
@@ -113,6 +112,9 @@ export function ListItem(props) {
 						})
 					}
 				></SaveBtn>
+				<Description>{props.description}</Description>
+				{/* <CardText>{props.description}</CardText> */}
+
 			</CardBody>
 		</Card>
 	);

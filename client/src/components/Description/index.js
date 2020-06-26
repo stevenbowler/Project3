@@ -17,10 +17,12 @@ function Description({ children }) {
 
 	return (
 		<div>
+     
 			<Button color="primary" onClick={toggle} style={{ marginBottom: "1rem"}}>
 				Description
 			</Button>
 			<h5>Descritpion {status}</h5>
+      
 			<Collapse
                 style={{backgroundColor:"white"}}
 				isOpen={collapse}
