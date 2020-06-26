@@ -17,8 +17,7 @@ const verify = require('../../privateRoutesAuth');
  * @returns {object}
  */
 router.use(function (req, res, next) {
-  var username = req.query.name
-  console.log("username: ", username)
+  console.log("req.query.username: ", req.query.username)
   console.log('Campground Router Logger: %s %s %s', req.method, req.url, req.path)
   next()
 });

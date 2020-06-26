@@ -60,7 +60,7 @@ class AppNavbar extends Component {
                 <NavbarBrand className="text-light mx-3 pt-3" href="/">CAMPsite</NavbarBrand>
                 <NavbarText className="text-light" placeholder="test"><small>{this.props.username}</small></ NavbarText>
 
-                <NavbarToggler style={{padding:"10px", margin:"5px", backgroundColor:"white"}} onClick={this.toggleNavbar}></NavbarToggler>
+                <NavbarToggler style={{ padding: "10px", margin: "5px", backgroundColor: "white" }} onClick={this.toggleNavbar}></NavbarToggler>
                 <Collapse isOpen={this.props.isOpenNavbar} navbar>
                     <Nav className="ml-auto text-light" navbar>
 
@@ -78,7 +78,7 @@ class AppNavbar extends Component {
                         </NavItem>
 
 
-                        <ButtonGroup block size="lg">
+                        <ButtonGroup block="true" size="lg">
                             <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? true : false} float="left" display="inline" onClick={this.register}>Register</Button>
                             <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? true : false} float="left" display="inline" onClick={this.login}>Login</Button>
                             <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? false : true} float="left" display="inline" onClick={this.logout}>Logout</Button>

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+// import axios from "axios";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import DeleteBtn from "../components/DeleteBtn";
+// import DeleteBtn from "../components/DeleteBtn";
 import { CampGroundList, ListItem } from "../components/SaveCampGroundList";
 import API from "../utils/API";
 import { savesCampGrounds } from "../redux/actionCreator";
@@ -15,7 +15,7 @@ class Saved extends Component {
   };
 
   componentDidMount() {
-    this.getCampGround();
+    this.getCampGround(this.props.username);
   }
 
   getCampGround = (campGroundData) => {
@@ -26,8 +26,8 @@ class Saved extends Component {
       })
       .catch((err => console.log(err)))
   }
-  
-  
+
+
   render() {
     return (
       <Container fluid>
@@ -40,7 +40,7 @@ class Saved extends Component {
             </Jumbotron>
             {(this.props.campGrounds && this.props.campGrounds.length > 0) ?
               <CampGroundList>
-                 {this.props.campGrounds.map((campGround, index) => {
+                {this.props.campGrounds.map((campGround, index) => {
                   return (<div key={index}>
                     <ListItem
                       key={campGround.id}
@@ -60,7 +60,7 @@ class Saved extends Component {
                 })}
               </CampGroundList>
               :
-              <h2 style={{color:"white"}}>No camp grounds to display</h2>
+              <h2 style={{ color: "white" }}>No camp grounds to display</h2>
             }
 
           </Col>
@@ -76,4 +76,4 @@ function mapStateToProps(state) {
     username: state.username
   }
 }
-export default connect(mapStateToProps) (Saved);
+export default connect(mapStateToProps)(Saved);

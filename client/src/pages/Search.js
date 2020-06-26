@@ -5,30 +5,30 @@ import { savesCampGrounds } from "../redux/actionCreator";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
-import SaveBtn from "../components/SaveBtn";
+// import SaveBtn from "../components/SaveBtn";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
 //import { Col, Row, Container } from "../components/Grid";
 import {
-  Button,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
+  // Button,
+  // Dropdown,
+  // DropdownToggle,
+  // DropdownMenu,
+  // DropdownItem,
   Form,
   FormGroup,
   Label,
   Input,
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
+  // Card,
+  // CardImg,
+  // CardText,
+  // CardBody,
+  // CardTitle,
+  // CardSubtitle,
   Col,
   Row,
   Container,
-  Collapse,
+  // Collapse,
 } from "reactstrap";
 import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
 

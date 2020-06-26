@@ -1,11 +1,13 @@
 import React from "react";
 // import "./style.css";
 import SaveBtn from "../SaveBtn";
-import { Col, Row, Container } from "../Grid";
+import { Row, Container } from "../Grid";
+// import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
 // import { savesCampGrounds } from "../redux/actionCreator";
 // import { connect } from "react-redux";
-import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+import { Button, Card, CardImg, CardBody, CardTitle, CardSubtitle } from "reactstrap";
+// import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import "./style.css";
 import StarRating from "../StarRating";
 import Description from "../Description"
@@ -39,7 +41,7 @@ export function ListItem(props) {
 						<StarRating>{props.rating}</StarRating>
 					</h3>
 				</CardTitle>
-				
+
 				<CardSubtitle>
 					<h6>
 						<span style={{ fontWeight: "bold" }}>
@@ -49,7 +51,7 @@ export function ListItem(props) {
 					</h6>
 				</CardSubtitle>
 				<hr></hr>
-				
+
 				{/*<CardText>{props.description}</CardText>*/}
 				<Button>
 					<a
