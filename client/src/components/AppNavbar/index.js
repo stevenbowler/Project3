@@ -21,7 +21,8 @@ import {
     toggleNavbar,
     logout,
     toggleLoginModal,
-    toggleRegisterModal
+    toggleRegisterModal,
+    favoritesCount
 } from '../../redux/actionCreator';
 import "./style.css";
 import Notification from "../Notification";
@@ -100,7 +101,9 @@ const mapStateToProps = (state) => {
         username: state.username,
         email: state.email,
         loggedIn: state.loggedIn,
-        isOpenNavbar: state.isOpenNavbar
+        isOpenNavbar: state.isOpenNavbar,
+        favoritesCount: favoritesCount
+
     }
 }
 

@@ -59,7 +59,12 @@ export const savesCampGrounds = (campGrounds) => {
         campGrounds
     }
 }
-
+export const updateFavoritesCount = (favoritesCount) => {
+    return {
+        type: actions.UPDATE_FAVORITESCOUNT,
+        favoritesCount
+    }
+}
 export const setZipCode = (zipCode) => {
     return {
         type: actions.SET_ZIPCODE,

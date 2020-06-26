@@ -6,7 +6,7 @@ import Jumbotron from "../components/Jumbotron";
 // import DeleteBtn from "../components/DeleteBtn";
 import { CampGroundList, ListItem } from "../components/SaveCampGroundList";
 import API from "../utils/API";
-import { savesCampGrounds } from "../redux/actionCreator";
+import { savesCampGrounds, updateFavoritesCount } from "../redux/actionCreator";
 import { connect } from "react-redux";
 
 class Saved extends Component {
@@ -22,7 +22,7 @@ class Saved extends Component {
     API.getCampGround(campGroundData)
       .then(res => {
         this.props.dispatch(savesCampGrounds(res.data))
-        // this.setState({ savedCampGrounds: res })
+       this.props.dispatch(updateFavoritesCount(res.data.length.toString()))
       })
       .catch((err => console.log(err)))
   }
@@ -73,7 +73,8 @@ class Saved extends Component {
 function mapStateToProps(state) {
   return {
     campGrounds: state.campGrounds,
-    username: state.username
+    username: state.username,
+    favoritesCount: favoritesCount
   }
 }
 export default connect(mapStateToProps)(Saved);

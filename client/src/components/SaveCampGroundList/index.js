@@ -31,36 +31,17 @@ export function ListItem(props) {
 
 	const deleteCampGround = (event) => {
 		API.deleteCampGround(event)
-<<<<<<< HEAD
 		.then(res => {
 			console.log("delete from mongo", res)
 		  window.location.reload()
 	   })
 	 	  .catch(err => console.log(err));
 	   }
-    
-  return (
-    <li>
-      	<Container>
-      <Row className="mb-5">
-=======
-			.then(res => console.log("delete from mongo", res))
 
-			.catch(err => console.log(err));
-	}
-
-	// const deleteCampGround = (id) => {
-	// 	API.deleteCampGround(id)
-
-	// 	.then(res => console.log("delete from mongo", res)) 
-
-	// 	  .catch(err => console.log(err));
-	//   }
 	return (
 		<li>
 			<Container>
 				<Row className="mb-5">
->>>>>>> 4548db7f4cbed79c9c78f3693400f432fb611409
 					<Col size="md-12">
 						<Card>
 							<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
@@ -118,9 +99,6 @@ export function ListItem(props) {
 								RESERVE
 							</a>
 								</Button>
-
-								{/* <DeleteBtn onClick={() => deleteCampGround(props._id)}></DeleteBtn> */}
-
 								<DeleteBtn onClick={() => deleteCampGround(props.id)}>
 								</DeleteBtn>
 

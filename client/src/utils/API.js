@@ -55,11 +55,7 @@ export default {
   deleteCampGround: function (id) {
     console.log("API deletecampground: ", id);
 
-<<<<<<< HEAD
     return axios.delete("/api/campgrounds/"+ id);
-=======
-    return axios.delete("/api/campground/" + id);
->>>>>>> 4548db7f4cbed79c9c78f3693400f432fb611409
   },
 
   /**

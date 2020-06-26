@@ -1,7 +1,7 @@
 //@ts-check
 /**@module*/
 import moment from "moment";
-import { savesCampGrounds } from "../redux/actionCreator";
+import { savesCampGrounds, updateFavoritesCount } from "../redux/actionCreator";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
@@ -36,7 +36,7 @@ import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
 
 class Search extends Component {
   state = {
-    campGrounds: [],
+    // campGrounds: [],
     entityId: "",
     campGround: "",
     city: "",
@@ -92,9 +92,8 @@ class Search extends Component {
     query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
     API.getCampGrounds(query)
       .then((res) => {
-        // this.setState({ result: res.data, campGrounds: res.data.results })
-
         this.props.dispatch(savesCampGrounds(res.data.results));
+        this.props.dispatch(updateFavoritesCount(res.data.length))
         console.log(res.data.results);
       })
 
