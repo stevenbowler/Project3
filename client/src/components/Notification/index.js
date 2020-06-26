@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
 import React from 'react';
-import {
-    notification
-}from '../../redux/actionCreator';
 import { Badge } from 'reactstrap';
 
 class Notification extends React.Component {
