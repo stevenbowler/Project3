@@ -23,7 +23,7 @@ export function ListItem(props) {
   const saveCampGround = (campGroundData) => {
     API.saveCampGround(campGroundData)
     
-      .then(res => {notification(), console.log("save to mongo", res) })
+      .then(res => console.log("save to mongo", res) )
       
       .catch(err => console.log(err));
   }

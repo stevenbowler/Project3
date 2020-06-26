@@ -23,18 +23,13 @@ export function ListItem(props) {
 
     const deleteCampGround = (event) => {
 		API.deleteCampGround(event)
-		.then(res => console.log("delete from mongo", res)) 
-
+		.then(res => {
+			console.log("delete from mongo", res)
+		  window.location.reload()
+	   }
 	 	  .catch(err => console.log(err));
 	   }
     
-	// const deleteCampGround = (id) => {
-	// 	API.deleteCampGround(id)
-		
-	// 	.then(res => console.log("delete from mongo", res)) 
-
-	// 	  .catch(err => console.log(err));
-	//   }
   return (
     <li>
       	<Container>
