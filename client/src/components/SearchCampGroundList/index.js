@@ -1,6 +1,7 @@
 import React from "react";
 // import "./style.css";
 import SaveBtn from "../SaveBtn";
+import Description from "../Description";
 //import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
 import { notification } from "../../redux/actionCreator";
@@ -26,9 +27,7 @@ import "./style.css";
 export function CampGroundList({ children }) {
 	return (
 		<Container>
-			<Row>
-				{children}
-			</Row>
+			<Row>{children}</Row>
 		</Container>
 	);
 }
@@ -41,88 +40,80 @@ export function ListItem(props) {
 			.catch((err) => console.log(err));
 	};
 
-	
-
 	return (
-			<Card>
-				<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
-				<CardBody>
-					<CardTitle>
-						<h2>
-							{props.campGround}
-							<Ratings
-								rating={props.rating}
-								widgetRatedColors="green"
-								widgetEmptyColors="grey"
-								widgetDimensions="20px"
-								typeOfWidget="Point"
-								widgetSpacings="1px"
-							>
-								<Ratings.Widget />
-								<Ratings.Widget />
-								<Ratings.Widget />
-								<Ratings.Widget />
-								<Ratings.Widget />
-							</Ratings>
-						</h2>
-					</CardTitle>
-					<CardSubtitle>
-						<h5>
-							<span style={{ fontWeight: "bold" }}>
-								{props.city}, {props.state}
-							</span>{" "}
-							({props.distance} miles away)
-						</h5>
-					</CardSubtitle>
-					<CardText>
-						
-						
-						
-						
-						
-						
-						{props.description}</CardText>
-					<Button>
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
+		<Card>
+			<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
+			<CardBody>
+				<CardTitle>
+					<h2>
+						{props.campGround}
+						<Ratings
+							rating={props.rating}
+							widgetRatedColors="green"
+							widgetEmptyColors="grey"
+							widgetDimensions="20px"
+							typeOfWidget="Point"
+							widgetSpacings="1px"
 						>
-							{" "}
-							INFO
-						</a>
-					</Button>
-					<Button>
+							<Ratings.Widget />
+							<Ratings.Widget />
+							<Ratings.Widget />
+							<Ratings.Widget />
+							<Ratings.Widget />
+						</Ratings>
+					</h2>
+				</CardTitle>
+				<CardSubtitle>
+					<h5>
+						<span style={{ fontWeight: "bold" }}>
+							{props.city}, {props.state}
+						</span>{" "}
+						({props.distance} miles away)
+					</h5>
+				</CardSubtitle>
+				<Description>{props.description}</Description>
+				{/* <CardText>{props.description}</CardText> */}
+				<Button>
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
+					>
 						{" "}
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href={
-								"https://www.recreation.gov/camping/campgrounds/" + props.entityId + "/availability"
-							}
-						>
-							{" "}
-							RESERVE
-						</a>
-					</Button>
-					<SaveBtn
-						onClick={() =>
-							saveCampGround({
-								id: props.id,
-								username: props.username,
-								entityId: props.entityId,
-								campGround: props.campGround,
-								city: props.city,
-								state: props.state,
-								distance: props.distance,
-								rating: props.rating,
-								description: props.description,
-								imageURL: props.imageURL,
-								// }), notification()}></SaveBtn>
-							})
+						INFO
+					</a>
+				</Button>
+				<Button>
+					{" "}
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href={
+							"https://www.recreation.gov/camping/campgrounds/" + props.entityId + "/availability"
 						}
-					></SaveBtn>
-				</CardBody>
-			</Card>
+					>
+						{" "}
+						RESERVE
+					</a>
+				</Button>
+				<SaveBtn
+					onClick={() =>
+						saveCampGround({
+							id: props.id,
+							username: props.username,
+							entityId: props.entityId,
+							campGround: props.campGround,
+							city: props.city,
+							state: props.state,
+							distance: props.distance,
+							rating: props.rating,
+							description: props.description,
+							imageURL: props.imageURL,
+							// }), notification()}></SaveBtn>
+						})
+					}
+				></SaveBtn>
+			</CardBody>
+		</Card>
 	);
 }

@@ -6,7 +6,7 @@ import React from "react";
 function Jumbotron({ children }) {
 	return (
 		<div
-			style={{ height: 350, color:"forestgreen", backgroundColor:"white", clear: "both", paddingTop: 120, textAlign: "center" }}
+			style={{ height: 200, color:"forestgreen", backgroundColor:"white", clear: "both", paddingTop: "0", textAlign: "center" }}
 			className="jumbotron"
 		>
 			{children}

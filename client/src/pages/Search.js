@@ -219,7 +219,7 @@ class Search extends Component {
 											<CampGroundList>
 												{this.props.campGrounds.map((campGround, index) => {
 													return (
-														< Col xs={12} sm={6} md={4} key={index}>
+														< Col xs={12} md={6} key={index}>
 															<ListItem
 																key={campGround._id}
 																entityId={campGround.entity_id}
