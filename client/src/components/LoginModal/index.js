@@ -21,7 +21,7 @@ import API from '../../utils/userAPI';
 
 const { passwordValidation, emailValidation, nameValidation } = require('../../utils/validationNameEmailPassword');
 
-
+/**@class */
 class LoginModal extends Component {
     constructor(props) {
         super(props);
@@ -56,9 +56,6 @@ class LoginModal extends Component {
         this.props.dispatch(toggleLoginModal());
     }
 
-
-    componentDidMount() {
-    }
 
 
     /**

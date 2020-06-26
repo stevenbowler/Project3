@@ -26,7 +26,7 @@ import {
 import "./style.css";
 
 
-
+/**@class */
 class AppNavbar extends Component {
 
     /**

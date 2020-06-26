@@ -1,3 +1,5 @@
+//@ts-check
+/**@module */
 import React from "react";
 // import "./style.css";
 import SaveBtn from "../SaveBtn";
@@ -12,8 +14,11 @@ import "./style.css";
 import StarRating from "../StarRating";
 import Description from "../Description"
 
-// This file exports both the List and ListItem components
-
+// 
+/**This file exports both the List and ListItem components
+ * @function CampGroundList
+ * @param {*} param0 
+ */
 export function CampGroundList({ children }) {
 	return (
 		<Container>
@@ -21,6 +26,12 @@ export function CampGroundList({ children }) {
 		</Container>
 	);
 }
+
+
+/**Sets every item in the list with a Saved button to save key data to Mongo on clicke
+ * @function ListItem
+ * @param {*} props 
+ */
 export function ListItem(props) {
 
 

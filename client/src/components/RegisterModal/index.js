@@ -18,10 +18,14 @@ import { toggleRegisterModal } from '../../redux/actionCreator';
 import API from '../../utils/userAPI';
 
 
-
+/**
+ * @const passwordValidation
+ * @const emailValidation
+ * @const nameValidation
+ */
 const { passwordValidation, emailValidation, nameValidation } = require('../../utils/validationNameEmailPassword');
 
-
+/**@class */
 class RegisterModal extends Component {
     constructor(props) {
         super(props);
@@ -36,11 +40,6 @@ class RegisterModal extends Component {
         this.invalidPasswordMessage = "";
         this.login = false;
         this.wrapper = React.createRef();
-    }
-
-
-
-    componentDidMount() {
     }
 
 
