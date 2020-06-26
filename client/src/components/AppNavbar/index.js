@@ -99,7 +99,8 @@ const mapStateToProps = (state) => {
         username: state.username,
         email: state.email,
         loggedIn: state.loggedIn,
-        isOpenNavbar: state.isOpenNavbar
+        isOpenNavbar: state.isOpenNavbar,
+        favoritesCount: state.favoritesCount
     }
 }
 

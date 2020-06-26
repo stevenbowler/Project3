@@ -24,8 +24,9 @@ import AppNavbar from './components/AppNavbar';
 import RegisterModal from './components/RegisterModal';
 import LoginModal from './components/LoginModal';
 import { connect } from 'react-redux';
-import { logout } from './redux/actionCreator';
+import { logout, updateFavoritesCount } from './redux/actionCreator';
 import locationAPI from "./utils/locationAPI";
+import API from "./utils/API";
 
 
 /**@class */
@@ -46,7 +47,13 @@ class App extends React.Component {
     locationAPI.findZipCode(this.props.dispatch);
     if (!sessionStorage["name"]) {
       this.props.dispatch(logout());    // on load, reset all user settings, only when not already set
+      this.props.dispatch(updateFavoritesCount("0"));    // on load, reset all user settings, only when not already set
     } else console.log("sessionStorage.name already exists");
+    API.getCampGround(this.props.username)
+      .then(res => {
+        this.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+      })
+      .catch((err => console.log(err)));
   }
 
 

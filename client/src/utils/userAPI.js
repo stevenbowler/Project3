@@ -1,5 +1,6 @@
 import axios from "axios";
-import { login, loginError, toggleRegisterModal, toggleLoginModal } from '../redux/actionCreator';
+import { login, loginError, toggleRegisterModal, toggleLoginModal, updateFavoritesCount } from '../redux/actionCreator';
+import API from "./API";
 
 
 /** 
@@ -35,6 +36,13 @@ export default {
                     loggedIn: "true"
                 }));
                 dispatch(toggleLoginModal());
+                // })
+                // .then(() => {
+                API.getCampGround(response.data.user.name)
+                    .then(res => {
+                        dispatch(updateFavoritesCount(res.data.length.toString()));
+                    })
+                    .catch((err => console.log(err)));
             })
             .catch(error => {
                 console.log("Error, could not login from App.js: ", error);
