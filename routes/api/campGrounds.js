@@ -1,15 +1,13 @@
 //@ts-check
 /**@module */
-const router = require("express").Router();
-const campGroundController = require("../../controllers/campGroundController");
 const verify = require('../../privateRoutesAuth');
+const campGroundController = require("../../controllers/campGroundController");
 
-
-
+/**@namespace campGrounds */
+const router = require("express").Router();
 // simple logger for this router's requests
 // all requests to this router will first hit this middleware (and could be used to check for valid token)
-/**
- * All requests to this router will first hit this "logger" middleware, log, check token if not username "Guest...Login"
+/**All requests to this router will first hit this "logger" middleware, log, check token if not username "Guest...Login"
  * @function
  * @name route/
  * @memberof module:routes/api/campground
@@ -57,7 +55,7 @@ router.route("/")
  * delete src/utils/API.js getcampGround line 14 to stop using
  * @function
  * @name route/
- * @memberof module:routes/api/campground
+ * @memberof module:routes/api/campground/protected
  * @param {string} path - /
  * @returns {object}
  */

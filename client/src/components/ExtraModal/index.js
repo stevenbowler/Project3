@@ -1,5 +1,5 @@
 //@ts-check
-/**@module */
+/**@module*/
 import React, { Component } from 'react';
 import {
     Button,
@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 // import axios from 'axios';
 
-
+/**@class */
 class ExtraModal extends Component {
     // constructor(props) {
     //     super(props);

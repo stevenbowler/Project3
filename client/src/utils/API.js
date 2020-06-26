@@ -5,10 +5,9 @@ const BASEURL = "https://www.recreation.gov/api/search?q=";
 
 export default {
 
-  /**
- * Gets all books
+  /**Gets all campGrounds
  * @function getCampGrounds 
- * @param {*} username
+ * @param {*} query
  * */
   getCampGrounds: function (query) {
 
@@ -17,6 +16,10 @@ export default {
     console.log(BASEURL + query)
     return axios.get(BASEURL + query)
   },
+  /**Gets a specific Entity Id from recreation.gov
+   * @function getEntityId
+   * @param {*} query 
+   */
   getEntityId: function (query) {
 
     // var url = "https://www.recreation.gov/api/search?q=92103&exact=false&radius=300&size=20&fq=-entity_type%3Atour&fq=campGround_type_of_use%3AOvernight&fq=campGround_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=2020-06-16T00%3A00%3A00Z&end_date=2020-06-20T00%3A00%3A00Z&include_unavailable=false?name=" + user.username;

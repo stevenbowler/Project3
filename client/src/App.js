@@ -28,7 +28,7 @@ import { logout } from './redux/actionCreator';
 import locationAPI from "./utils/locationAPI";
 
 
-
+/**@class */
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +39,9 @@ class App extends React.Component {
 
 
   // LIFECYCLE METHODS and related support functions
-
+  /**Find local zipcode and if wasn't previously logged-in in this session then reset with logout
+   * @function componentDidMount
+   */
   componentDidMount() {
     locationAPI.findZipCode(this.props.dispatch);
     if (!sessionStorage["name"]) {

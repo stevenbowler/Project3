@@ -1,8 +1,10 @@
 //@ts-check
-/**@module */const db = require("../models");
+/**@module */
+
+/**@namespace usersController */
+const db = require("../models");
 
 // Defining methods for the booksController
-/**@module */
 module.exports = {
     /**@namespace findAll */
     findAll: function (req, res) {
