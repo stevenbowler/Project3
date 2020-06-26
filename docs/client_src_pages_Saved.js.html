@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: client/src/pages/About.js</title>
+    <title>JSDoc: Source: client/src/pages/Saved.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: client/src/pages/About.js</h1>
+    <h1 class="page-title">Source: client/src/pages/Saved.js</h1>
 
     
 
@@ -28,34 +28,87 @@
         <article>
             <pre class="prettyprint source linenums"><code>//@ts-check
 /**@module */
-import React from "react";
+import React, { Component } from "react";
+// import axios from "axios";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
+// import DeleteBtn from "../components/DeleteBtn";
+import { CampGroundList, ListItem } from "../components/SaveCampGroundList";
+import API from "../utils/API";
+import { savesCampGrounds, updateFavoritesCount } from "../redux/actionCreator";
+import { connect } from "react-redux";
 
-/**
- * if route/resource not found display this page
- * @function About
- */
-function About() {
+class Saved extends Component {
+  state = {
+    savedCampGrounds: []
+  };
+
+  /**@function */
+  componentDidMount() {
+    this.getCampGround(this.props.username);
+  }
+  /**@function */
+  getCampGround = (campGroundData) => {
+    API.getCampGround(campGroundData)
+      .then(res => {
+        this.props.dispatch(savesCampGrounds(res.data));
+        this.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+        // this.setState({ savedCampGrounds: res })
+      })
+      .catch((err => console.log(err)))
+  }
+
+
+  render() {
     return (
-        &lt;Container fluid>
-            &lt;Row>
-                &lt;Col size="md-12">
-                    &lt;Jumbotron>
-                        &lt;h1>Robert, please replace pages/About.js&lt;/h1>
-                        &lt;h1>
-                            &lt;span role="img" aria-label="Face With Rolling Eyes Emoji">
-                                🙄
-              &lt;/span>
-                        &lt;/h1>
-                    &lt;/Jumbotron>
-                &lt;/Col>
-            &lt;/Row>
-        &lt;/Container>
-    );
-}
+      &lt;Container fluid>
+        &lt;Row>
+          &lt;Col size="md-12">
+            &lt;Jumbotron>
+              &lt;h1>
+                &lt;h1>Favorites&lt;/h1>
+              &lt;/h1>
+            &lt;/Jumbotron>
+            {(this.props.campGrounds &amp;&amp; this.props.campGrounds.length > 0) ?
+              &lt;CampGroundList>
+                {this.props.campGrounds.map((campGround, index) => {
+                  return (&lt;div key={index}>
+                    &lt;ListItem
+                      key={campGround.id}
+                      id={campGround._id}
+                      username={campGround.username}
+                      entityId={campGround.entityId}
+                      campGround={campGround.campGround}
+                      city={campGround.city}
+                      state={campGround.state}
+                      distance={campGround.distance}
+                      rating={campGround.rating}
+                      description={campGround.description}
+                      imageURL={campGround.imageURL}
+                    />
+                  &lt;/div>
+                  )
+                })}
+              &lt;/CampGroundList>
+              :
+              &lt;h2 style={{ color: "white" }}>No camp grounds to display&lt;/h2>
+            }
 
-export default About;
+          &lt;/Col>
+
+        &lt;/Row>
+      &lt;/Container>
+    );
+  }
+}
+function mapStateToProps(state) {
+  return {
+    campGrounds: state.campGrounds,
+    username: state.username,
+  }
+}
+export default connect(mapStateToProps)(Saved);
 </code></pre>
         </article>
     </section>

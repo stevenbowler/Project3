@@ -1,3 +1,5 @@
+//@ts-check
+/**@module */
 import React, { Component } from "react";
 // import axios from "axios";
 // import { Link } from "react-router-dom";
@@ -14,10 +16,11 @@ class Saved extends Component {
     savedCampGrounds: []
   };
 
+  /**@function */
   componentDidMount() {
     this.getCampGround(this.props.username);
   }
-
+  /**@function */
   getCampGround = (campGroundData) => {
     API.getCampGround(campGroundData)
       .then(res => {

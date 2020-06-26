@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: client/src/pages/About.js</title>
+    <title>JSDoc: Source: client/src/redux/actionCreator.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: client/src/pages/About.js</h1>
+    <h1 class="page-title">Source: client/src/redux/actionCreator.js</h1>
 
     
 
@@ -27,36 +27,89 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>//@ts-check
-/**@module */
-import React from "react";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
+/**@module actionCreator*/
+import * as actions from './actions';
 
-/**
- * if route/resource not found display this page
- * @function About
- */
-function About() {
-    return (
-        &lt;Container fluid>
-            &lt;Row>
-                &lt;Col size="md-12">
-                    &lt;Jumbotron>
-                        &lt;h1>Robert, please replace pages/About.js&lt;/h1>
-                        &lt;h1>
-                            &lt;span role="img" aria-label="Face With Rolling Eyes Emoji">
-                                🙄
-              &lt;/span>
-                        &lt;/h1>
-                    &lt;/Jumbotron>
-                &lt;/Col>
-            &lt;/Row>
-        &lt;/Container>
-    );
+
+export const login = (user) => {
+    return {
+        type: actions.LOGIN_USER,
+        user
+    }
 }
 
-export default About;
-</code></pre>
+export const logout = () => {
+    return {
+        type: actions.LOGOUT_USER
+    }
+}
+
+export const register = (user) => {
+    return {
+        type: actions.REGISTER_USER,
+        user
+    }
+}
+
+export const loginError = (message) => {
+    return {
+        type: actions.LOGIN_ERROR,
+        message
+    }
+}
+
+export const toggleNavbar = () => {
+    return {
+        type: actions.TOGGLE_NAVBAR,
+    }
+}
+
+export const toggleExtraModal = () => {
+    return {
+        type: actions.TOGGLE_EXTRAMODAL,
+    }
+}
+
+export const toggleLoginModal = () => {
+    return {
+        type: actions.TOGGLE_LOGINMODAL,
+    }
+}
+
+export const toggleRegisterModal = () => {
+    return {
+        type: actions.TOGGLE_REGISTERMODAL,
+    }
+}
+
+
+export const savesCampGrounds = (campGrounds) => {
+    return {
+        type: actions.SAVES_CAMPGROUNDS,
+        campGrounds
+    }
+}
+
+export const deleteCampGrounds = (campGrounds) => {
+    return {
+        type: actions.DELETES_CAMPGROUNDS,
+        campGrounds
+    }
+}
+
+export const updateFavoritesCount = (favoritesCount) => {
+    return {
+        type: actions.UPDATE_FAVORITESCOUNT,
+        favoritesCount
+    }
+}
+
+export const setZipCode = (zipCode) => {
+    return {
+        type: actions.SET_ZIPCODE,
+        zipCode
+    }
+}</code></pre>
         </article>
     </section>
 

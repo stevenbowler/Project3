@@ -62,6 +62,7 @@ class Explore extends Component {
     zipCodeArray = ["78550", "78521", "78526", "78704", "92103", "94941", "23164", "78550", "78701"];
     zipCode = "78550";
 
+    /**@function */
     componentDidMount() {
         this.zipCode = this.zipCodeArray[Math.floor(Math.random() * 10).toString()];
         this.setState({ zipCode: this.zipCode, miles: "500" });
