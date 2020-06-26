@@ -18,6 +18,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Saved from "./pages/Saved";
 import Search from "./pages/Search";
+import Explore from "./pages/Explore";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AppNavbar from './components/AppNavbar';
@@ -69,6 +70,7 @@ class App extends React.Component {
             <Route exact path="/" render={(props) => <Search {...props} />} />
             <Route exact path="/search" render={(props) => <Search {...props} />} />
             <Route exact path="/saved" render={(props) => <Saved {...props} />} />
+            <Route exact path="/explore" render={(props) => <Explore {...props} />} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact} />
             <Route component={NoMatch} />
