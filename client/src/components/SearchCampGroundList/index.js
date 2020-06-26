@@ -7,7 +7,7 @@ import API from "../../utils/API";
 // import { connect } from "react-redux";
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import Ratings from "react-ratings-declarative";
-import { notification } from "../../redux/actionCreator";
+// import { notification } from "../../redux/actionCreator";
 
 // This file exports both the List and ListItem components
 
@@ -22,8 +22,9 @@ export function CampGroundList({ children }) {
 export function ListItem(props) {
   const saveCampGround = (campGroundData) => {
     API.saveCampGround(campGroundData)
-    
-      .then(res => console.log("save to mongo", res) )
+	.then(res => {console.log("save to mongo", res)
+	
+	} )
       
       .catch(err => console.log(err));
   }
@@ -88,7 +89,7 @@ export function ListItem(props) {
 								RESERVE
 							</a>
 						</Button>
-             			<SaveBtn onClick={() => saveCampGround({id:props.id, 
+             			<SaveBtn onClick={ () =>  saveCampGround({id:props.id, 
                         username:props.username,
                         entityId:props.entityId,
                         campGround:props.campGround,

@@ -59,17 +59,3 @@ export const savesCampGrounds = (campGrounds) => {
         campGrounds
     }
 }
-
-export const deleteCampGrounds = (campGrounds) => {
-    return {
-        type: actions.DELETES_CAMPGROUNDS,
-        campGrounds
-    }
-}
-
-export const notification = (count) => {
-    return {
-        type: actions.NOTIFICATION,
-        count
-    }
-}

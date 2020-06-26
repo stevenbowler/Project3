@@ -26,7 +26,7 @@ export function ListItem(props) {
 		.then(res => {
 			console.log("delete from mongo", res)
 		  window.location.reload()
-	   }
+	   })
 	 	  .catch(err => console.log(err));
 	   }
     
