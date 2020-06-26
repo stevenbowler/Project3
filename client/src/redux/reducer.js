@@ -89,7 +89,7 @@ export const todoReducer = (state = initialState, action) => {
             return newState;
 
             case actions.NOTIFICATION:
-                newState.count = action.state.count +1;
+                newState.count = action.state.count + 1;
                 return newState;
         default:
             return state;

@@ -67,8 +67,9 @@ export const deleteCampGrounds = (campGrounds) => {
     }
 }
 
-export const notification = () => {
+export const notification = (count) => {
     return {
-        type: actions.NOTIFICATION
+        type: actions.NOTIFICATION,
+        count
     }
 }
