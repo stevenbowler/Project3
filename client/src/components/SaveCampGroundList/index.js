@@ -1,3 +1,5 @@
+//@ts-check
+/**@module */
 import React from "react";
 // import "./style.css";
 import DeleteBtn from "../DeleteBtn"
@@ -8,8 +10,10 @@ import Ratings from "react-ratings-declarative";
 
 
 
-// This file exports both the List and ListItem components
-
+/**This file exports both the List and ListItem components
+ * @function CampGroundList
+ * @param {*} children 
+ */
 export function CampGroundList({ children }) {
 
 	return (
@@ -18,11 +22,16 @@ export function CampGroundList({ children }) {
 		</div>
 	);
 }
-export function ListItem(props) {
-	
 
-    const deleteCampGround = (event) => {
+/**
+ * @function ListItem
+ * @param {*} props 
+ */
+export function ListItem(props) {
+
+	const deleteCampGround = (event) => {
 		API.deleteCampGround(event)
+<<<<<<< HEAD
 		.then(res => {
 			console.log("delete from mongo", res)
 		  window.location.reload()
@@ -34,6 +43,24 @@ export function ListItem(props) {
     <li>
       	<Container>
       <Row className="mb-5">
+=======
+			.then(res => console.log("delete from mongo", res))
+
+			.catch(err => console.log(err));
+	}
+
+	// const deleteCampGround = (id) => {
+	// 	API.deleteCampGround(id)
+
+	// 	.then(res => console.log("delete from mongo", res)) 
+
+	// 	  .catch(err => console.log(err));
+	//   }
+	return (
+		<li>
+			<Container>
+				<Row className="mb-5">
+>>>>>>> 4548db7f4cbed79c9c78f3693400f432fb611409
 					<Col size="md-12">
 						<Card>
 							<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
@@ -65,38 +92,38 @@ export function ListItem(props) {
 										({props.distance} miles away)
 									</h5>
 								</CardSubtitle>
-                <CardText>{props.description}</CardText>
-                <Button>
-							<a
-								target="_blank"
-								rel="noopener noreferrer"
-								href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
-							>
-								{" "}
+								<CardText>{props.description}</CardText>
+								<Button>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
+									>
+										{" "}
 								INFO
 							</a>
-						</Button>
-						<Button>
-							{" "}
-							<a
-								target="_blank"
-								rel="noopener noreferrer"
-								href={
-									"https://www.recreation.gov/camping/campgrounds/" +
-									props.entityId +
-									"/availability"
-								}
-							>
-								{" "}
+								</Button>
+								<Button>
+									{" "}
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={
+											"https://www.recreation.gov/camping/campgrounds/" +
+											props.entityId +
+											"/availability"
+										}
+									>
+										{" "}
 								RESERVE
 							</a>
-						</Button>
-					
-						{/* <DeleteBtn onClick={() => deleteCampGround(props._id)}></DeleteBtn> */}
-				 
-						 <DeleteBtn onClick={() => deleteCampGround(props.id)}>
-						</DeleteBtn>
-						
+								</Button>
+
+								{/* <DeleteBtn onClick={() => deleteCampGround(props._id)}></DeleteBtn> */}
+
+								<DeleteBtn onClick={() => deleteCampGround(props.id)}>
+								</DeleteBtn>
+
 							</CardBody>
 						</Card>
 					</Col>

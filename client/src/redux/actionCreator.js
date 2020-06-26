@@ -59,3 +59,10 @@ export const savesCampGrounds = (campGrounds) => {
         campGrounds
     }
 }
+
+export const setZipCode = (zipCode) => {
+    return {
+        type: actions.SET_ZIPCODE,
+        zipCode
+    }
+}

@@ -6,7 +6,7 @@ import Jumbotron from "../components/Jumbotron";
 
 /**
  * if route/resource not found display this page
- * @function NoMatch
+ * @function About
  */
 function About() {
     return (

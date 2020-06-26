@@ -9,6 +9,7 @@
  */
 
 const express = require('express');
+/**@namespace users */
 const router = express();
 const User = require('../../models/user');
 const bcrypt = require('bcryptjs');

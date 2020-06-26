@@ -25,9 +25,10 @@ import RegisterModal from './components/RegisterModal';
 import LoginModal from './components/LoginModal';
 import { connect } from 'react-redux';
 import { logout } from './redux/actionCreator';
+import locationAPI from "./utils/locationAPI";
 
 
-
+/**@class */
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -38,8 +39,11 @@ class App extends React.Component {
 
 
   // LIFECYCLE METHODS and related support functions
-
+  /**Find local zipcode and if wasn't previously logged-in in this session then reset with logout
+   * @function componentDidMount
+   */
   componentDidMount() {
+    locationAPI.findZipCode(this.props.dispatch);
     if (!sessionStorage["name"]) {
       this.props.dispatch(logout());    // on load, reset all user settings, only when not already set
     } else console.log("sessionStorage.name already exists");
@@ -54,9 +58,10 @@ class App extends React.Component {
           <LoginModal />
           <RegisterModal />
           <Switch>
-            <Route exact path="/" component={Search} />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/saved" component={Saved} />
+
+            <Route exact path="/" render={(props) => <Search {...props} />} />
+            <Route exact path="/search" render={(props) => <Search {...props} />} />
+            <Route exact path="/saved" render={(props) => <Saved {...props} />} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact} />
             <Route component={NoMatch} />
