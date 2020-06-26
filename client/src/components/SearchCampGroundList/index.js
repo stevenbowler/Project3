@@ -8,6 +8,7 @@ import API from "../../utils/API";
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import "./style.css";
 import StarRating from "../StarRating";
+import CardTabs from "../CardTabs"
 
 // This file exports both the List and ListItem components
 
@@ -46,7 +47,8 @@ export function ListItem(props) {
 					</h5>
 				</CardSubtitle>
 				<hr></hr>
-				<CardText>{props.description}</CardText>
+				<CardTabs description={props.description}></CardTabs>
+				{/*<CardText>{props.description}</CardText>*/}
 				<Button>
 					<a
 						target="_blank"

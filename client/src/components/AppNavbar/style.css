@@ -5,10 +5,6 @@
     color: forestgreen;
 }
 
-.authentication-buttons{
-    font-weight: bold;
-}
-
 
 .collapse {
     margin-left: -15px;
@@ -20,6 +16,7 @@
 
 .hover-underline{
     border-bottom: solid 5px darkgreen;
+    color: white !important;
 }
 
 
@@ -27,7 +24,20 @@
     border-bottom: solid 5px white;
 }
 
-
-a{
-    color: white !important;
+.authentication-buttons{
+    font-weight: bold;
+    border-radius: 5px !important;
+    background-color: initial !important;
+    border: white solid 2px !important;
 }
+
+:hover.authentication-buttons {
+    font-weight: bold;
+    border-radius: 5px !important;
+    background-color: white !important;
+    color: forestgreen;
+    border: white solid 2px !important;
+}
+
+
+

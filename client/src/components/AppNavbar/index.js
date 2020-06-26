@@ -60,13 +60,9 @@ class AppNavbar extends Component {
                 <NavbarBrand className="text-light mx-3 pt-3" href="/">CAMPsite</NavbarBrand>
                 <NavbarText className="text-light" placeholder="test"><small>{this.props.username}</small></ NavbarText>
 
-                <NavbarToggler onClick={this.toggleNavbar}><img src='./hamburger.jpg' alt='Menu' style={{
-                    height: "40px",
-                    width: "40px"
-                }}></img></NavbarToggler>
+                <NavbarToggler style={{padding:"10px", margin:"5px", backgroundColor:"white"}} onClick={this.toggleNavbar}></NavbarToggler>
                 <Collapse isOpen={this.props.isOpenNavbar} navbar>
                     <Nav className="ml-auto text-light" navbar>
-
 
                         <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/search">Search</NavLink>
