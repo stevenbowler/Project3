@@ -56,9 +56,10 @@ class App extends React.Component {
           <LoginModal />
           <RegisterModal />
           <Switch>
-            <Route exact path="/" component={Search} />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/saved" component={Saved} />
+
+            <Route exact path="/" render={(props) => <Search {...props} />} />
+            <Route exact path="/search" render={(props) => <Search {...props} />} />
+            <Route exact path="/saved" render={(props) => <Saved {...props} />} />
             <Route exact path="/about" component={About} />
             <Route exact path="/contact" component={Contact} />
             <Route component={NoMatch} />
