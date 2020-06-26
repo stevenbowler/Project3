@@ -86,6 +86,11 @@ export const todoReducer = (state = initialState, action) => {
         case actions.DELETES_CAMPGROUNDS:
             newState.campGrounds = action.campGrounds;
             return newState;
+
+        case actions.SET_ZIPCODE:
+            newState.currentLocationZipCode = action.zipCode;
+            return newState;
+
         default:
             return state;
     }

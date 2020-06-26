@@ -38,6 +38,7 @@ module.exports = {
   },
   /**@function update */
   remove: function (req, res) {
+    console.log("Campground delete controller: ", req.body);
     db.CampGround
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())

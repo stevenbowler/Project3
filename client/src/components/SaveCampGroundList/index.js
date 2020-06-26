@@ -1,14 +1,12 @@
 import React from "react";
 // import "./style.css";
-import SaveBtn from "../SaveBtn"
+import DeleteBtn from "../DeleteBtn"
 import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
-// import { savesCampGrounds } from "../redux/actionCreator";
-// import { connect } from "react-redux";
-
-
 import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
 import Ratings from "react-ratings-declarative";
+
+
 
 // This file exports both the List and ListItem components
 
@@ -21,13 +19,22 @@ export function CampGroundList({ children }) {
 	);
 }
 export function ListItem(props) {
-  const saveCampGround = (campGroundData) => {
-    API.saveCampGround(campGroundData)
+	
+
+    const deleteCampGround = (event) => {
+		API.deleteCampGround(event)
+		.then(res => console.log("delete from mongo", res)) 
+
+	 	  .catch(err => console.log(err));
+	   }
     
-      .then(res => console.log("save to mongo", res))
-      
-      .catch(err => console.log(err));
-  }
+	// const deleteCampGround = (id) => {
+	// 	API.deleteCampGround(id)
+		
+	// 	.then(res => console.log("delete from mongo", res)) 
+
+	// 	  .catch(err => console.log(err));
+	//   }
   return (
     <li>
       	<Container>
@@ -89,17 +96,12 @@ export function ListItem(props) {
 								RESERVE
 							</a>
 						</Button>
-             <SaveBtn onClick={() => saveCampGround({id:props.id, 
-                        username:props.username,
-                        entityId:props.entityId,
-                        campGround:props.campGround,
-                        city:props.city,
-                        state:props.state,
-                        distance:props.distance,
-                        rating:props.rating,
-                        description:props.description,
-                        imageURL:props.imageURL,
-                        })}></SaveBtn>
+					
+						{/* <DeleteBtn onClick={() => deleteCampGround(props._id)}></DeleteBtn> */}
+				 
+						 <DeleteBtn onClick={() => deleteCampGround(props.id)}>
+						</DeleteBtn>
+						
 							</CardBody>
 						</Card>
 					</Col>
