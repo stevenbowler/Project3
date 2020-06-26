@@ -6,6 +6,7 @@ const initialState = {
     email: sessionStorage.getItem("email"),
     token: sessionStorage.getItem("token"),
     loggedIn: sessionStorage.getItem("loggedIn"),
+    favoritesCount: sessionStorage.getItem("favoritesCount"),
     isOpenNavbar: false,
     isOpenExtraModal: false,
     isOpenLoginModal: false,
@@ -52,10 +53,12 @@ export const todoReducer = (state = initialState, action) => {
             newState.email = "";
             newState.token = "";
             newState.loggedIn = "false";
+            newState.favoritesCount = "0";
             sessionStorage.setItem("name", newState.username);
             sessionStorage.setItem("email", newState.email);
             sessionStorage.setItem("token", newState.token);
             sessionStorage.setItem("loggedIn", "false");
+            sessionStorage.setItem("favoritesCount", newState.favoritesCount);
             console.log("LOGOUT_USER: ", newState.username);
             return newState;
 
@@ -85,6 +88,11 @@ export const todoReducer = (state = initialState, action) => {
 
         case actions.DELETES_CAMPGROUNDS:
             newState.campGrounds = action.campGrounds;
+            return newState;
+
+        case actions.UPDATE_FAVORITESCOUNT:
+            newState.favoritesCount = action.favoritesCount;
+            sessionStorage.setItem("favoritesCount", newState.favoritesCount);
             return newState;
 
         case actions.SET_ZIPCODE:

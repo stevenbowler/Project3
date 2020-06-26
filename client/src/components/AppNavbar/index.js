@@ -71,7 +71,7 @@ class AppNavbar extends Component {
                             <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Explore</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/explore">Explore</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
@@ -99,7 +99,8 @@ const mapStateToProps = (state) => {
         username: state.username,
         email: state.email,
         loggedIn: state.loggedIn,
-        isOpenNavbar: state.isOpenNavbar
+        isOpenNavbar: state.isOpenNavbar,
+        favoritesCount: state.favoritesCount
     }
 }
 
