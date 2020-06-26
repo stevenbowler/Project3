@@ -38,19 +38,19 @@ import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import {
-	Button,
-	Form,
-	FormGroup,
-	Label,
-	Input,
-	Card,
-	CardImg,
-	CardText,
-	CardBody,
-	CardTitle,
-	CardSubtitle,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
 } from "reactstrap";
-import { CampGroundList, ListItem } from "../components/CampGroundList";
+import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
 
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
@@ -60,12 +60,12 @@ class Search extends Component {
     campGrounds: [],
     entityId: "",
     campGround: "",
-    city:"",              
+    city: "",
     state: "",
     distance: "",
     rating: "",
-    startDate:moment().format("YYYY-MM-DD"),
-    endDate:moment(moment().format("YYYY-MM-DD"), "YYYY-MM-DD").add(5, "days").format("YYYY-MM-DD"),
+    startDate: moment().format("YYYY-MM-DD"),
+    endDate: moment(moment().format("YYYY-MM-DD"), "YYYY-MM-DD").add(5, "days").format("YYYY-MM-DD"),
     description: "",
     availability: "",
     imageURL: "",
@@ -84,17 +84,17 @@ class Search extends Component {
    * Initial loadsearch and set previous state variable to track login username change
   //  * @function componentDidMount */
   // componentDidMount() {
-    // this.setDates();
-    
-    // this.state.startDate = moment().format("DD-MM-YYYY")
-    // var end = moment(this.state.startDate, "DD-MM-YYYY").add(5, "days")
-    // this.state.endDate = end
+  // this.setDates();
+
+  // this.state.startDate = moment().format("DD-MM-YYYY")
+  // var end = moment(this.state.startDate, "DD-MM-YYYY").add(5, "days")
+  // this.state.endDate = end
 
   //   this.previousName = this.props.username;
   // }
 
-	//   this.previousName = this.props.username;
-	// }
+  //   this.previousName = this.props.username;
+  // }
 
 	/**
    * If there was a login then reload campGrounds with the newly logged in users choices
@@ -110,12 +110,12 @@ class Search extends Component {
     query = `${this.state.zipCode}&amp;exact=false&amp;radius=${this.state.miles}&amp;size=20&amp;fq=-entity_type%3Atour&amp;fq=campsite_type_of_use%3AOvernight&amp;fq=campsite_type_of_use%3Ana&amp;fq=entity_type%3Acampground&amp;fq=reservable%3A1&amp;sort=available&amp;start=0&amp;start_date=${this.state.startDate}T00%3A00%3A00Z&amp;end_date=${this.state.endDate}T00%3A00%3A00Z&amp;include_unavailable=false?name=`
     API.getCampGrounds(query).then(res => {
       // this.setState({ result: res.data, campGrounds: res.data.results })
-      
+
       this.props.dispatch(savesCampGrounds(res.data.results))
       console.log(res.data.results)
-      
-      })
-          
+
+    })
+
 
       .catch(err => console.log(err));
 
@@ -166,7 +166,7 @@ class Search extends Component {
                 &lt;h1>Search for and save your favorite camp grounds&lt;/h1>
               &lt;/Jumbotron>
               &lt;h1 style={{ color: "white" }}>Find camping spots within &lt;input className="form-control form-control-lg" autoComplete="off" type="text" name="miles" onChange={this.handleInputChange} value={this.state.miles} /> miles of zip code&lt;/h1>
-              &lt;input className="form-control form-control-lg" autoComplete="off" type="text" name="zipCode" onChange={this.handleInputChange} value={this.state.zipCode} />
+              &lt;input className="form-control form-control-lg" placeholder={this.props.currentLocationZipCode} autoComplete="off" type="text" name="zipCode" onChange={this.handleInputChange} value={this.state.zipCode} />
               &lt;button type="submit" onClick={this.campGroundSearch} >
                 Search
       &lt;/button>
@@ -206,10 +206,11 @@ class Search extends Component {
 function mapStateToProps(state) {
   return {
     campGrounds: state.campGrounds,
-    username: state.username
+    username: state.username,
+    currentLocationZipCode: state.currentLocationZipCode
   }
 }
-export default connect(mapStateToProps) (Search);
+export default connect(mapStateToProps)(Search);
 </code></pre>
         </article>
     </section>
@@ -220,13 +221,13 @@ export default connect(mapStateToProps) (Search);
 </div>
 
 <nav>
-    <h2><a href="index.html">Campsite Project</a></h2><h3>Modules</h3><ul><li><a href="module-client_src_App.html">client/src/App</a></li><li><a href="module-client_src_components_AppNavbar_index.html">client/src/components/AppNavbar/index</a></li><li><a href="module-client_src_components_DeleteBtn_index.html">client/src/components/DeleteBtn/index</a></li><li><a href="module-client_src_components_ExtraModal_index.html">client/src/components/ExtraModal/index</a></li><li><a href="module-client_src_components_Form_index.html">client/src/components/Form/index</a></li><li><a href="module-client_src_components_Grid_index.html">client/src/components/Grid/index</a></li><li><a href="module-client_src_components_Jumbotron_index.html">client/src/components/Jumbotron/index</a></li><li><a href="module-client_src_components_List_index.html">client/src/components/List/index</a></li><li><a href="module-client_src_components_LoginModal_index.html">client/src/components/LoginModal/index</a></li><li><a href="module-client_src_components_RegisterModal_index.html">client/src/components/RegisterModal/index</a></li><li><a href="module-client_src_pages_About.html">client/src/pages/About</a></li><li><a href="module-client_src_pages_Books.html">client/src/pages/Books</a></li><li><a href="module-client_src_pages_Contact.html">client/src/pages/Contact</a></li><li><a href="module-client_src_pages_Detail.html">client/src/pages/Detail</a></li><li><a href="module-client_src_pages_NoMatch.html">client/src/pages/NoMatch</a></li><li><a href="module-client_src_pages_Search.html">client/src/pages/Search</a></li><li><a href="module-client_src_utils_API.html">client/src/utils/API</a></li><li><a href="module-client_src_utils_validationNameEmailPassword.html">client/src/utils/validationNameEmailPassword</a></li><li><a href="module-controllers_booksController.html">controllers/booksController</a></li><li><a href="module-controllers_campGroundController.html">controllers/campGroundController</a></li><li><a href="module-controllers_usersController.html">controllers/usersController</a></li><li><a href="module-models_book.html">models/book</a></li><li><a href="module-models_campGround.html">models/campGround</a></li><li><a href="module-models_user.html">models/user</a></li><li><a href="module-privateRoutesAuth.html">privateRoutesAuth</a></li><li><a href="module-routes_api_books.html">routes/api/books</a></li><li><a href="module-routes_api_campGrounds.html">routes/api/campGrounds</a></li><li><a href="module-routes_api_users.html">routes/api/users</a></li><li><a href="module-server.html">server</a></li><li><a href="module-validation.html">validation</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-client_src_utils_validationNameEmailPassword-emaileValidation.html">emaileValidation</a></li><li><a href="module-client_src_utils_validationNameEmailPassword-nameValidation.html">nameValidation</a></li><li><a href="module-client_src_utils_validationNameEmailPassword-passwordValidation.html">passwordValidation</a></li><li><a href="module-controllers_usersController-create.html">create</a></li><li><a href="module-controllers_usersController-findAll.html">findAll</a></li><li><a href="module-controllers_usersController-findById.html">findById</a></li><li><a href="module-controllers_usersController-remove.html">remove</a></li><li><a href="module-controllers_usersController-update.html">update</a></li><li><a href="module-models_book-bookSchema.html">bookSchema</a></li><li><a href="module-models_campGround-campGroundSchema.html">campGroundSchema</a></li><li><a href="module-models_user-UserSchema.html">UserSchema</a></li><li><a href="module-validation-loginValidation.html">loginValidation</a></li><li><a href="module-validation-registerValidation.html">registerValidation</a></li></ul><h3>Global</h3><ul><li><a href="global.html#handleLogin">handleLogin</a></li><li><a href="global.html#handleRegister">handleRegister</a></li></ul>
+    <h2><a href="index.html">Campsite Project</a></h2><h3>Modules</h3><ul><li><a href="module-client_src_App.html">client/src/App</a></li><li><a href="module-client_src_components_AppNavbar_index.html">client/src/components/AppNavbar/index</a></li><li><a href="module-client_src_components_DeleteBtn_index.html">client/src/components/DeleteBtn/index</a></li><li><a href="module-client_src_components_ExtraModal_index.html">client/src/components/ExtraModal/index</a></li><li><a href="module-client_src_components_Form_index.html">client/src/components/Form/index</a></li><li><a href="module-client_src_components_Grid_index.html">client/src/components/Grid/index</a></li><li><a href="module-client_src_components_Jumbotron_index.html">client/src/components/Jumbotron/index</a></li><li><a href="module-client_src_components_List_index.html">client/src/components/List/index</a></li><li><a href="module-client_src_components_LoginModal_index.html">client/src/components/LoginModal/index</a></li><li><a href="module-client_src_components_RegisterModal_index.html">client/src/components/RegisterModal/index</a></li><li><a href="module-client_src_pages_About.html">client/src/pages/About</a></li><li><a href="module-client_src_pages_Books.html">client/src/pages/Books</a></li><li><a href="module-client_src_pages_Contact.html">client/src/pages/Contact</a></li><li><a href="module-client_src_pages_Detail.html">client/src/pages/Detail</a></li><li><a href="module-client_src_pages_NoMatch.html">client/src/pages/NoMatch</a></li><li><a href="module-client_src_pages_Search.html">client/src/pages/Search</a></li><li><a href="module-client_src_utils_API.html">client/src/utils/API</a></li><li><a href="module-client_src_utils_locationAPI.html">client/src/utils/locationAPI</a></li><li><a href="module-client_src_utils_validationNameEmailPassword.html">client/src/utils/validationNameEmailPassword</a></li><li><a href="module-controllers_booksController.html">controllers/booksController</a></li><li><a href="module-controllers_campGroundController.html">controllers/campGroundController</a></li><li><a href="module-controllers_usersController.html">controllers/usersController</a></li><li><a href="module-models_book.html">models/book</a></li><li><a href="module-models_campGround.html">models/campGround</a></li><li><a href="module-models_user.html">models/user</a></li><li><a href="module-privateRoutesAuth.html">privateRoutesAuth</a></li><li><a href="module-routes_api_books.html">routes/api/books</a></li><li><a href="module-routes_api_campGrounds.html">routes/api/campGrounds</a></li><li><a href="module-routes_api_users.html">routes/api/users</a></li><li><a href="module-server.html">server</a></li><li><a href="module-validation.html">validation</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-client_src_utils_validationNameEmailPassword-emaileValidation.html">emaileValidation</a></li><li><a href="module-client_src_utils_validationNameEmailPassword-nameValidation.html">nameValidation</a></li><li><a href="module-client_src_utils_validationNameEmailPassword-passwordValidation.html">passwordValidation</a></li><li><a href="module-controllers_usersController-create.html">create</a></li><li><a href="module-controllers_usersController-findAll.html">findAll</a></li><li><a href="module-controllers_usersController-findById.html">findById</a></li><li><a href="module-controllers_usersController-remove.html">remove</a></li><li><a href="module-controllers_usersController-update.html">update</a></li><li><a href="module-models_book-bookSchema.html">bookSchema</a></li><li><a href="module-models_campGround-campGroundSchema.html">campGroundSchema</a></li><li><a href="module-models_user-UserSchema.html">UserSchema</a></li><li><a href="module-validation-loginValidation.html">loginValidation</a></li><li><a href="module-validation-registerValidation.html">registerValidation</a></li></ul><h3>Global</h3><ul><li><a href="global.html#handleLogin">handleLogin</a></li><li><a href="global.html#handleRegister">handleRegister</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun Jun 21 2020 05:54:46 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Thu Jun 25 2020 16:33:37 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
