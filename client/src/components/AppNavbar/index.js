@@ -24,7 +24,7 @@ import {
     toggleRegisterModal
 } from '../../redux/actionCreator';
 import "./style.css";
-
+import Notification from "../Notification";
 
 /**@class */
 class AppNavbar extends Component {
@@ -68,7 +68,7 @@ class AppNavbar extends Component {
                             <NavLink className="mx-2 pt-3 hover-underline" href="/search">Search</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties<Notification/></NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/explore">Explore</NavLink>

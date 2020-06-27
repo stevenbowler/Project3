@@ -5,10 +5,7 @@ import { savesCampGrounds } from "../redux/actionCreator";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
-// import SaveBtn from "../components/SaveBtn";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
-//import { Col, Row, Container } from "../components/Grid";
 import {
     // Button,
     // Dropdown,
@@ -30,13 +27,14 @@ import {
     Container,
     // Collapse,
 } from "reactstrap";
-import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
+import { CampGroundList, ListItem } from "../components/ExploreCampGroundList";
+import Search from "./Search";
 
 // import { Input, TextArea, FormBtn } from "../components/Form";
 /**@class */
 class Explore extends Component {
     state = {
-        campGrounds: [],
+        // campGrounds: [],
         entityId: "",
         campGround: "",
         city: "",
@@ -65,10 +63,23 @@ class Explore extends Component {
     /**@function */
     componentDidMount() {
         this.zipCode = this.zipCodeArray[Math.floor(Math.random() * 10).toString()];
+        console.log(this.zipCode)
         this.setState({ zipCode: this.zipCode, miles: "500" });
-        this.campGroundSearch();
-        this.forceUpdate();
+        this.query = `${this.zipCode}&exact=false&radius=500&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
+
+        API.getCampGrounds(this.query)
+        .then((res) => {
+            // this.setState({ result: res.data, campGrounds: res.data.results })
+
+            this.props.dispatch(savesCampGrounds(res.data.results));
+            console.log(res.data.results);
+        })
+
+        .catch((err) => console.log(err));
+        // this.campGroundSearch();
+        // this.forceUpdate();
     }
+    
 
 	/**
    * Initial loadsearch and set previous state variable to track login username change
@@ -117,7 +128,7 @@ class Explore extends Component {
 
     /**
      * validate changes in input field 
-     * @function handleValidation */
+    //  * @function handleValidation */
     handleValidation(pattern, value) {
         if (!pattern) return true;
         // string pattern, one validation rule
@@ -135,7 +146,7 @@ class Explore extends Component {
     }
 	/**
 	 * handle changes in input field
-	 * @function handleInputChange */
+	//  * @function handleInputChange */
     handleInputChange = (event) => {
         const { name, value } = event.target;
         this.setState({
@@ -228,8 +239,7 @@ class Explore extends Component {
                             {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
                             {/* {this.state.isValidZipCode && */}
-                            {
-                                this.props.campGrounds &&
+                            { this.props.campGrounds &&
                                     this.props.campGrounds.length > 0 ? (
                                         <CampGroundList>
                                             {this.props.campGrounds.map((campGround, index) => {

@@ -62,13 +62,6 @@ export const savesCampGrounds = (campGrounds) => {
     }
 }
 
-export const deleteCampGrounds = (campGrounds) => {
-    return {
-        type: actions.DELETES_CAMPGROUNDS,
-        campGrounds
-    }
-}
-
 export const updateFavoritesCount = (favoritesCount) => {
     return {
         type: actions.UPDATE_FAVORITESCOUNT,

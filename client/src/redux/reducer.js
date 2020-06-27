@@ -31,6 +31,7 @@ export const todoReducer = (state = initialState, action) => {
             sessionStorage.setItem("email", newState.email);
             sessionStorage.setItem("name", newState.username);
             sessionStorage.setItem("loggedIn", newState.loggedIn);
+            sessionStorage.setItem("favoritesCount", newState.favoritesCount);
             newState.errorMessage = null;
             console.log("LOGIN_USER: ", newState.username);
             return newState;
@@ -87,10 +88,7 @@ export const todoReducer = (state = initialState, action) => {
 
         case actions.SAVES_CAMPGROUNDS:
             newState.campGrounds = action.campGrounds;
-            return newState;
-
-        case actions.DELETES_CAMPGROUNDS:
-            newState.campGrounds = action.campGrounds;
+            newState.count = action.campGrounds.length;
             return newState;
 
         case actions.UPDATE_FAVORITESCOUNT:

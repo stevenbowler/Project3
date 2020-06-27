@@ -88,6 +88,7 @@ export default {
                             loggedIn: "true"
                         }));
                         // this.props.dispatch(toggleLoginModal());
+                        
                     }).catch(error => {
                         console.log("Could not login after register")
                         dispatch(loginError(error.response.data.statusMessage));
