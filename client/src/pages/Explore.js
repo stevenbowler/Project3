@@ -60,6 +60,7 @@ class Explore extends Component {
     zipCodeArray = ["78550", "78521", "78526", "78704", "92103", "94941", "23164", "78550", "78701"];
     zipCode = "78550";
 
+    /**@function */
     componentDidMount() {
         this.zipCode = this.zipCodeArray[Math.floor(Math.random() * 10).toString()];
         console.log(this.zipCode)
@@ -75,6 +76,8 @@ class Explore extends Component {
         })
 
         .catch((err) => console.log(err));
+        // this.campGroundSearch();
+        // this.forceUpdate();
     }
     
 
@@ -117,6 +120,10 @@ class Explore extends Component {
             })
 
             .catch((err) => console.log(err));
+        // setTimeout(() => {
+        //     console.log("this.props.campGrounds", this.props.campGrounds);
+        //     this.forceUpdate();
+        // }, 2000);
     };
 
     /**
@@ -231,31 +238,32 @@ class Explore extends Component {
                             </div>
                             {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
-                            {this.props.campGrounds &&
-                                this.props.campGrounds.length > 0 ? (
-                                    <CampGroundList>
-                                        {this.props.campGrounds.map((campGround, index) => {
-                                            return (
-                                                <Col xs={12} md={6} key={index}>
-                                                    <ListItem
-                                                        username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
-                                                        key={campGround._id}
-                                                        entityId={campGround.entity_id}
-                                                        campGround={campGround.name}
-                                                        city={campGround.addresses[0].city}
-                                                        state={campGround.addresses[0].state_code}
-                                                        distance={campGround.distance}
-                                                        rating={campGround.average_rating}
-                                                        description={campGround.description}
-                                                        imageURL={campGround.preview_image_url}
-                                                    />
-                                                </Col>
-                                            );
-                                        })}
-                                    </CampGroundList>
-                                ) : (
-                                    <h2>No camp grounds to display</h2>
-                                )}
+                            {/* {this.state.isValidZipCode && */}
+                            { this.props.campGrounds &&
+                                    this.props.campGrounds.length > 0 ? (
+                                        <CampGroundList>
+                                            {this.props.campGrounds.map((campGround, index) => {
+                                                return (
+                                                    <Col xs={12} md={6} key={index}>
+                                                        <ListItem
+                                                            username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
+                                                            key={campGround._id}
+                                                            entityId={campGround.entity_id}
+                                                            campGround={campGround.name}
+                                                            city={campGround.addresses[0].city}
+                                                            state={campGround.addresses[0].state_code}
+                                                            distance={campGround.distance}
+                                                            rating={campGround.average_rating}
+                                                            description={campGround.description}
+                                                            imageURL={campGround.preview_image_url}
+                                                        />
+                                                    </Col>
+                                                );
+                                            })}
+                                        </CampGroundList>
+                                    ) : (
+                                        <h2>No camp grounds to display</h2>
+                                    )}
                         </div>
                     </Col>
                 </Row>

@@ -1,6 +1,9 @@
+//@ts-check
+/**@module */
 import * as actions from './actions';
 import { cloneDeep } from 'lodash';
 
+/**@name initialState */
 const initialState = {
     username: sessionStorage.getItem("name"),
     email: sessionStorage.getItem("email"),
@@ -14,7 +17,7 @@ const initialState = {
     campGrounds: []
 }
 
-
+/**@function */
 export const todoReducer = (state = initialState, action) => {
     const newState = cloneDeep(state);
     switch (action.type) {

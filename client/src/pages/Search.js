@@ -61,6 +61,17 @@ class Search extends Component {
 
 
 
+  /**@function */
+  componentDidMount() {
+    // this.zipCode = this.props.currentLocationZipCode;
+    setTimeout(() => {
+      console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode);
+      this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
+      this.campGroundSearch(this.state.zipCode);
+      this.forceUpdate();
+    }, 1000);
+  }
+
 	/**
    * Initial loadsearch and set previous state variable to track login username change
   //  * @function componentDidMount */
@@ -87,6 +98,11 @@ class Search extends Component {
   //     this.previousName = this.props.username;
   //   }
   // }
+
+  /**
+   * 
+   * @param {*} query 
+   */
   campGroundSearch = (query) => {
     console.log("campGroundSearch: zipCode miles", this.state.zipCode, this.state.miles);
     query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
@@ -100,6 +116,12 @@ class Search extends Component {
       .catch((err) => console.log(err));
   };
 
+
+  /**
+   * 
+   * @param {*} pattern 
+   * @param {*} value 
+   */
   handleValidation(pattern, value) {
     if (!pattern) return true;
     // string pattern, one validation rule
@@ -115,9 +137,12 @@ class Search extends Component {
       return conditions.map((condition) => condition.test(value));
     }
   }
+
+
 	/**
-	 * handle changes in input field
-	 * @function handleInputChange */
+   * 
+   * @param {*} event 
+   */
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -152,7 +177,7 @@ class Search extends Component {
                         autoComplete="off"
                         type="text"
                         name="zipCode"
-                        placeholder={this.props.currentLocationZipCode}
+                        placeholder="Enter valid Zipcode"
                         onChange={this.handleInputChange}
                         value={this.state.zipCode}
                       />

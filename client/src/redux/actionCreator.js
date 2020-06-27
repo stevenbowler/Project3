@@ -1,3 +1,5 @@
+//@ts-check
+/**@module actionCreator*/
 import * as actions from './actions';
 
 

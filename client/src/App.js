@@ -80,7 +80,7 @@ class App extends React.Component {
   }
 }
 
-
+/**@function mapStateToProps */
 const mapStateToProps = (state) => {
   return {
     username: state.username,

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: client/src/components/Grid/index.js</title>
+    <title>JSDoc: Source: client/src/pages/Saved.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: client/src/components/Grid/index.js</h1>
+    <h1 class="page-title">Source: client/src/pages/Saved.js</h1>
 
     
 
@@ -28,46 +28,97 @@
         <article>
             <pre class="prettyprint source linenums"><code>//@ts-check
 /**@module */
-import React from "react";
+import React, { Component } from "react";
+// import axios from "axios";
+// import { Link } from "react-router-dom";
+import { Col, Row, Container } from "../components/Grid";
+import Jumbotron from "../components/Jumbotron";
+// import DeleteBtn from "../components/DeleteBtn";
+import { CampGroundList, ListItem } from "../components/SaveCampGroundList";
+import API from "../utils/API";
+import { savesCampGrounds, updateFavoritesCount } from "../redux/actionCreator";
+import { connect } from "react-redux";
 
-// Exporting the Container, Row, and Col components from this file
+/**@class */
+class Saved extends Component {
+  state = {
+    savedCampGrounds: []
+  };
 
-/**
- * This Container component allows us to use a bootstrap container without worrying about class names
- * @function Container
- * @param {*} fluid
- */
-export function Container({ fluid, children }) {
-  return &lt;div className={`container${fluid ? "-fluid" : ""}`}>{children}&lt;/div>;
+  /**
+   * @function componentDidMount
+   */
+  componentDidMount() {
+    this.getCampGround(this.props.username);
+  }
+
+
+  /**
+   * @function getCampGround
+   * @param {*} campGroundData 
+   */
+  getCampGround = (campGroundData) => {
+    API.getCampGround(campGroundData)
+      .then(res => {
+        this.props.dispatch(savesCampGrounds(res.data));
+        this.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+        // this.setState({ savedCampGrounds: res })
+      })
+      .catch((err => console.log(err)))
+  }
+
+
+  render() {
+    return (
+      &lt;Container fluid>
+        &lt;Row>
+          &lt;Col size="md-12">
+            &lt;Jumbotron>
+              &lt;h1>
+                &lt;h1>Favorites&lt;/h1>
+              &lt;/h1>
+            &lt;/Jumbotron>
+            {(this.props.campGrounds &amp;&amp; this.props.campGrounds.length > 0) ?
+              &lt;CampGroundList>
+                {this.props.campGrounds.map((campGround, index) => {
+                  return (&lt;div key={index}>
+                    &lt;ListItem
+                      key={campGround.id}
+                      id={campGround._id}
+                      username={campGround.username}
+                      entityId={campGround.entityId}
+                      campGround={campGround.campGround}
+                      city={campGround.city}
+                      state={campGround.state}
+                      distance={campGround.distance}
+                      rating={campGround.rating}
+                      description={campGround.description}
+                      imageURL={campGround.imageURL}
+                    />
+                  &lt;/div>
+                  )
+                })}
+              &lt;/CampGroundList>
+              :
+              &lt;h2 style={{ color: "white" }}>No camp grounds to display&lt;/h2>
+            }
+
+          &lt;/Col>
+
+        &lt;/Row>
+      &lt;/Container>
+    );
+  }
 }
 
-
-/**
- * This Row component lets us use a bootstrap row without having to think about class names
- * @function Container
- * @param {*} fluid
-*/
-export function Row({ fluid, children }) {
-  return &lt;div className={`row${fluid ? "-fluid" : ""}`}>{children}&lt;/div>;
+/**@function */
+function mapStateToProps(state) {
+  return {
+    campGrounds: state.campGrounds,
+    username: state.username,
+  }
 }
-
-/**
- * This Col component lets us size bootstrap columns with less syntax
- * e.g. &lt;Col size="md-12"> instead of &lt;div className="col-md-12">
- * @function Container
- * @param {*} fluid
-*/export function Col({ size, children }) {
-  return (
-    &lt;div
-      className={size
-        .split(" ")
-        .map(size => "col-" + size)
-        .join(" ")}
-    >
-      {children}
-    &lt;/div>
-  );
-}
+export default connect(mapStateToProps)(Saved);
 </code></pre>
         </article>
     </section>
