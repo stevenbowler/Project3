@@ -3,6 +3,7 @@
 import React from "react";
 // import "./style.css";
 import SaveBtn from "../SaveBtn";
+import EquipmentList from "../EquipmentList";
 
 //import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
@@ -107,8 +108,8 @@ export function ListItem(props) {
 							({props.distance} miles away)
 						</h6>
 					</CardSubtitle>
-					<hr></hr>-
-					{props.campsite_equipment_name}
+					<hr></hr>
+					<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
 					<hr></hr>
 					<div style={{float:"right"}}>
 						<a
