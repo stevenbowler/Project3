@@ -238,7 +238,6 @@ class Explore extends Component {
                             {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
                             {/* {this.state.isValidZipCode && */}
-
                             {this.props.campGrounds &&
                                 this.props.campGrounds.length > 0 ? (
                                     <CampGroundList>
@@ -252,7 +251,7 @@ class Explore extends Component {
                                                         campGround={campGround.name}
                                                         city={campGround.addresses[0].city}
                                                         state={campGround.addresses[0].state_code}
-                                                        distance={campGround.distance}
+                                                        // distance={campGround.distance}
                                                         rating={campGround.average_rating}
                                                         description={campGround.description}
                                                         imageURL={campGround.preview_image_url}
@@ -261,12 +260,10 @@ class Explore extends Component {
                                             );
                                         })}
                                     </CampGroundList>
-                                )
-                                : (
+                                ) : (
                                     <h2>No camp grounds to display</h2>
                                 )}
                         </div>
-
                     </Col>
                 </Row>
             </Container>
