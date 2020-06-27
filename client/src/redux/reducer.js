@@ -88,7 +88,6 @@ export const todoReducer = (state = initialState, action) => {
 
         case actions.SAVES_CAMPGROUNDS:
             newState.campGrounds = action.campGrounds;
-            newState.count = action.campGrounds.length;
             return newState;
 
         case actions.UPDATE_FAVORITESCOUNT:
