@@ -189,32 +189,7 @@ class Search extends Component {
 											</Label>
 										</FormGroup>
 									</Col>
-									<Col xs={6}>
-										<FormGroup>
-											<Input
-												className="form-control form-control-lg"
-												autoComplete="off"
-												type="select"
-												name="miles"
-												placeholder="password placeholder"
-												value={this.state.miles}
-											>
-												<option>50</option>
-												<option>100</option>
-												<option>200</option>
-												<option>300</option>
-												<option>400</option>
-												<option>500+</option>
-											</Input>
-											<Label
-												for="exampleEmail"
-												style={{ paddingLeft: "15px", color: "forestgreen" }}
-											>
-												Miles
 
-											</Label>
-                    </FormGroup>
-                  </Col>
                   <Col xs={6}>
                     <FormGroup>
                       <Input
@@ -284,8 +259,8 @@ class Search extends Component {
                           activities={campGround.activities}
                           price_range_max={campGround.price_range.amount_max}
                           price_range_min={campGround.price_range.amount_min}
-                          activity_1={campGround.activities[0].activity_name}
-                          activity_2={campGround.activities[1].activity_name}
+                          /*activity_1={campGround.activities[0].activity_name}*/
+                          /*activity_2={campGround.activities[1].activity_name}*/
                           campsite_equipment_name={campGround.campsite_equipment_name}
       
 												/>
