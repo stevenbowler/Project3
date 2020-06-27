@@ -57,7 +57,7 @@ class Explore extends Component {
         isValidZipCode: false,
     };
     // zipCodeArray = ["78550", "90210", "11100", "23098", "34450", "48970", "56790", "69850", "47890"];
-    zipCodeArray = ["78550", "78521", "78526", "78704", "92103", "94941", "23164", "78550", "78701", "74941"];
+    zipCodeArray = ["78550", "87001", "58001", "46001", "20001", "71601", "33001", "98001", "35004", "99501"];
     zipCode = "78550";
 
     /**@function */
@@ -163,8 +163,8 @@ class Explore extends Component {
             <Container fluid>
                 <Row>
                     <Col size="md-12">
-                    <div>
-                             {/*<Jumbotron>
+                        <div>
+                            {/*<Jumbotron>
                                 <h1 style={{ fontSize: "60px" }}>
                                     <span style={{ fontWeight: "bold", fontSize: "120px" }}>camp</span>.SITE
 								</h1>
@@ -251,7 +251,7 @@ class Explore extends Component {
                                                         campGround={campGround.name}
                                                         city={campGround.addresses[0].city}
                                                         state={campGround.addresses[0].state_code}
-                                                        distance={campGround.distance}
+                                                        // distance={campGround.distance}
                                                         rating={campGround.average_rating}
                                                         description={campGround.description}
                                                         imageURL={campGround.preview_image_url}
