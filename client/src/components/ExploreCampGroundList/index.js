@@ -4,13 +4,8 @@ import React from "react";
 // import "./style.css";
 import SaveBtn from "../SaveBtn";
 import { Row, Container } from "../Grid";
-// import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
-// import { savesCampGrounds } from "../redux/actionCreator";
-// import { connect } from "react-redux";
 import { Button, Card, CardImg, CardBody, CardTitle, CardSubtitle } from "reactstrap";
-// import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
-import "./style.css";
 import StarRating from "../StarRating";
 import Description from "../Description"
 

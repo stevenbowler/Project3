@@ -4,12 +4,12 @@ import { Badge } from 'reactstrap';
 
 class Notification extends React.Component {
 
-   render(){
+    render() {
 
-    return(
-        <Badge color="danger" pill><span>{this.props.favoritesCount}</span></Badge>
-    )
-}
+        return (
+            <Badge color="danger" pill><span>{this.props.favoritesCount}</span></Badge>
+        )
+    }
 
 }
 
