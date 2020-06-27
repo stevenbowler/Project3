@@ -231,8 +231,7 @@ class Explore extends Component {
                             </div>
                             {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
-                            {
-                                this.props.campGrounds &&
+                            {this.props.campGrounds &&
                                 this.props.campGrounds.length > 0 ? (
                                     <CampGroundList>
                                         {this.props.campGrounds.map((campGround, index) => {
