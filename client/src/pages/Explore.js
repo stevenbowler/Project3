@@ -164,8 +164,8 @@ class Explore extends Component {
             <Container fluid>
                 <Row>
                     <Col size="md-12">
-                        <div>
-                            <Jumbotron>
+                    <div>
+                             {/*<Jumbotron>
                                 <h1 style={{ fontSize: "60px" }}>
                                     <span style={{ fontWeight: "bold", fontSize: "120px" }}>camp</span>.SITE
 								</h1>
@@ -235,7 +235,7 @@ class Explore extends Component {
                                 >
                                     SEARCH
 								</button>
-                            </div>
+                            </div> */}
                             {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
                             {/* {this.state.isValidZipCode && */}
@@ -261,10 +261,11 @@ class Explore extends Component {
                                                 );
                                             })}
                                         </CampGroundList>
-                                    ) : (
+                                    ) 
+                                    : (
                                         <h2>No camp grounds to display</h2>
                                     )}
-                        </div>
+                         </div>
                     </Col>
                 </Row>
             </Container>
