@@ -163,8 +163,8 @@ class Explore extends Component {
             <Container fluid>
                 <Row>
                     <Col size="md-12">
-                        <div>
-                            <Jumbotron>
+                    <div>
+                             {/*<Jumbotron>
                                 <h1 style={{ fontSize: "60px" }}>
                                     <span style={{ fontWeight: "bold", fontSize: "120px" }}>camp</span>.SITE
 								</h1>
@@ -234,36 +234,39 @@ class Explore extends Component {
                                 >
                                     SEARCH
 								</button>
-                            </div>
+                            </div> */}
                             {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
                             {/* {this.state.isValidZipCode && */}
-                            {this.props.campGrounds &&
-                                this.props.campGrounds.length > 0 ? (
-                                    <CampGroundList>
-                                        {this.props.campGrounds.map((campGround, index) => {
-                                            return (
-                                                <Col xs={12} md={6} key={index}>
-                                                    <ListItem
-                                                        username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
-                                                        key={campGround._id}
-                                                        entityId={campGround.entity_id}
-                                                        campGround={campGround.name}
-                                                        city={campGround.addresses[0].city}
-                                                        state={campGround.addresses[0].state_code}
-                                                        distance={campGround.distance}
-                                                        rating={campGround.average_rating}
-                                                        description={campGround.description}
-                                                        imageURL={campGround.preview_image_url}
-                                                    />
-                                                </Col>
-                                            );
-                                        })}
-                                    </CampGroundList>
-                                ) : (
-                                    <h2>No camp grounds to display</h2>
-                                )}
-                        </div>
+
+                            { this.props.campGrounds &&
+                                    this.props.campGrounds.length > 0 ? (
+                                        <CampGroundList>
+                                            {this.props.campGrounds.map((campGround, index) => {
+                                                return (
+                                                    <Col xs={12} md={6} key={index}>
+                                                        <ListItem
+                                                            username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
+                                                            key={campGround._id}
+                                                            entityId={campGround.entity_id}
+                                                            campGround={campGround.name}
+                                                            city={campGround.addresses[0].city}
+                                                            state={campGround.addresses[0].state_code}
+                                                            distance={campGround.distance}
+                                                            rating={campGround.average_rating}
+                                                            description={campGround.description}
+                                                            imageURL={campGround.preview_image_url}
+                                                        />
+                                                    </Col>
+                                                );
+                                            })}
+                                        </CampGroundList>
+                                    ) 
+                                    : (
+                                        <h2>No camp grounds to display</h2>
+                                    )}
+                         </div>
+
                     </Col>
                 </Row>
             </Container>
