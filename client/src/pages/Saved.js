@@ -21,8 +21,9 @@ class Saved extends Component {
   getCampGround = (campGroundData) => {
     API.getCampGround(campGroundData)
       .then(res => {
-        this.props.dispatch(savesCampGrounds(res.data))
-       this.props.dispatch(updateFavoritesCount(res.data.length.toString()))
+        this.props.dispatch(savesCampGrounds(res.data));
+        this.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+        // this.setState({ savedCampGrounds: res })
       })
       .catch((err => console.log(err)))
   }
@@ -74,7 +75,6 @@ function mapStateToProps(state) {
   return {
     campGrounds: state.campGrounds,
     username: state.username,
-    favoritesCount: favoritesCount
   }
 }
 export default connect(mapStateToProps)(Saved);

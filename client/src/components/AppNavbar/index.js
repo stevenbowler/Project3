@@ -21,8 +21,7 @@ import {
     toggleNavbar,
     logout,
     toggleLoginModal,
-    toggleRegisterModal,
-    favoritesCount
+    toggleRegisterModal
 } from '../../redux/actionCreator';
 import "./style.css";
 import Notification from "../Notification";
@@ -69,11 +68,10 @@ class AppNavbar extends Component {
                             <NavLink className="mx-2 pt-3 hover-underline" href="/search">Search</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties<Notification/>
-</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties<Notification/></NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Explore</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/explore">Explore</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
@@ -102,8 +100,7 @@ const mapStateToProps = (state) => {
         email: state.email,
         loggedIn: state.loggedIn,
         isOpenNavbar: state.isOpenNavbar,
-        favoritesCount: favoritesCount
-
+        favoritesCount: state.favoritesCount
     }
 }
 
