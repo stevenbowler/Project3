@@ -107,7 +107,7 @@ export function ListItem(props) {
 							({props.distance} miles away)
 						</h6>
 					</CardSubtitle>
-					<hr></hr>-{props.activity_1} -{props.activity_2} -{props.activity_1} -{props.activity_2}
+					<hr></hr>-
 					{props.campsite_equipment_name}
 					<hr></hr>
 					<div style={{float:"right"}}>
