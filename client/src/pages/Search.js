@@ -140,52 +140,78 @@ class Search extends Component {
 
 
 	/**
-   * 
-   * @param {*} event 
-   */
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-    if (this.handleValidation("^\\d{5}", value)) {
-      this.setState({
-        isValidZipCode: true,
-      });
-    }
-  };
 
-  render() {
-    return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <div>
-              <Jumbotron>
-                <h1 style={{ fontSize: "60px" }}>
-                  <span style={{ fontWeight: "bold", fontSize: "120px" }}>camp</span>.SITE
+	 * handle changes in input field
+	 * @function handleInputChange */
+	handleInputChange = (event) => {
+		const { name, value } = event.target;
+		this.setState({
+			[name]: value,
+		});
+		if (this.handleValidation("^\\d{5}", value)) {
+			this.setState({
+				isValidZipCode: true,
+			});
+		}
+	};
+
+	render() {
+		return (
+			<Container fluid>
+				<Row>
+					<Col md="12">
+						<div>
+							<Jumbotron>
+								<h1 style={{ fontSize: "60px" }}>
+									<span style={{ fontWeight: "bold", fontSize: "120px" }}>camp</span>.SITE
 								</h1>
-                <hr></hr>
-                <h2>find last-minute camping reservations</h2>
-              </Jumbotron>
-              <Form>
-                <Row form>
-                  <Col xs={6}>
-                    <FormGroup>
-                      <Input
-                        className="form-control form-control-lg"
-                        autoComplete="off"
-                        type="text"
-                        name="zipCode"
-                        placeholder="Enter valid Zipcode"
-                        onChange={this.handleInputChange}
-                        value={this.state.zipCode}
-                      />
-                      <Label
-                        for="exampleEmail"
-                        style={{ paddingLeft: "15px", color: "forestgreen" }}
-                      >
-                        Location
+								<hr></hr>
+								<h2>find last-minute camping reservations</h2>
+							</Jumbotron>
+							<Form className="inline-search-form">
+								<Row form>
+									<Col xs={6}>
+										<FormGroup>
+											<Input
+												className="form-control form-control-lg"
+												autoComplete="off"
+												type="text"
+												name="zipCode"
+												placeholder={this.props.currentLocationZipCode}
+												onChange={this.handleInputChange}
+												value={this.state.zipCode}
+											/>
+											<Label
+												for="exampleEmail"
+												style={{ paddingLeft: "15px", color: "forestgreen" }}
+											>
+												Location
+											</Label>
+										</FormGroup>
+									</Col>
+									<Col xs={6}>
+										<FormGroup>
+											<Input
+												className="form-control form-control-lg"
+												autoComplete="off"
+												type="select"
+												name="miles"
+												placeholder="password placeholder"
+												value={this.state.miles}
+											>
+												<option>50</option>
+												<option>100</option>
+												<option>200</option>
+												<option>300</option>
+												<option>400</option>
+												<option>500+</option>
+											</Input>
+											<Label
+												for="exampleEmail"
+												style={{ paddingLeft: "15px", color: "forestgreen" }}
+											>
+												Miles
+
 											</Label>
                     </FormGroup>
                   </Col>
@@ -231,41 +257,52 @@ class Search extends Component {
                 >
                   SEARCH
 								</button>
-              </div>
-              {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
-              {this.state.isValidZipCode &&
-                this.props.campGrounds &&
-                this.props.campGrounds.length > 0 ? (
-                  <CampGroundList>
-                    {this.props.campGrounds.map((campGround, index) => {
-                      return (
-                        <Col xs={12} md={6} key={index}>
-                          <ListItem
-                            username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
-                            key={campGround._id}
-                            entityId={campGround.entity_id}
-                            campGround={campGround.name}
-                            city={campGround.addresses[0].city}
-                            state={campGround.addresses[0].state_code}
-                            distance={campGround.distance}
-                            rating={campGround.average_rating}
-                            description={campGround.description}
-                            imageURL={campGround.preview_image_url}
-                          />
-                        </Col>
-                      );
-                    })}
-                  </CampGroundList>
-                ) : (
-                  <h2>No camp grounds to display</h2>
-                )}
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+							</div>
+							{console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
+
+							{this.state.isValidZipCode &&
+							this.props.campGrounds &&
+							this.props.campGrounds.length > 0 ? (
+								<CampGroundList>
+									{this.props.campGrounds.map((campGround, index) => {
+										return (
+											<Col lg="12" key={index}>
+												<ListItem
+													username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
+													key={campGround._id}
+													entityId={campGround.entity_id}
+													campGround={campGround.name}
+													city={campGround.addresses[0].city}
+													state={campGround.addresses[0].state_code}
+													distance={campGround.distance}
+													rating={campGround.average_rating}
+													description={campGround.description}
+                          imageURL={campGround.preview_image_url}
+                          availability ={campGround.availability}
+                          number_of_ratings ={campGround.number_of_ratings}
+                          activities={campGround.activities}
+                          price_range_max={campGround.price_range.amount_max}
+                          price_range_min={campGround.price_range.amount_min}
+                          activity_1={campGround.activities[0].activity_name}
+                          activity_2={campGround.activities[1].activity_name}
+                          campsite_equipment_name={campGround.campsite_equipment_name}
+      
+												/>
+											</Col>
+										);
+									})}
+								</CampGroundList>
+							) : (
+								<h2 style={{textAlign:"center"}}>No camp grounds to display</h2>
+							)}
+						</div>
+					</Col>
+				</Row>
+			</Container>
+		);
+	}
+
 }
 function mapStateToProps(state) {
   return {
