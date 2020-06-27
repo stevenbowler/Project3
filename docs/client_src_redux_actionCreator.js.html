@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: client/src/components/Grid/index.js</title>
+    <title>JSDoc: Source: client/src/redux/actionCreator.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: client/src/components/Grid/index.js</h1>
+    <h1 class="page-title">Source: client/src/redux/actionCreator.js</h1>
 
     
 
@@ -27,48 +27,89 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>//@ts-check
-/**@module */
-import React from "react";
+/**@module actionCreator*/
+import * as actions from './actions';
 
-// Exporting the Container, Row, and Col components from this file
 
-/**
- * This Container component allows us to use a bootstrap container without worrying about class names
- * @function Container
- * @param {*} fluid
- */
-export function Container({ fluid, children }) {
-  return &lt;div className={`container${fluid ? "-fluid" : ""}`}>{children}&lt;/div>;
+export const login = (user) => {
+    return {
+        type: actions.LOGIN_USER,
+        user
+    }
+}
+
+export const logout = () => {
+    return {
+        type: actions.LOGOUT_USER
+    }
+}
+
+export const register = (user) => {
+    return {
+        type: actions.REGISTER_USER,
+        user
+    }
+}
+
+export const loginError = (message) => {
+    return {
+        type: actions.LOGIN_ERROR,
+        message
+    }
+}
+
+export const toggleNavbar = () => {
+    return {
+        type: actions.TOGGLE_NAVBAR,
+    }
+}
+
+export const toggleExtraModal = () => {
+    return {
+        type: actions.TOGGLE_EXTRAMODAL,
+    }
+}
+
+export const toggleLoginModal = () => {
+    return {
+        type: actions.TOGGLE_LOGINMODAL,
+    }
+}
+
+export const toggleRegisterModal = () => {
+    return {
+        type: actions.TOGGLE_REGISTERMODAL,
+    }
 }
 
 
-/**
- * This Row component lets us use a bootstrap row without having to think about class names
- * @function Container
- * @param {*} fluid
-*/
-export function Row({ fluid, children }) {
-  return &lt;div className={`row${fluid ? "-fluid" : ""}`}>{children}&lt;/div>;
+export const savesCampGrounds = (campGrounds) => {
+    return {
+        type: actions.SAVES_CAMPGROUNDS,
+        campGrounds
+    }
 }
 
-/**
- * This Col component lets us size bootstrap columns with less syntax
- * e.g. &lt;Col size="md-12"> instead of &lt;div className="col-md-12">
- * @function Container
- * @param {*} fluid
-*/export function Col({ size, children }) {
-  return (
-    &lt;div
-      className={size
-        .split(" ")
-        .map(size => "col-" + size)
-        .join(" ")}
-    >
-      {children}
-    &lt;/div>
-  );
+export const deleteCampGrounds = (campGrounds) => {
+    return {
+        type: actions.DELETES_CAMPGROUNDS,
+        campGrounds
+    }
 }
-</code></pre>
+
+export const updateFavoritesCount = (favoritesCount) => {
+    return {
+        type: actions.UPDATE_FAVORITESCOUNT,
+        favoritesCount
+    }
+}
+
+export const setZipCode = (zipCode) => {
+    return {
+        type: actions.SET_ZIPCODE,
+        zipCode
+    }
+}</code></pre>
         </article>
     </section>
 
