@@ -57,7 +57,7 @@ class Explore extends Component {
         isValidZipCode: false,
     };
     // zipCodeArray = ["78550", "90210", "11100", "23098", "34450", "48970", "56790", "69850", "47890"];
-    zipCodeArray = ["78550", "78521", "78526", "78704", "92103", "94941", "23164", "78550", "78701"];
+    zipCodeArray = ["78550", "78521", "78526", "78704", "92103", "94941", "23164", "78550", "78701", "74941"];
     zipCode = "78550";
 
     /**@function */
@@ -66,20 +66,19 @@ class Explore extends Component {
         console.log(this.zipCode)
         this.setState({ zipCode: this.zipCode, miles: "500" });
         this.query = `${this.zipCode}&exact=false&radius=500&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
-
         API.getCampGrounds(this.query)
-        .then((res) => {
-            // this.setState({ result: res.data, campGrounds: res.data.results })
+            .then((res) => {
+                // this.setState({ result: res.data, campGrounds: res.data.results })
 
-            this.props.dispatch(savesCampGrounds(res.data.results));
-            console.log(res.data.results);
-        })
+                this.props.dispatch(savesCampGrounds(res.data.results));
+                console.log(res.data.results);
+            })
 
-        .catch((err) => console.log(err));
+            .catch((err) => console.log(err));
         // this.campGroundSearch();
         // this.forceUpdate();
     }
-    
+
 
 	/**
    * Initial loadsearch and set previous state variable to track login username change
@@ -239,31 +238,31 @@ class Explore extends Component {
                             {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
                             {/* {this.state.isValidZipCode && */}
-                            { this.props.campGrounds &&
-                                    this.props.campGrounds.length > 0 ? (
-                                        <CampGroundList>
-                                            {this.props.campGrounds.map((campGround, index) => {
-                                                return (
-                                                    <Col xs={12} md={6} key={index}>
-                                                        <ListItem
-                                                            username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
-                                                            key={campGround._id}
-                                                            entityId={campGround.entity_id}
-                                                            campGround={campGround.name}
-                                                            city={campGround.addresses[0].city}
-                                                            state={campGround.addresses[0].state_code}
-                                                            distance={campGround.distance}
-                                                            rating={campGround.average_rating}
-                                                            description={campGround.description}
-                                                            imageURL={campGround.preview_image_url}
-                                                        />
-                                                    </Col>
-                                                );
-                                            })}
-                                        </CampGroundList>
-                                    ) : (
-                                        <h2>No camp grounds to display</h2>
-                                    )}
+                            {this.props.campGrounds &&
+                                this.props.campGrounds.length > 0 ? (
+                                    <CampGroundList>
+                                        {this.props.campGrounds.map((campGround, index) => {
+                                            return (
+                                                <Col xs={12} md={6} key={index}>
+                                                    <ListItem
+                                                        username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
+                                                        key={campGround._id}
+                                                        entityId={campGround.entity_id}
+                                                        campGround={campGround.name}
+                                                        city={campGround.addresses[0].city}
+                                                        state={campGround.addresses[0].state_code}
+                                                        distance={campGround.distance}
+                                                        rating={campGround.average_rating}
+                                                        description={campGround.description}
+                                                        imageURL={campGround.preview_image_url}
+                                                    />
+                                                </Col>
+                                            );
+                                        })}
+                                    </CampGroundList>
+                                ) : (
+                                    <h2>No camp grounds to display</h2>
+                                )}
                         </div>
                     </Col>
                 </Row>
