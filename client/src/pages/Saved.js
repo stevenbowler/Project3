@@ -1,33 +1,47 @@
+//@ts-check
+/**@module */
 import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+// import axios from "axios";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import DeleteBtn from "../components/DeleteBtn";
+// import DeleteBtn from "../components/DeleteBtn";
 import { CampGroundList, ListItem } from "../components/SaveCampGroundList";
 import API from "../utils/API";
-import { savesCampGrounds } from "../redux/actionCreator";
+import { savesCampGrounds, updateFavoritesCount } from "../redux/actionCreator";
 import { connect } from "react-redux";
 
+/**@class */
 class Saved extends Component {
   state = {
     savedCampGrounds: []
   };
 
+  /**
+   * @function componentDidMount
+   */
   componentDidMount() {
-    this.getCampGround();
+    this.getCampGround(this.props.username);
   }
 
+
+  /**
+   * @function getCampGround
+   * @param {*} campGroundData 
+   */
   getCampGround = (campGroundData) => {
+    console.log("this.props.campGrounds", this.props.campGrounds);
     API.getCampGround(campGroundData)
       .then(res => {
-        this.props.dispatch(savesCampGrounds(res.data))
+        this.props.dispatch(savesCampGrounds(res.data));
+        this.props.dispatch(updateFavoritesCount(res.data.length.toString()));
         // this.setState({ savedCampGrounds: res })
       })
-      .catch((err => console.log(err)))
+      .catch((err => console.log(err)));
+    console.log("this.props.campGrounds", this.props.campGrounds);
   }
-  
-  
+
+
   render() {
     return (
       <Container fluid>
@@ -40,7 +54,7 @@ class Saved extends Component {
             </Jumbotron>
             {(this.props.campGrounds && this.props.campGrounds.length > 0) ?
               <CampGroundList>
-                 {this.props.campGrounds.map((campGround, index) => {
+                {this.props.campGrounds.map((campGround, index) => {
                   return (<div key={index}>
                     <ListItem
                       key={campGround.id}
@@ -60,7 +74,7 @@ class Saved extends Component {
                 })}
               </CampGroundList>
               :
-              <h2 style={{color:"white"}}>No camp grounds to display</h2>
+              <h2 style={{ color: "white" }}>No camp grounds to display</h2>
             }
 
           </Col>
@@ -70,10 +84,12 @@ class Saved extends Component {
     );
   }
 }
+
+/**@function */
 function mapStateToProps(state) {
   return {
     campGrounds: state.campGrounds,
-    username: state.username
+    username: state.username,
   }
 }
-export default connect(mapStateToProps) (Saved);
+export default connect(mapStateToProps)(Saved);

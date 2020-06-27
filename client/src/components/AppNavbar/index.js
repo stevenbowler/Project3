@@ -24,9 +24,9 @@ import {
     toggleRegisterModal
 } from '../../redux/actionCreator';
 import "./style.css";
+import Notification from "../Notification";
 
-
-
+/**@class */
 class AppNavbar extends Component {
 
     /**
@@ -60,28 +60,25 @@ class AppNavbar extends Component {
                 <NavbarBrand className="text-light mx-3 pt-3" href="/">CAMPsite</NavbarBrand>
                 <NavbarText className="text-light" placeholder="test"><small>{this.props.username}</small></ NavbarText>
 
-                <NavbarToggler onClick={this.toggleNavbar}><img src='./hamburger.jpg' alt='Menu' style={{
-                    height: "40px",
-                    width: "40px"
-                }}></img></NavbarToggler>
+                <NavbarToggler style={{ padding: "10px", margin: "5px", backgroundColor: "white" }} onClick={this.toggleNavbar}></NavbarToggler>
                 <Collapse isOpen={this.props.isOpenNavbar} navbar>
                     <Nav className="ml-auto text-light" navbar>
 
-
-                        <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
-                        </NavItem>
                         <NavItem>
                             <NavLink className="mx-2 pt-3 hover-underline" href="/search">Search</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/saved">Favorties<Notification/></NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="mx-2 pt-3 hover-underline" href="/contact">Contact</NavLink>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/explore">Explore</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink className="mx-2 pt-3 hover-underline" href="/about">About</NavLink>
                         </NavItem>
 
-                        <ButtonGroup block size="lg">
+
+                        <ButtonGroup block="true" size="lg">
                             <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? true : false} float="left" display="inline" onClick={this.register}>Register</Button>
                             <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? true : false} float="left" display="inline" onClick={this.login}>Login</Button>
                             <Button className="authentication-buttons mx-2" color="outline-light" hidden={this.props.loggedIn === "true" ? false : true} float="left" display="inline" onClick={this.logout}>Logout</Button>
@@ -102,7 +99,8 @@ const mapStateToProps = (state) => {
         username: state.username,
         email: state.email,
         loggedIn: state.loggedIn,
-        isOpenNavbar: state.isOpenNavbar
+        isOpenNavbar: state.isOpenNavbar,
+        favoritesCount: state.favoritesCount
     }
 }
 

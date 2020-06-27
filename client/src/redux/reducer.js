@@ -1,11 +1,15 @@
+//@ts-check
+/**@module */
 import * as actions from './actions';
 import { cloneDeep } from 'lodash';
 
+/**@name initialState */
 const initialState = {
     username: sessionStorage.getItem("name"),
     email: sessionStorage.getItem("email"),
     token: sessionStorage.getItem("token"),
     loggedIn: sessionStorage.getItem("loggedIn"),
+    favoritesCount: sessionStorage.getItem("favoritesCount"),
     isOpenNavbar: false,
     isOpenExtraModal: false,
     isOpenLoginModal: false,
@@ -13,7 +17,7 @@ const initialState = {
     campGrounds: []
 }
 
-
+/**@function */
 export const todoReducer = (state = initialState, action) => {
     const newState = cloneDeep(state);
     switch (action.type) {
@@ -27,6 +31,7 @@ export const todoReducer = (state = initialState, action) => {
             sessionStorage.setItem("email", newState.email);
             sessionStorage.setItem("name", newState.username);
             sessionStorage.setItem("loggedIn", newState.loggedIn);
+            sessionStorage.setItem("favoritesCount", newState.favoritesCount);
             newState.errorMessage = null;
             console.log("LOGIN_USER: ", newState.username);
             return newState;
@@ -52,10 +57,12 @@ export const todoReducer = (state = initialState, action) => {
             newState.email = "";
             newState.token = "";
             newState.loggedIn = "false";
+            newState.favoritesCount = "0";
             sessionStorage.setItem("name", newState.username);
             sessionStorage.setItem("email", newState.email);
             sessionStorage.setItem("token", newState.token);
             sessionStorage.setItem("loggedIn", "false");
+            sessionStorage.setItem("favoritesCount", newState.favoritesCount);
             console.log("LOGOUT_USER: ", newState.username);
             return newState;
 
@@ -81,10 +88,12 @@ export const todoReducer = (state = initialState, action) => {
 
         case actions.SAVES_CAMPGROUNDS:
             newState.campGrounds = action.campGrounds;
+            newState.count = action.campGrounds.length;
             return newState;
 
-        case actions.DELETES_CAMPGROUNDS:
-            newState.campGrounds = action.campGrounds;
+        case actions.UPDATE_FAVORITESCOUNT:
+            newState.favoritesCount = action.favoritesCount;
+            sessionStorage.setItem("favoritesCount", newState.favoritesCount);
             return newState;
 
         case actions.SET_ZIPCODE:
