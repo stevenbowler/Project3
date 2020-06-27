@@ -239,7 +239,7 @@ class Search extends Component {
                   <CampGroundList>
                     {this.props.campGrounds.map((campGround, index) => {
                       return (
-                        <Col xs={12} md={6} key={index}>
+                        <Col xs={12} key={index}>
                           <ListItem
                             username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
                             key={campGround._id}
@@ -251,6 +251,11 @@ class Search extends Component {
                             rating={campGround.average_rating}
                             description={campGround.description}
                             imageURL={campGround.preview_image_url}
+                            campsite_equipment_name={campGround.campsite_equipment_name}
+                            price_range_max={campGround.price_range.amount_max}
+                            price_range_min={campGround.price_range.amount_min}
+                            availability ={campGround.availability}
+                            number_of_ratings ={campGround.number_of_ratings}
                           />
                         </Col>
                       );
