@@ -11,24 +11,34 @@ import API from "../utils/API";
 import { savesCampGrounds, updateFavoritesCount } from "../redux/actionCreator";
 import { connect } from "react-redux";
 
+/**@class */
 class Saved extends Component {
   state = {
     savedCampGrounds: []
   };
 
-  /**@function */
+  /**
+   * @function componentDidMount
+   */
   componentDidMount() {
     this.getCampGround(this.props.username);
   }
-  /**@function */
+
+
+  /**
+   * @function getCampGround
+   * @param {*} campGroundData 
+   */
   getCampGround = (campGroundData) => {
+    console.log("this.props.campGrounds", this.props.campGrounds);
     API.getCampGround(campGroundData)
       .then(res => {
         this.props.dispatch(savesCampGrounds(res.data));
         this.props.dispatch(updateFavoritesCount(res.data.length.toString()));
         // this.setState({ savedCampGrounds: res })
       })
-      .catch((err => console.log(err)))
+      .catch((err => console.log(err)));
+    console.log("this.props.campGrounds", this.props.campGrounds);
   }
 
 
@@ -74,6 +84,8 @@ class Saved extends Component {
     );
   }
 }
+
+/**@function */
 function mapStateToProps(state) {
   return {
     campGrounds: state.campGrounds,
