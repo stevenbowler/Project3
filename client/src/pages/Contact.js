@@ -5,8 +5,8 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 
 /**
- * if route/resource not found display this page
- * @function NoMatch
+ * if route/Contact ... to display Contact page
+ * @function Contact
  */
 function Contact() {
     return (

@@ -1,3 +1,5 @@
+//@ts-check
+/**@module actionCreator*/
 import * as actions from './actions';
 
 
@@ -60,10 +62,10 @@ export const savesCampGrounds = (campGrounds) => {
     }
 }
 
-export const deleteCampGrounds = (campGrounds) => {
+export const updateFavoritesCount = (favoritesCount) => {
     return {
-        type: actions.DELETES_CAMPGROUNDS,
-        campGrounds
+        type: actions.UPDATE_FAVORITESCOUNT,
+        favoritesCount
     }
 }
 

@@ -1,6 +1,9 @@
+//@ts-check
+/**@module */
 import React from "react";
 // import "./style.css";
 import SaveBtn from "../SaveBtn";
+
 //import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
 // import { savesCampGrounds } from "../redux/actionCreator";
@@ -21,12 +24,16 @@ import {
 	ToastHeader,
 	ToastBody,
 } from "reactstrap";
+
 import "./style.css";
 import StarRating from "../StarRating";
 import Description from "../Description";
 
-// This file exports both the List and ListItem components
-
+// 
+/**This file exports both the List and ListItem components
+ * @function CampGroundList
+ * @param {*} param0 
+ */
 export function CampGroundList({ children }) {
 	return (
 		<Container>
@@ -34,6 +41,12 @@ export function CampGroundList({ children }) {
 		</Container>
 	);
 }
+
+
+/**Sets every item in the list with a Saved button to save key data to Mongo on clicke
+ * @function ListItem
+ * @param {*} props 
+ */
 export function ListItem(props) {
 	const saveCampGround = (campGroundData) => {
 		API.saveCampGround(campGroundData)
@@ -43,6 +56,7 @@ export function ListItem(props) {
 			.catch((err) => console.log(err));
 	};
 	return (
+
 		<div className="card-div">
 			<hr style={{ border: "1px solid black" }}></hr>
 			<Col lg="5" className="card-image-wrapper">
@@ -62,6 +76,7 @@ export function ListItem(props) {
 								description: props.description,
 								imageURL: props.imageURL,
 							})
+
 						}
 					></SaveBtn>
 				</CardImgOverlay>

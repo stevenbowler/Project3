@@ -1,15 +1,17 @@
 //@ts-check
+/**@module */
 
+/**@namespace campGroundControler */
 const db = require("../models");
 
 // Defining methods for the booksController
-/**@module */
 module.exports = {
   /**@function findAll */
   findAll: function (req, res) {
+    // console.log("campgroundControler findAll req.query:", req.query.username);
     db.CampGround
-      // .find({ username: req.originalUrl.slice(13) })
-      .find({})
+      .find({ username: req.query.username })
+      // .find({})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

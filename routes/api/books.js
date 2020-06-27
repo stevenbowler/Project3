@@ -1,5 +1,5 @@
 //@ts-check
-/**@module */
+
 const router = require("express").Router();
 const booksController = require("../../controllers/booksController");
 const verify = require('../../privateRoutesAuth');
