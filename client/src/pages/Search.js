@@ -108,11 +108,7 @@ class Search extends Component {
     query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
     API.getCampGrounds(query)
       .then((res) => {
-        console.log("search.js API.getCampGrounds res: ", res);
-        console.log("search.js API.getCampGrounds res: ", res.data.results);
-        console.log("search.js API.getCampGrounds typeof res: ", typeof res.data.results);
         if (typeof res.data.results !== "undefined") this.props.dispatch(savesCampGrounds(res.data.results));
-        console.log(res.data.results);
       })
 
       .catch((err) => console.log(err));
