@@ -198,7 +198,7 @@ class Explore extends Component {
                                 this.props.campGrounds.length > 0 ? (
                                     <CampGroundList>
                                         {this.props.campGrounds.map((campGround, index) => {
-                                            console.log("Explore.js line 201 undefined campGround: ", campGround);
+                                            // console.log("Explore.js line 201 undefined campGround: ", campGround);
 
                                             if (typeof campGround.addresses === "undefined") {    //sb added for addresses=undefined, crashes app
                                                 var campGroundAddressesCity = "Unknown";
