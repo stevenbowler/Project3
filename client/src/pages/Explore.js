@@ -68,15 +68,11 @@ class Explore extends Component {
         this.query = `${this.zipCode}&exact=false&radius=500&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
         API.getCampGrounds(this.query)
             .then((res) => {
-                // this.setState({ result: res.data, campGrounds: res.data.results })
-
                 this.props.dispatch(savesCampGrounds(res.data.results));
                 console.log(res.data.results);
             })
 
             .catch((err) => console.log(err));
-        // this.campGroundSearch();
-        // this.forceUpdate();
     }
 
 
@@ -164,77 +160,6 @@ class Explore extends Component {
                 <Row>
                     <Col size="md-12">
                         <div>
-                            {/*<Jumbotron>
-                                <h1 style={{ fontSize: "60px" }}>
-                                    <span style={{ fontWeight: "bold", fontSize: "120px" }}>camp</span>.SITE
-								</h1>
-                                <hr></hr>
-                                <h2>find last-minute camping reservations</h2>
-                            </Jumbotron>
-                            <Form>
-                                <Row form>
-                                    <Col xs={6}>
-                                        <FormGroup>
-                                            <Input
-                                                className="form-control form-control-lg"
-                                                autoComplete="off"
-                                                type="text"
-                                                name="zipCode"
-                                                placeholder={this.props.currentLocationZipCode}
-                                                onChange={this.handleInputChange}
-                                                value={this.state.zipCode}
-                                            />
-                                            <Label
-                                                for="exampleEmail"
-                                                style={{ paddingLeft: "15px", color: "forestgreen" }}
-                                            >
-                                                Location
-											</Label>
-                                        </FormGroup>
-                                    </Col>
-                                    <Col xs={6}>
-                                        <FormGroup>
-                                            <Input
-                                                className="form-control form-control-lg"
-                                                autoComplete="off"
-                                                type="select"
-                                                name="miles"
-                                                placeholder="Select Miles"
-                                                value={this.state.miles}
-                                                id="milesSelect"
-                                                onChange={this.handleInputChange}
-                                            >
-                                                <option>50</option>
-                                                <option>100</option>
-                                                <option>200</option>
-                                                <option>300</option>
-                                                <option>400</option>
-                                                <option>500</option>
-                                            </Input>
-                                            <Label
-                                                for="milesSelect"
-                                                style={{ paddingLeft: "15px", color: "forestgreen" }}>Miles
-                      </Label>
-                                        </FormGroup>
-                                    </Col>
-                                </Row>
-                            </Form>
-                            <div style={{ textAlign: "center" }}>
-                                <button
-                                    type="submit"
-                                    onClick={this.campGroundSearch}
-                                    style={{
-                                        border: "none",
-                                        color: "white",
-                                        backgroundColor: "forestgreen",
-                                        padding: "15px",
-                                        fontSize: "25px",
-                                        marginBottom: "20px"
-                                    }}
-                                >
-                                    SEARCH
-								</button>
-                            </div> */}
                             {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
                             {/* {this.state.isValidZipCode && */}
@@ -251,7 +176,6 @@ class Explore extends Component {
                                                         campGround={campGround.name}
                                                         city={campGround.addresses[0].city}
                                                         state={campGround.addresses[0].state_code}
-                                                        // distance={campGround.distance}
                                                         rating={campGround.average_rating}
                                                         description={campGround.description}
                                                         imageURL={campGround.preview_image_url}
@@ -261,7 +185,7 @@ class Explore extends Component {
                                         })}
                                     </CampGroundList>
                                 ) : (
-                                    <h2>No camp grounds to display</h2>
+                                    <h2>No campgrounds to display</h2>
                                 )}
                         </div>
                     </Col>

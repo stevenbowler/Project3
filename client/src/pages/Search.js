@@ -115,7 +115,6 @@ class Search extends Component {
       .catch((err) => console.log(err));
   };
 
-
   /**
    * 
    * @param {*} pattern 

@@ -29,6 +29,7 @@ import {
 import "./style.css";
 import StarRating from "../StarRating";
 import Description from "../Description";
+import { updateFavoritesCount } from "../../redux/actionCreator";
 
 // 
 /**This file exports both the List and ListItem components
