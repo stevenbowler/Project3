@@ -58,7 +58,7 @@ class AppNavbar extends Component {
             // <div> //removed to get sticky navbar with reactstrap https://github.com/reactstrap/reactstrap/issues/1179
             <Navbar dark expand="md" className="mb-5 sticky-top nav-bar">
                 <NavbarBrand className="text-light mx-3 pt-3" href="/">CAMPsite</NavbarBrand>
-                <NavbarText className="text-light" placeholder="Guest...Login" style={{ width: "100px" }}><small>{this.props.username}</small></ NavbarText>
+                <NavbarText className="text-light" placeholder="Guest...Login" style={{ width: "100px", paddingTop: "20px" }}><small>{this.props.username}</small></ NavbarText>
 
                 <NavbarToggler style={{ padding: "10px", margin: "5px", backgroundColor: "white" }} onClick={this.toggleNavbar}></NavbarToggler>
                 <Collapse isOpen={this.props.isOpenNavbar} navbar>

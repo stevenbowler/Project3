@@ -6,7 +6,15 @@ import { ListGroup, ListGroupItem } from "reactstrap";
 /**@function EquipmentList */
 function EquipmentList({ children }) {
 	const equipmentArray = [];
-	for (let i = 0; i < children.length; i++) {
+	// console.log("children: ", children);					//sb
+	// console.log("typeof children: ", typeof children);	//sb
+	var childrenLength = -1;								// sb
+	if (typeof children === "undefined") {					// sb
+		console.log("children undefined");					// sb
+		var childrenLength = -1;							// sb
+	} else { if (typeof children.length !== "undefined") childrenLength = children.length };			// sb
+
+	for (let i = 0; i < childrenLength; i++) {
 		if (children[i] === "Tent") {
 			equipmentArray.push("Tent");
 		}
@@ -21,7 +29,7 @@ function EquipmentList({ children }) {
 	return (
 		<div>
 			<ListGroup horizontal>
-        {/*<h5 style={{margin:"12px"}}>Equipment:</h5>*/}
+				{/*<h5 style={{margin:"12px"}}>Equipment:</h5>*/}
 				{equipmentArray.map((equipment) => (
 					<ListGroupItem>{equipment}</ListGroupItem>
 				))}
