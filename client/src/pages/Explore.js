@@ -198,6 +198,16 @@ class Explore extends Component {
                                 this.props.campGrounds.length > 0 ? (
                                     <CampGroundList>
                                         {this.props.campGrounds.map((campGround, index) => {
+                                            console.log("Explore.js line 201 undefined campGround: ", campGround);
+
+                                            if (typeof campGround.addresses === "undefined") {    //sb added for addresses=undefined, crashes app
+                                                var campGroundAddressesCity = "Unknown";
+                                                var campGroundAddressesStateCode = "Unknown";
+                                            } else {
+                                                campGroundAddressesCity = campGround.addresses[0].city;
+                                                campGroundAddressesStateCode = campGround.addresses[0].state_code;
+                                            }
+
                                             return (
                                                 <Col xs={12} md={6} key={index}>
                                                     <ListItem
@@ -205,8 +215,10 @@ class Explore extends Component {
                                                         key={campGround._id}
                                                         entityId={campGround.entity_id}
                                                         campGround={campGround.name}
-                                                        city={campGround.addresses[0].city}
-                                                        state={campGround.addresses[0].state_code}
+                                                        // city={campGround.addresses[0].city}          //sb added for undefined city crashes app
+                                                        // state={campGround.addresses[0].state_code}
+                                                        city={campGroundAddressesCity}
+                                                        state={campGroundAddressesStateCode}
                                                         // distance={campGround.distance}
                                                         rating={campGround.average_rating}
                                                         description={campGround.description}
