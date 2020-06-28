@@ -48,3 +48,41 @@ margin-left: auto;}
   padding-left: 10px;
 }
 
+
+
+
+
+
+
+
+@media only screen and (min-width: 500px) {
+  .inline-search-form {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .inline-search-form {
+    margin-left: 250px;
+    margin-right: 250px;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .inline-search-form {
+    margin-left: 350px;
+    margin-right: 350px;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .inline-search-form {
+    margin-left: 800px;
+    margin-right: 800px;
+  }
+}
+
+
+
+
