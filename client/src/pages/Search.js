@@ -1,38 +1,22 @@
 //@ts-check
 /**@module*/
 import moment from "moment";
-import { savesCampGrounds, updateFavoritesCount } from "../redux/actionCreator";
+import { savesCampGrounds } from "../redux/actionCreator";
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
-// import SaveBtn from "../components/SaveBtn";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
-//import { Col, Row, Container } from "../components/Grid";
 import {
-  // Button,
-  // Dropdown,
-  // DropdownToggle,
-  // DropdownMenu,
-  // DropdownItem,
   Form,
   FormGroup,
   Label,
   Input,
-  // Card,
-  // CardImg,
-  // CardText,
-  // CardBody,
-  // CardTitle,
-  // CardSubtitle,
   Col,
   Row,
   Container,
-  // Collapse,
 } from "reactstrap";
 import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
 
-// import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Search extends Component {
   state = {
@@ -61,56 +45,27 @@ class Search extends Component {
 
 
 
-  /**@function */
+  /** Wait for dom to load, then Search currentLocationZipCode to display nearest campsites
+   * @function componentDidMount */
   componentDidMount() {
-    // this.zipCode = this.props.currentLocationZipCode;
     setTimeout(() => {
-      console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode);
+      // console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode);
       this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
-      this.campGroundSearch(this.state.zipCode);
+      this.campGroundSearch();
       this.forceUpdate();
     }, 1000);
   }
 
-	/**
-   * Initial loadsearch and set previous state variable to track login username change
-  //  * @function componentDidMount */
-  // componentDidMount() {
-  // this.setDates();
-
-  // this.state.startDate = moment().format("DD-MM-YYYY")
-  // var end = moment(this.state.startDate, "DD-MM-YYYY").add(5, "days")
-  // this.state.endDate = end
-
-  //   this.previousName = this.props.username;
-  // }
-
-  //   this.previousName = this.props.username;
-  // }
-
-	/**
-   * If there was a login then reload campGrounds with the newly logged in users choices
-  //  * @function componentDidUpdate */
-
-  // componentDidUpdate() {
-  //   if (this.previousName !== this.props.username) {  // if login or logout update campGrounds displayed
-  //     this.loadCampGrounds();
-  //     this.previousName = this.props.username;
-  //   }
-  // }
 
   /**
-   * 
-   * @param {*} query 
+   * @function campGroundSearch
    */
-  campGroundSearch = (query) => {
-    console.log("campGroundSearch: zipCode miles", this.state.zipCode, this.state.miles);
-    query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
+  campGroundSearch = () => {
+    var query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
     API.getCampGrounds(query)
       .then((res) => {
         if (typeof res.data.results !== "undefined") this.props.dispatch(savesCampGrounds(res.data.results));
       })
-
       .catch((err) => console.log(err));
   };
 
@@ -251,8 +206,8 @@ class Search extends Component {
                             description={campGround.description}
                             imageURL={campGround.preview_image_url}
                             campsite_equipment_name={campGround.campsite_equipment_name}
-                            // price_range_max={campGround.price_range.amount_max}
-                            // price_range_min={campGround.price_range.amount_min}
+                            // price_range_max={campGround.price_range.amount_max}          //sb
+                            // price_range_min={campGround.price_range.amount_min}          //sb
                             availability={campGround.availability}
                             number_of_ratings={campGround.number_of_ratings}
                           />
@@ -270,6 +225,11 @@ class Search extends Component {
     );
   }
 }
+
+/**
+ * @function mapStateToProps
+ * @param {@} state 
+ */
 function mapStateToProps(state) {
   return {
     campGrounds: state.campGrounds,

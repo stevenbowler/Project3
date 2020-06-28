@@ -10,8 +10,8 @@ function EquipmentList({ children }) {
 	// console.log("typeof children: ", typeof children);	//sb
 	var childrenLength = -1;								// sb
 	if (typeof children === "undefined") {					// sb
-		console.log("children undefined");					// sb
-		var childrenLength = -1;							// sb
+		// console.log("children undefined");					// sb
+		childrenLength = -1;							// sb
 	} else { if (typeof children.length !== "undefined") childrenLength = children.length };			// sb
 
 	for (let i = 0; i < childrenLength; i++) {
@@ -30,8 +30,8 @@ function EquipmentList({ children }) {
 		<div>
 			<ListGroup horizontal>
 				{/*<h5 style={{margin:"12px"}}>Equipment:</h5>*/}
-				{equipmentArray.map((equipment) => (
-					<ListGroupItem>{equipment}</ListGroupItem>
+				{equipmentArray.map((equipment, index) => (
+					<ListGroupItem key={index}>{equipment}</ListGroupItem>			//sb added key to eliminate reacstrap error 
 				))}
 			</ListGroup>
 		</div>
