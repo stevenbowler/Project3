@@ -124,7 +124,7 @@ class Search extends Component {
     if (!pattern) return true;
     // string pattern, one validation rule
     if (typeof pattern === "string") {
-      console.log(pattern);
+      // console.log(pattern);
 
       const condition = new RegExp(pattern, "g");
       return condition.test(value);
