@@ -40,7 +40,6 @@ class App extends React.Component {
   }
 
 
-  // LIFECYCLE METHODS and related support functions
   /**Find local zipcode and if wasn't previously logged-in in this session then reset with logout
    * @function componentDidMount
    */
@@ -49,7 +48,8 @@ class App extends React.Component {
     if (!sessionStorage["name"]) {
       this.props.dispatch(logout());    // on load, reset all user settings, only when not already set
       this.props.dispatch(updateFavoritesCount("0"));    // on load, reset all user settings, only when not already set
-    } else console.log("sessionStorage.name already exists");
+    }
+    // } else {console.log("sessionStorage.name already exists");}
     API.getCampGround(this.props.username)
       .then(res => {
         this.props.dispatch(updateFavoritesCount(res.data.length.toString()));

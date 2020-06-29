@@ -12,7 +12,7 @@ export default {
     * */
     findZipCode: function (dispatch) {
         // TODO Google "Geolocation API" call, key must be approved for this API
-        console.log("process.env.GOOGLE_API_KEY: ", process.env.REACT_APP_GOOGLE_API_KEY);
+        // console.log("process.env.GOOGLE_API_KEY: ", process.env.REACT_APP_GOOGLE_API_KEY);
         var urlFindLatLng = `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
         axios
             .post(urlFindLatLng)

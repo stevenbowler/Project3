@@ -10,10 +10,7 @@ import API from "../../utils/API";
 // import { savesCampGrounds } from "../redux/actionCreator";
 // import { connect } from "react-redux";
 import {
-	Button,
-	Card,
 	CardImg,
-	CardText,
 	CardBody,
 	CardTitle,
 	CardSubtitle,
@@ -21,15 +18,16 @@ import {
 	Row,
 	Col,
 	CardImgOverlay,
-	Toast,
-	ToastHeader,
-	ToastBody,
 } from "reactstrap";
 
 import "./style.css";
 import StarRating from "../StarRating";
+<<<<<<< HEAD
 import Description from "../Description";
 import { updateFavoritesCount } from "../../redux/actionCreator";
+=======
+// import Description from "../Description";
+>>>>>>> 68240d52dca46f1f6eab9cce8ee9076c0666d6e9
 
 // 
 /**This file exports both the List and ListItem components
@@ -85,7 +83,7 @@ export function ListItem(props) {
 			</Col>
 			<Col lg="7" className="card-body-wrapper">
 				<CardBody style={{ paddingLeft: "0px" }}>
-					<CardTitle style={{display:"flex"}}>
+					<CardTitle style={{ display: "flex" }}>
 						<a
 							style={{ color: "black" }}
 							target="_blank"
@@ -112,7 +110,7 @@ export function ListItem(props) {
 					<hr></hr>
 					<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
 					<hr></hr>
-					<div style={{float:"right"}}>
+					<div style={{ float: "right" }}>
 						<a
 							style={{ color: "black" }}
 							target="_blank"
