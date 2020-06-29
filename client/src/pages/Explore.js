@@ -56,8 +56,9 @@ class Explore extends Component {
         result: {},
         isValidZipCode: false,
     };
+    zipCodeArray = ["20001"]
     // zipCodeArray = ["78550", "90210", "11100", "23098", "34450", "48970", "56790", "69850", "47890"];
-    zipCodeArray = ["78550", "87001", "58001", "46001", "20001", "71601", "33001", "98001", "35004", "99501"];
+    // zipCodeArray = ["78550", "87001", "58001", "46001", "20001", "71601", "33001", "98001", "35004", "99501"];
     zipCode = "78550";
 
     /**@function */
@@ -167,6 +168,9 @@ class Explore extends Component {
                                 this.props.campGrounds.length > 0 ? (
                                     <CampGroundList>
                                         {this.props.campGrounds.map((campGround, index) => {
+                                            // if(index === undefined){
+                                                // return null
+                                            // }else{
                                             return (
                                                 <Col xs={12} md={6} key={index}>
                                                     <ListItem
@@ -182,6 +186,7 @@ class Explore extends Component {
                                                     />
                                                 </Col>
                                             );
+                                            // }
                                         })}
                                     </CampGroundList>
                                 ) : (
