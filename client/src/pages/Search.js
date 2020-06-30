@@ -16,6 +16,7 @@ import {
   Container,
 } from "reactstrap";
 import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
+// import CampGround from "../../../models/campGround";
 
 
 class Search extends Component {
@@ -50,8 +51,10 @@ class Search extends Component {
   componentDidMount() {
     setTimeout(() => {
       // console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode);
+      if(this.props.currentLocationZipCode){
       this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
-      this.campGroundSearch();
+      }
+     // this.campGroundSearch();
       this.forceUpdate();
     }, 1000);
   }
@@ -184,6 +187,7 @@ class Search extends Component {
                   SEARCH
 								</button>
               </div>
+
               {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
               {this.state.isValidZipCode &&
@@ -236,7 +240,7 @@ class Search extends Component {
                     })}
                   </CampGroundList>
                 ) : (
-                  <h2>No camp grounds to display</h2>
+               this.state.zipCode.length < 6 ?  "": <h2>No camp grounds to display</h2>
                 )}
             </div>
           </Col>

@@ -22,12 +22,9 @@ import {
 
 import "./style.css";
 import StarRating from "../StarRating";
-<<<<<<< HEAD
 import Description from "../Description";
 import { updateFavoritesCount } from "../../redux/actionCreator";
-=======
 // import Description from "../Description";
->>>>>>> 68240d52dca46f1f6eab9cce8ee9076c0666d6e9
 
 // 
 /**This file exports both the List and ListItem components
