@@ -22,6 +22,8 @@ import {
 
 import "./style.css";
 import StarRating from "../StarRating";
+import Description from "../Description";
+import { updateFavoritesCount } from "../../redux/actionCreator";
 // import Description from "../Description";
 
 // 
