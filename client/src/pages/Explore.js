@@ -63,7 +63,7 @@ class Explore extends Component {
     /**@function campGroundSearch */
     campGroundSearch = (query) => {
         console.log("campGroundSearch: zipCode miles", this.state.zipCode, this.state.miles);
-        query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=20&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
+        query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=10&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
         API.getCampGrounds(query)
             .then((res) => {
                 this.props.dispatch(savesCampGrounds(res.data.results));
