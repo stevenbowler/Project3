@@ -201,8 +201,10 @@ class Search extends Component {
                         var campGroundAddressesCity = "Unknown";
                         var campGroundAddressesStateCode = "Unknown";
                       } else {
-                        campGroundAddressesCity = campGround.addresses[0].city;
-                        campGroundAddressesStateCode = campGround.addresses[0].state_code;
+                        for(var i = 0; i < campGround.addresses.length; i++){
+                        campGroundAddressesCity = campGround.addresses[i].city;
+                        campGroundAddressesStateCode = campGround.addresses[i].state_code;
+                        }
                       }
 
                       if (typeof campGround.price_range === "undefined") {    //sb added for price_range=undefined, crashes app
