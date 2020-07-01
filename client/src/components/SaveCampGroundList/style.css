@@ -1,0 +1,15 @@
+  
+button {
+    background-color: forestgreen !important;
+    border: none !important;
+    margin-right: 5px !important;
+}
+
+.card{
+    margin-bottom: 20px;
+}
+
+.card-image-wrapper, .card-body-wrapper {
+    display: flex;
+    float: left;
+}

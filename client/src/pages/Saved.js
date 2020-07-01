@@ -68,6 +68,11 @@ class Saved extends Component {
                       rating={campGround.rating}
                       description={campGround.description}
                       imageURL={campGround.imageURL}
+                      campsite_equipment_name={campGround.campsite_equipment_name}
+						          price_range_max={campGround.price_range_max}
+								      price_range_min={campGround.price_range_min}
+								      availability={campGround.availability}
+								      number_of_ratings={campGround.number_of_ratings}
                     />
                   </div>
                   )

@@ -212,6 +212,12 @@ class Search extends Component {
                         campGroundPriceRangeMax = campGround.price_range.amount_max;
                         campGroundPriceRangeMin = campGround.price_range.amount_min;
                       }
+                      if(typeof campGround.preview_image_url === "undefined"){
+                        var placeholderImage = "./placeholder2.png"
+                      
+                      }else{
+                        placeholderImage = campGround.preview_image_url
+                      }
                       return (
                         <Col xs={12} key={index}>
                           <ListItem
@@ -226,7 +232,7 @@ class Search extends Component {
                             distance={campGround.distance}
                             rating={campGround.average_rating}
                             description={campGround.description}
-                            imageURL={campGround.preview_image_url}
+                            imageURL={placeholderImage}
                             campsite_equipment_name={campGround.campsite_equipment_name}
                             // price_range_max={campGround.price_range.amount_max}          //sb
                             // price_range_min={campGround.price_range.amount_min}          //sb
