@@ -24,6 +24,7 @@ import "./style.css";
 import StarRating from "../StarRating";
 import Description from "../Description";
 import { updateFavoritesCount } from "../../redux/actionCreator";
+import ratings from "react-ratings-declarative/build/ratings";
 // import Description from "../Description";
 
 // 
@@ -71,7 +72,6 @@ export function ListItem(props) {
 								distance: props.distance,
 								rating: props.rating,
 								description: props.description,
-								imageURL: props.imageURL,
 							})
 
 						}
