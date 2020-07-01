@@ -2,11 +2,28 @@
 /**@module */
 import React from "react";
 // import "./style.css";
-import DeleteBtn from "../DeleteBtn"
-import { Col, Row, Container } from "../Grid";
+import SaveBtn from "../SaveBtn";
+import EquipmentList from "../EquipmentList";
+
+//import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
-import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from "reactstrap";
-import Ratings from "react-ratings-declarative";
+// import { savesCampGrounds } from "../redux/actionCreator";
+// import { connect } from "react-redux";
+import {
+	CardImg,
+	CardBody,
+	CardTitle,
+	CardSubtitle,
+	Container,
+	Row,
+	Col,
+	CardImgOverlay,
+} from "reactstrap";
+
+import "./style.css";
+import StarRating from "../StarRating";
+import DeleteBtn from "../DeleteBtn";
+
 
 
 
@@ -39,74 +56,85 @@ export function ListItem(props) {
 	   }
 
 	return (
-		<li>
-			<Container>
-				<Row className="mb-5">
-					<Col size="md-12">
-						<Card>
-							<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
-							<CardBody>
-								<CardTitle>
-									<h2>
-										{props.campGround}
-										<Ratings
-											rating={props.rating}
-											widgetRatedColors="green"
-											widgetEmptyColors="grey"
-											widgetDimensions="20px"
-											typeOfWidget="Point"
-											widgetSpacings="1px"
-										>
-											<Ratings.Widget />
-											<Ratings.Widget />
-											<Ratings.Widget />
-											<Ratings.Widget />
-											<Ratings.Widget />
-										</Ratings>
-									</h2>
-								</CardTitle>
-								<CardSubtitle>
-									<h5>
-										<span style={{ fontWeight: "bold" }}>
-											{props.city}, {props.state}
-										</span>{" "}
-										({props.distance} miles away)
-									</h5>
-								</CardSubtitle>
-								<CardText>{props.description}</CardText>
-								<Button>
-									<a
-										target="_blank"
-										rel="noopener noreferrer"
-										href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
-									>
-										{" "}
-								INFO
-							</a>
-								</Button>
-								<Button>
-									{" "}
-									<a
-										target="_blank"
-										rel="noopener noreferrer"
-										href={
-											"https://www.recreation.gov/camping/campgrounds/" +
-											props.entityId +
-											"/availability"
-										}
-									>
-										{" "}
-								RESERVE
-							</a>
-								</Button>
-								<DeleteBtn onClick={() => deleteCampGround(props.id)}>
+<div className="card-div">
+			<hr style={{ border: "1px solid black" }}></hr>
+			<Col lg="5" className="card-image-wrapper">
+				<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
+				<CardImgOverlay>
+				<DeleteBtn onClick={() => deleteCampGround(props.id)}>
 								</DeleteBtn>
-
-							</CardBody>
-						</Card>
-					</Col>
-				</Row>
-			</Container>
-		</li>
+				</CardImgOverlay>
+			</Col>
+			<Col lg="7" className="card-body-wrapper">
+				<CardBody style={{ paddingLeft: "0px" }}>
+					<CardTitle style={{ display: "flex" }}>
+						<a
+							style={{ color: "black" }}
+							target="_blank"
+							rel="noopener noreferrer"
+							href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
+						>
+							<h3>{props.campGround}</h3>
+						</a>
+						<StarRating>{props.rating}</StarRating>
+						<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
+							{"("}
+							{props.number_of_ratings}
+							{")"}
+						</span>
+					</CardTitle>
+					<CardSubtitle>
+						<h6>
+							<span style={{ fontWeight: "bold" }}>
+								{props.city}, {props.state}
+							</span>{" "}
+							({props.distance} miles away)
+						</h6>
+					</CardSubtitle>
+					<hr></hr>
+					<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
+					<hr></hr>
+					<div style={{ float: "right" }}>
+						<a
+							style={{ color: "black" }}
+							target="_blank"
+							rel="noopener noreferrer"
+							href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
+						>
+							<h2 style={{ textTransform: "capitalize" }}>{props.availability}</h2>
+						</a>
+						<h6>
+							Price Range: ${props.price_range_min}-{props.price_range_max}
+						</h6>
+					</div>
+					{/*<CardText>{props.description}</CardText>*/}
+					{/*	<Button>
+						<a
+							style={{ color: "white" }}
+							target="_blank"
+							rel="noopener noreferrer"
+							href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
+						>
+							{" "}
+							INFO
+						</a>
+					</Button> */}
+					{/* <Button>
+						{" "}
+						<a
+							style={{ color: "white" }}
+							target="_blank"
+							rel="noopener noreferrer"
+							href={
+								"https://www.recreation.gov/camping/campgrounds/" + props.entityId + "/availability"
+							}
+						>
+							{" "}
+							RESERVE
+						</a>
+						</Button>*/}
+				</CardBody>
+			</Col>
+		</div>
 	);
 }

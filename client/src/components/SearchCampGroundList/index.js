@@ -72,6 +72,11 @@ export function ListItem(props) {
 								rating: props.rating,
 								description: props.description,
 								imageURL: props.imageURL,
+								campsite_equipment_name: props.campsite_equipment_name,
+								price_range_max: props.price_range_max,
+								price_range_min: props.price_range_min,
+								availability: props.availability,
+								number_of_ratings: props.number_of_ratings
 							})
 
 						}
