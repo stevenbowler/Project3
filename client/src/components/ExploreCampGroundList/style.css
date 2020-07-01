@@ -8,3 +8,8 @@ button {
 .card{
     margin-bottom: 20px;
 }
+
+.card-image-wrapper, .card-body-wrapper {
+    display: flex;
+    float: left;
+}
