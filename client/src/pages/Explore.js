@@ -123,40 +123,61 @@ class Explore extends Component {
                             {this.props.campGrounds &&
                                 this.props.campGrounds.length > 0 ? (
                                     <CampGroundList>
-                                        {this.props.campGrounds.map((campGround, index) => {
-                                            // console.log("Explore.js line 201 undefined campGround: ", campGround);
-
-                                            if (typeof campGround.addresses === "undefined") {    //sb added for addresses=undefined, crashes app
-                                                var campGroundAddressesCity = "Unknown";
-                                                var campGroundAddressesStateCode = "Unknown";
-                                            } else {
-                                                campGroundAddressesCity = campGround.addresses[0].city;
-                                                campGroundAddressesStateCode = campGround.addresses[0].state_code;
-                                            }
-
-                                            return (
-                                                <Col xs={12} md={6} key={index}>
-                                                    <ListItem
-                                                        username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
-                                                        key={campGround._id}
-                                                        entityId={campGround.entity_id}
-                                                        campGround={campGround.name}
-                                                        // city={campGround.addresses[0].city}          //sb added for undefined city crashes app
-                                                        // state={campGround.addresses[0].state_code}
-                                                        city={campGroundAddressesCity}
-                                                        state={campGroundAddressesStateCode}
-                                                        // distance={campGround.distance}
-                                                        rating={campGround.average_rating}
-                                                        description={campGround.description}
-                                                        imageURL={campGround.preview_image_url}
-                                                    />
-                                                </Col>
-                                            );
-                                            // }
-                                        })}
-                                    </CampGroundList>
+                                    {this.props.campGrounds.map((campGround, index) => {
+                                      // console.log("Explore.js line 201 undefined campGround: ", campGround);
+                
+                                      if (typeof campGround.addresses === "undefined") {    //sb added for addresses=undefined, crashes app
+                                        var campGroundAddressesCity = "Unknown";
+                                        var campGroundAddressesStateCode = "Unknown";
+                                      } else {
+                                        for(var i = 0; i < campGround.addresses.length; i++){
+                                        campGroundAddressesCity = campGround.addresses[i].city;
+                                        campGroundAddressesStateCode = campGround.addresses[i].state_code;
+                                        }
+                                      }
+                
+                                      if (typeof campGround.price_range === "undefined") {    //sb added for price_range=undefined, crashes app
+                                        var campGroundPriceRangeMax = "Unknown";
+                                        var campGroundPriceRangeMin = "Unknown";
+                                      } else {
+                                        campGroundPriceRangeMax = campGround.price_range.amount_max;
+                                        campGroundPriceRangeMin = campGround.price_range.amount_min;
+                                      }
+                                      if(typeof campGround.preview_image_url === "undefined"){
+                                        var placeholderImage = "./placeholder2.png"
+                                      
+                                      }else{
+                                        placeholderImage = campGround.preview_image_url
+                                      }
+                                      return (
+                                        <Col xs={12} key={index}>
+                                          <ListItem
+                                            username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
+                                            key={campGround._id}
+                                            entityId={campGround.entity_id}
+                                            campGround={campGround.name}
+                                            // city={campGround.addresses[0].city}            //sb replaced w next two lines and if typeof above
+                                            // state={campGround.addresses[0].state_code}
+                                            city={campGroundAddressesCity}
+                                            state={campGroundAddressesStateCode}
+                                            distance={campGround.distance}
+                                            rating={campGround.average_rating}
+                                            description={campGround.description}
+                                            imageURL={placeholderImage}
+                                            campsite_equipment_name={campGround.campsite_equipment_name}
+                                            // price_range_max={campGround.price_range.amount_max}          //sb
+                                            // price_range_min={campGround.price_range.amount_min}          //sb
+                                            price_range_max={campGroundPriceRangeMax}                    //sb added for undefined case
+                                            price_range_min={campGroundPriceRangeMin}                    //sb
+                                            availability={campGround.availability}
+                                            number_of_ratings={campGround.number_of_ratings}
+                                          />
+                                        </Col>
+                                      );
+                                    })}
+                                  </CampGroundList>
                                 ) : (
-                                    
+
                                     <AwesomeComponent/>
                                     // <h2>No campgrounds to display</h2>
                                 )}
