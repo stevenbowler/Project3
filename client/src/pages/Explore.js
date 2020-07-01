@@ -1,5 +1,6 @@
 //@ts-check
 /**@module*/
+import AwesomeComponent from "../components/Spinner"
 import moment from "moment";
 import { savesCampGrounds } from "../redux/actionCreator";
 import { connect } from "react-redux";
@@ -155,7 +156,9 @@ class Explore extends Component {
                                         })}
                                     </CampGroundList>
                                 ) : (
-                                    <h2>No campgrounds to display</h2>
+                                    
+                                    <AwesomeComponent/>
+                                    // <h2>No campgrounds to display</h2>
                                 )}
                         </div>
                     </Col>
