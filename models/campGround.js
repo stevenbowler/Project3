@@ -26,7 +26,7 @@ const campGroundSchema = new Schema({
   /**@name imageURL*/
   imageURL: { type: String },
   /**@name campsite_equipment_name*/
-  campsite_equipment_name: { type: String },
+  campsite_equipment_name: [{ type: String }],
   /**@name price_range_max*/
   price_range_max: { type: String },
   /**@name price_range_min*/
