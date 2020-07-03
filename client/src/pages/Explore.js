@@ -39,6 +39,7 @@ class Explore extends Component {
         result: {},
         isValidZipCode: false,
     };
+    // zipCodeArray = ["87001", "58001"]
     zipCodeArray = ["78550", "87001", "58001", "46001", "20001", "71601", "33001", "98001", "35004", "99501"];
     zipCode = "78550";
 
@@ -126,14 +127,19 @@ class Explore extends Component {
                                     {this.props.campGrounds.map((campGround, index) => {
                                       // console.log("Explore.js line 201 undefined campGround: ", campGround);
                 
-                                      if (typeof campGround.addresses === "undefined") {    //sb added for addresses=undefined, crashes app
-                                        var campGroundAddressesCity = "Unknown";
-                                        var campGroundAddressesStateCode = "Unknown";
-                                      } else {
+                                      if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code !== "" && campGround.addresses[0].city !== "") {    //sb added for addresses=undefined, crashes app
+                                        // var campGroundAddressesCity = "Unknown";
+                                        // var campGroundAddressesStateCode = "Unknown";
+                                     
                                         for(var i = 0; i < campGround.addresses.length; i++){
-                                        campGroundAddressesCity = campGround.addresses[i].city;
-                                        campGroundAddressesStateCode = campGround.addresses[i].state_code;
+                                          var campGroundAddressesCity = campGround.addresses[i].city;
+                                           var campGroundAddressesStateCode = campGround.addresses[i].state_code;
+                                          }
                                         }
+                                        else {    //sb added for addresses=undefined, crashes app
+                
+                                        campGroundAddressesCity = campGround.city;
+                                        campGroundAddressesStateCode = campGround.state_code;
                                       }
                 
                                       if (typeof campGround.price_range === "undefined") {    //sb added for price_range=undefined, crashes app
@@ -160,7 +166,7 @@ class Explore extends Component {
                                             // state={campGround.addresses[0].state_code}
                                             city={campGroundAddressesCity}
                                             state={campGroundAddressesStateCode}
-                                            distance={campGround.distance}
+                                            // distance={campGround.distance}
                                             rating={campGround.average_rating}
                                             description={campGround.description}
                                             imageURL={placeholderImage}

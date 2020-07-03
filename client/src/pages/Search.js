@@ -197,14 +197,19 @@ class Search extends Component {
                     {this.props.campGrounds.map((campGround, index) => {
                       // console.log("Explore.js line 201 undefined campGround: ", campGround);
 
-                      if (typeof campGround.addresses === "undefined") {    //sb added for addresses=undefined, crashes app
-                        var campGroundAddressesCity = "Unknown";
-                        var campGroundAddressesStateCode = "Unknown";
-                      } else {
+                      if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code !== "" && campGround.addresses[0].city !== "") {    //sb added for addresses=undefined, crashes app
+                        // var campGroundAddressesCity = "Unknown";
+                        // var campGroundAddressesStateCode = "Unknown";
+                     
                         for(var i = 0; i < campGround.addresses.length; i++){
-                        campGroundAddressesCity = campGround.addresses[i].city;
-                        campGroundAddressesStateCode = campGround.addresses[i].state_code;
+                          var campGroundAddressesCity = campGround.addresses[i].city;
+                           var campGroundAddressesStateCode = campGround.addresses[i].state_code;
+                          }
                         }
+                        else {    //sb added for addresses=undefined, crashes app
+
+                        campGroundAddressesCity = campGround.city;
+                        campGroundAddressesStateCode = campGround.state_code;
                       }
 
                       if (typeof campGround.price_range === "undefined") {    //sb added for price_range=undefined, crashes app

@@ -104,7 +104,7 @@ export function ListItem(props) {
 							<span style={{ fontWeight: "bold" }}>
 								{props.city}, {props.state}
 							</span>{" "}
-							({props.distance} miles away)
+							{/* ({props.distance} miles away) */}
 						</h6>
 					</CardSubtitle>
 					<hr></hr>
