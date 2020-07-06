@@ -51,10 +51,10 @@ class Search extends Component {
   componentDidMount() {
     setTimeout(() => {
       // console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode);
-      if(this.props.currentLocationZipCode){
-      this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
+      if (this.props.currentLocationZipCode) {
+        this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
       }
-     // this.campGroundSearch();
+      // this.campGroundSearch();
       this.forceUpdate();
     }, 1000);
   }
@@ -68,6 +68,7 @@ class Search extends Component {
     API.getCampGrounds(query)
       .then((res) => {
         if (typeof res.data.results !== "undefined") this.props.dispatch(savesCampGrounds(res.data.results));
+      
       })
       .catch((err) => console.log(err));
   };
@@ -197,19 +198,17 @@ class Search extends Component {
                     {this.props.campGrounds.map((campGround, index) => {
                       // console.log("Explore.js line 201 undefined campGround: ", campGround);
 
-                      if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code !== "" && campGround.addresses[0].city !== "") {    //sb added for addresses=undefined, crashes app
+
+                        if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code === "" || campGround.addresses[0].city === "") {    //sb added for addresses=undefined, crashes app
+
                         // var campGroundAddressesCity = "Unknown";
                         // var campGroundAddressesStateCode = "Unknown";
-                     
-                        for(var i = 0; i < campGround.addresses.length; i++){
-                          var campGroundAddressesCity = campGround.addresses[i].city;
-                           var campGroundAddressesStateCode = campGround.addresses[i].state_code;
-                          }
-                        }
-                        else {    //sb added for addresses=undefined, crashes app
 
-                        campGroundAddressesCity = campGround.city;
-                        campGroundAddressesStateCode = campGround.state_code;
+                        var campGroundAddressesCity = campGround.city;
+                        var campGroundAddressesStateCode = campGround.state_code;
+                      } else {
+                        campGroundAddressesCity = campGround.addresses[0].city
+                        campGroundAddressesStateCode = campGround.addresses[0].state_code
                       }
 
                       if (typeof campGround.price_range === "undefined") {    //sb added for price_range=undefined, crashes app
@@ -220,7 +219,7 @@ class Search extends Component {
                         campGroundPriceRangeMin = campGround.price_range.amount_min;
                       }
                       var placeholderImage = campGround.preview_image_url ? campGround.preview_image_url : './camping.png';
-                      
+
                       return (
                         <Col xs={12} key={index}>
                           <ListItem
@@ -249,7 +248,7 @@ class Search extends Component {
                     })}
                   </CampGroundList>
                 ) : (
-               this.state.zipCode.length < 6 ?  "": <h2>No camp grounds to display</h2>
+                  this.state.zipCode.length < 6 ? "" : <h2>No camp grounds to display</h2>
                 )}
             </div>
           </Col>
