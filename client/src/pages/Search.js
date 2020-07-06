@@ -219,12 +219,8 @@ class Search extends Component {
                         campGroundPriceRangeMax = campGround.price_range.amount_max;
                         campGroundPriceRangeMin = campGround.price_range.amount_min;
                       }
-                      if(typeof campGround.preview_image_url === "undefined"){
-                        var placeholderImage = "./placeholder2.png"
+                      var placeholderImage = campGround.preview_image_url ? campGround.preview_image_url : './camping.png';
                       
-                      }else{
-                        placeholderImage = campGround.preview_image_url
-                      }
                       return (
                         <Col xs={12} key={index}>
                           <ListItem
