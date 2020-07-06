@@ -127,21 +127,20 @@ class Explore extends Component {
                                     {this.props.campGrounds.map((campGround, index) => {
                                       // console.log("Explore.js line 201 undefined campGround: ", campGround);
                 
-                                      if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code !== "" && campGround.addresses[0].city !== "") {    //sb added for addresses=undefined, crashes app
-                                        // var campGroundAddressesCity = "Unknown";
+                                    //   if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code === "" || campGround.addresses[0].city === "") {    //sb added for addresses=undefined, crashes app
+                                    if (campGround.addresses[0].state_code === "" || campGround.addresses[0].city === "") {    //sb added for addresses=undefined, crashes app
+
+                                    // var campGroundAddressesCity = "Unknown";
                                         // var campGroundAddressesStateCode = "Unknown";
                                      
-                                        for(var i = 0; i < campGround.addresses.length; i++){
-                                          var campGroundAddressesCity = campGround.addresses[i].city;
-                                           var campGroundAddressesStateCode = campGround.addresses[i].state_code;
-                                          }
+                                        var campGroundAddressesCity = campGround.city;
+                                        var campGroundAddressesStateCode = campGround.state_code;
+                                        }else{
+                                            campGroundAddressesCity = campGround.addresses[0].city
+                                            campGroundAddressesStateCode = campGround.addresses[0].state_code
                                         }
-                                        else {    //sb added for addresses=undefined, crashes app
-                
-                                        campGroundAddressesCity = campGround.city;
-                                        campGroundAddressesStateCode = campGround.state_code;
-                                      }
-                
+                                           //sb added for addresses=undefined, crashes app
+            
                                       if (typeof campGround.price_range === "undefined") {    //sb added for price_range=undefined, crashes app
                                         var campGroundPriceRangeMax = "Unknown";
                                         var campGroundPriceRangeMin = "Unknown";
@@ -150,7 +149,7 @@ class Explore extends Component {
                                         campGroundPriceRangeMin = campGround.price_range.amount_min;
                                       }
                                       if(typeof campGround.preview_image_url === "undefined"){
-                                        var placeholderImage = "./placeholder2.png"
+                                        var placeholderImage = "./camping.png"
                                       
                                       }else{
                                         placeholderImage = campGround.preview_image_url
