@@ -4,7 +4,7 @@ import React from "react";
 // import "./style.css";
 import SaveBtn from "../SaveBtn";
 import EquipmentList from "../EquipmentList";
-
+import { Provider } from 'react-redux';
 //import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
 // import { savesCampGrounds } from "../redux/actionCreator";
@@ -22,6 +22,8 @@ import {
 
 import "./style.css";
 import StarRating from "../StarRating";
+import store from "../../redux/store";
+
 import Description from "../Description";
 import { updateFavoritesCount } from "../../redux/actionCreator";
 // import Description from "../Description";
@@ -48,12 +50,20 @@ export function ListItem(props) {
 	const saveCampGround = (campGroundData) => {
 		API.saveCampGround(campGroundData)
 
-			.then((res) => console.log("save to mongo", res))
+			.then((res) => {
+				API.getCampGround(props.username)
+				.then(res => {
+					console.log("save results", res.data)
+				     props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+				})
+				.catch((err => console.log(err)));
+				//window.location.reload()
+				console.log("save to mongo", res)})
 
 			.catch((err) => console.log(err));
 	};
 	return (
-
+		
 		<div className="card-div">
 			<hr style={{ border: "1px solid black" }}></hr>
 			<Col lg="5" className="card-image-wrapper">
@@ -122,7 +132,8 @@ export function ListItem(props) {
 							<h2 style={{ textTransform: "capitalize" }}>{props.availability}</h2>
 						</a>
 						<h6>
-							Price Range: ${props.price_range_min}-{props.price_range_max}
+							{props.price_range_min > 0 && props.price_range_max > 0 ? 	"Price Range:" + (props.price_range_min) + "-" + (props.price_range_max) : "Price not found" }
+						
 						</h6>
 					</div>
 					{/*<CardText>{props.description}</CardText>*/}

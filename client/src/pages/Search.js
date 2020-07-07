@@ -20,6 +20,9 @@ import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
 
 
 class Search extends Component {
+  constructor(props){
+    super(props)
+  }
   state = {
     // campGrounds: [],
     entityId: "",
@@ -223,6 +226,7 @@ class Search extends Component {
                       return (
                         <Col xs={12} key={index}>
                           <ListItem
+                            props={this.props}
                             username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
                             key={campGround._id}
                             entityId={campGround.entity_id}
@@ -242,6 +246,7 @@ class Search extends Component {
                             price_range_min={campGroundPriceRangeMin}                    //sb
                             availability={campGround.availability}
                             number_of_ratings={campGround.number_of_ratings}
+                            campGroundSearch={  this.campGroundSearch }
                           />
                         </Col>
                       );
