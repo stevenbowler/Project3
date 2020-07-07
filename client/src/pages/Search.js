@@ -226,7 +226,7 @@ class Search extends Component {
                       return (
                         <Col xs={12} key={index}>
                           <ListItem
-                            props={this.props}
+                           props={this.props}
                             username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
                             key={campGround._id}
                             entityId={campGround.entity_id}

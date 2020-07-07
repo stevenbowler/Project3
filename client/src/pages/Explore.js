@@ -13,9 +13,13 @@ import {
 } from "reactstrap";
 import { CampGroundList, ListItem } from "../components/ExploreCampGroundList";
 
+
 // import { Input, TextArea, FormBtn } from "../components/Form";
 /**@class */
 class Explore extends Component {
+    constructor(props){
+        super(props)
+      }
     state = {
         // campGrounds: [],
         entityId: "",
@@ -63,9 +67,9 @@ class Explore extends Component {
 
 
     /**@function campGroundSearch */
-    campGroundSearch = (query) => {
+    campGroundSearch = () => {
         console.log("campGroundSearch: zipCode miles", this.state.zipCode, this.state.miles);
-        query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=10&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
+        var query = `${this.state.zipCode}&exact=false&radius=${this.state.miles}&size=10&fq=-entity_type%3Atour&fq=campsite_type_of_use%3AOvernight&fq=campsite_type_of_use%3Ana&fq=entity_type%3Acampground&fq=reservable%3A1&sort=available&start=0&start_date=${this.state.startDate}T00%3A00%3A00Z&end_date=${this.state.endDate}T00%3A00%3A00Z&include_unavailable=false?name=`;
         API.getCampGrounds(query)
             .then((res) => {
                 this.props.dispatch(savesCampGrounds(res.data.results));
@@ -75,42 +79,42 @@ class Explore extends Component {
     };
 
     /**validate changes in input field 
-    * @function handleValidation
-    * @param {boolean} pattern after validation
-    * @param {string} value current string input from field
-    * */
-    handleValidation(pattern, value) {
-        if (!pattern) return true;
-        // string pattern, one validation rule
-        if (typeof pattern === "string") {
-            // console.log(pattern);
+    // * @function handleValidation
+    // * @param {boolean} pattern after validation
+    // * @param {string} value current string input from field
+    // * */
+    // handleValidation(pattern, value) {
+    //     if (!pattern) return true;
+    //     // string pattern, one validation rule
+    //     if (typeof pattern === "string") {
+    //         // console.log(pattern);
 
-            const condition = new RegExp(pattern, "g");
-            return condition.test(value);
-        }
-        // array patterns, multiple validation rules
-        if (typeof pattern === "object") {
-            const conditions = pattern.map((rule) => new RegExp(rule, "g"));
-            return conditions.map((condition) => condition.test(value));
-        }
-    }
+    //         const condition = new RegExp(pattern, "g");
+    //         return condition.test(value);
+    //     }
+    //     // array patterns, multiple validation rules
+    //     if (typeof pattern === "object") {
+    //         const conditions = pattern.map((rule) => new RegExp(rule, "g"));
+    //         return conditions.map((condition) => condition.test(value));
+    //     }
+    // }
 
 
 	/**handle changes in input field
-    * @function handleInputChange 
-    * @param {object} event event object
-    */
-    handleInputChange = (event) => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value,
-        });
-        if (this.handleValidation("^\\d{5}", value)) {
-            this.setState({
-                isValidZipCode: true,
-            });
-        }
-    };
+    // * @function handleInputChange 
+    // * @param {object} event event object
+    // */
+    // handleInputChange = (event) => {
+    //     const { name, value } = event.target;
+    //     this.setState({
+    //         [name]: value,
+    //     });
+    //     if (this.handleValidation("^\\d{5}", value)) {
+    //         this.setState({
+    //             isValidZipCode: true,
+    //         });
+    //     }
+    // };
 
     render() {
         return (
@@ -118,7 +122,7 @@ class Explore extends Component {
                 <Row>
                     <Col size="md-12">
                         <div>
-                            {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
+                            {/* {console.log(this.handleValidation(`^\\d`, this.state.zipCode))} */}
 
                             {/* {this.state.isValidZipCode && */}
                             {this.props.campGrounds &&
@@ -157,6 +161,7 @@ class Explore extends Component {
                                             return (
                                                 <Col xs={12} key={index}>
                                                     <ListItem
+                                                        props={this.props}
                                                         username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
                                                         key={campGround._id}
                                                         entityId={campGround.entity_id}
@@ -176,6 +181,7 @@ class Explore extends Component {
                                                         price_range_min={campGroundPriceRangeMin}                    //sb
                                                         availability={campGround.availability}
                                                         number_of_ratings={campGround.number_of_ratings}
+                                                        campGroundSearch={  this.campGroundSearch }
                                                     />
                                                 </Col>
                                             );
@@ -193,6 +199,10 @@ class Explore extends Component {
         );
     }
 }
+/**
+ * @function mapStateToProps
+ * @param {@} state 
+ */
 function mapStateToProps(state) {
     return {
         campGrounds: state.campGrounds,

@@ -23,6 +23,7 @@ import {
 import "./style.css";
 import StarRating from "../StarRating";
 import DeleteBtn from "../DeleteBtn";
+import { updateFavoritesCount } from "../../redux/actionCreator";
 
 
 
@@ -48,12 +49,20 @@ export function ListItem(props) {
 
 	const deleteCampGround = (event) => {
 		API.deleteCampGround(event)
-			.then(res => {
-				console.log("delete from mongo", res)
-				window.location.reload()
-			})
-			.catch(err => console.log(err));
-	}
+		.then((res) => {
+			API.getCampGround(props.username)
+				.then(res => {
+					console.log("delete from results", res.data)
+					props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+								window.location.reload()
+
+				})
+				.catch((err => console.log(err)));
+			console.log("delete from mongo", res)
+		})
+
+		.catch((err) => console.log(err));
+};
 
 	return (
 		<div className="card-div">

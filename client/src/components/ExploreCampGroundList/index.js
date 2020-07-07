@@ -22,6 +22,7 @@ import {
 
 import "./style.css";
 import StarRating from "../StarRating";
+import { updateFavoritesCount } from "../../redux/actionCreator";
 
 // 
 /**This file exports both the List and ListItem components
@@ -42,15 +43,23 @@ export function CampGroundList({ children }) {
  * @param {*} props 
  */
 export function ListItem(props) {
-
-
 	const saveCampGround = (campGroundData) => {
 		API.saveCampGround(campGroundData)
 
-			.then((res) => console.log("save to mongo", res))
+		.then((res) => {
+			API.getCampGround(props.username)
+				.then(res => {
+					console.log("save results", res.data)
+					props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+				})
+				.catch((err => console.log(err)));
+			//window.location.reload()
+			console.log("save to mongo", res)
+		})
 
-			.catch((err) => console.log(err));
-	};
+		.catch((err) => console.log(err));
+};
+	
 	return (
 <div className="card-div">
 			{props.availability !== "unavailable" && props.availability !== "not reservable" ?
