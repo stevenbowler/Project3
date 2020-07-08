@@ -87,6 +87,7 @@ class Explore extends Component {
               <h1 style={{ fontSize: "60px" }}>
               <span style={{ fontWeight: "bold", fontSize: "120px" }}>explore</span>
               </h1>
+              <hr></hr>
             </Jumbotron>
                         <div>
                             {this.props.campGrounds &&

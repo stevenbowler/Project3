@@ -54,6 +54,7 @@ class Saved extends Component {
               <h1 style={{ fontSize: "60px" }}>
               <span style={{ fontWeight: "bold", fontSize: "120px" }}>favorites</span>
               </h1>
+              <hr></hr>
             </Jumbotron>
             {(this.props.campGrounds && this.props.campGrounds.length > 0) ?
               <CampGroundList>
