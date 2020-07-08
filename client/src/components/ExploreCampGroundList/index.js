@@ -126,7 +126,7 @@ export function ListItem(props) {
 
 								</h6>
 							</CardSubtitle>
-							{props.campsite_equipment_name.length > 0 && props.campsite_equipment_name ?
+							{props.campsite_equipment_name && props.campsite_equipment_name.length > 0  ?
 								<>
 									<hr></hr>
 									<EquipmentList>{props.campsite_equipment_name}</EquipmentList>

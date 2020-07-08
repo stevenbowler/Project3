@@ -1,14 +1,8 @@
 //@ts-check
 /**@module */
 import React from "react";
-// import "./style.css";
-import SaveBtn from "../SaveBtn";
 import EquipmentList from "../EquipmentList";
-
-//import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
-// import { savesCampGrounds } from "../redux/actionCreator";
-// import { connect } from "react-redux";
 import {
 	CardImg,
 	CardBody,
@@ -19,7 +13,6 @@ import {
 	Col,
 	CardImgOverlay,
 } from "reactstrap";
-
 import "./style.css";
 import StarRating from "../StarRating";
 import DeleteBtn from "../DeleteBtn";
@@ -35,9 +28,9 @@ import { updateFavoritesCount } from "../../redux/actionCreator";
 export function CampGroundList({ children }) {
 
 	return (
-		<div className="list-overflow-container">
-			<ul className="list-group">{children}</ul>
-		</div>
+		<Container>
+			<Row>{children}</Row>
+		</Container>
 	);
 }
 
@@ -164,6 +157,5 @@ export function ListItem(props) {
 				</CardBody>
 			</Col>
 		</div>
-
 	);
 }
