@@ -16,8 +16,7 @@ import {
   Container,
 } from "reactstrap";
 import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
-// import CampGround from "../../../models/campGround";
-
+import AwesomeComponent from "../components/Spinner"
 
 class Search extends Component {
   constructor(props){
@@ -85,8 +84,6 @@ class Search extends Component {
     if (!pattern) return true;
     // string pattern, one validation rule
     if (typeof pattern === "string") {
-      // console.log(pattern);
-
       const condition = new RegExp(pattern, "g");
       return condition.test(value);
     }
@@ -201,7 +198,6 @@ class Search extends Component {
                     {this.props.campGrounds.map((campGround, index) => {
                       // console.log("Explore.js line 201 undefined campGround: ", campGround);
 
-
                         if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code === "" || campGround.addresses[0].city === "") {    //sb added for addresses=undefined, crashes app
 
                         // var campGroundAddressesCity = "Unknown";
@@ -253,7 +249,7 @@ class Search extends Component {
                     })}
                   </CampGroundList>
                 ) : (
-                  // this.state.zipCode.length < 20 ? "" : 
+                  this.campGroundSearch ? <AwesomeComponent/> : 
                   ""
                 )}
             </div>

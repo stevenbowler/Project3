@@ -12,7 +12,7 @@ import {
     Container,
 } from "reactstrap";
 import { CampGroundList, ListItem } from "../components/ExploreCampGroundList";
-
+import Jumbotron from "../components/Jumbotron";
 
 // import { Input, TextArea, FormBtn } from "../components/Form";
 /**@class */
@@ -78,65 +78,24 @@ class Explore extends Component {
             .catch((err) => console.log(err));
     };
 
-    /**validate changes in input field 
-    // * @function handleValidation
-    // * @param {boolean} pattern after validation
-    // * @param {string} value current string input from field
-    // * */
-    // handleValidation(pattern, value) {
-    //     if (!pattern) return true;
-    //     // string pattern, one validation rule
-    //     if (typeof pattern === "string") {
-    //         // console.log(pattern);
-
-    //         const condition = new RegExp(pattern, "g");
-    //         return condition.test(value);
-    //     }
-    //     // array patterns, multiple validation rules
-    //     if (typeof pattern === "object") {
-    //         const conditions = pattern.map((rule) => new RegExp(rule, "g"));
-    //         return conditions.map((condition) => condition.test(value));
-    //     }
-    // }
-
-
-	/**handle changes in input field
-    // * @function handleInputChange 
-    // * @param {object} event event object
-    // */
-    // handleInputChange = (event) => {
-    //     const { name, value } = event.target;
-    //     this.setState({
-    //         [name]: value,
-    //     });
-    //     if (this.handleValidation("^\\d{5}", value)) {
-    //         this.setState({
-    //             isValidZipCode: true,
-    //         });
-    //     }
-    // };
-
     render() {
         return (
             <Container fluid>
                 <Row>
-                    <Col size="md-12">
+                <Col size="md-12">
+            <Jumbotron>
+              <h1 style={{ fontSize: "60px" }}>
+              <span style={{ fontWeight: "bold", fontSize: "120px" }}>explore</span>
+              </h1>
+              <hr></hr>
+            </Jumbotron>
                         <div>
-                            {/* {console.log(this.handleValidation(`^\\d`, this.state.zipCode))} */}
-
-                            {/* {this.state.isValidZipCode && */}
                             {this.props.campGrounds &&
                                 this.props.campGrounds.length > 0 ? (
                                     <CampGroundList>
                                         {this.props.campGrounds.map((campGround, index) => {
                                             // console.log("Explore.js line 201 undefined campGround: ", campGround);
-
                                               if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code === "" || campGround.addresses[0].city === "") {    //sb added for addresses=undefined, crashes app
-                                            // if (campGround.addresses[0].state_code === "" || campGround.addresses[0].city === "") {    //sb added for addresses=undefined, crashes app
-
-                                                // var campGroundAddressesCity = "Unknown";
-                                                // var campGroundAddressesStateCode = "Unknown";
-
                                                 var campGroundAddressesCity = campGround.city;
                                                 var campGroundAddressesStateCode = campGround.state_code;
                                             } else {
@@ -161,7 +120,7 @@ class Explore extends Component {
                                             return (
                                                 <Col xs={12} key={index}>
                                                     <ListItem
-                                                        props={this.props}
+                                                    props={this.props}
                                                         username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
                                                         key={campGround._id}
                                                         entityId={campGround.entity_id}
@@ -188,9 +147,7 @@ class Explore extends Component {
                                         })}
                                     </CampGroundList>
                                 ) : (
-
                                     <AwesomeComponent />
-                                    // <h2>No campgrounds to display</h2>
                                 )}
                         </div>
                     </Col>

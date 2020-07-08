@@ -8,10 +8,8 @@ const campGroundSchema = new Schema({
   /**@name userName*/
   username: { type: String },
   /**@name entityId*/
-
   entityId: { type: String },
   /**@name campGround*/
-  //campsite name
   campGround: { type: String },
   /**@name city*/
   city: { type: String },
@@ -22,7 +20,7 @@ const campGroundSchema = new Schema({
   /**@name rating*/
   rating: { type: Number },
   /**@name description*/
-  description: String,
+  description: { type: String },
   /**@name imageURL*/
   imageURL: { type: String },
   /**@name campsite_equipment_name*/

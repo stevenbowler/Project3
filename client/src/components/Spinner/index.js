@@ -35,7 +35,7 @@ class AwesomeComponent extends React.Component {
       <div className="sweet-loading">
         <BeatLoader
           css={override}
-          size={80}
+          size={60}
           color={"green"}
           loading={this.state.loading}
         />

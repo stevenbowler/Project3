@@ -1,14 +1,8 @@
 //@ts-check
 /**@module */
 import React from "react";
-// import "./style.css";
-import SaveBtn from "../SaveBtn";
 import EquipmentList from "../EquipmentList";
-
-//import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
-// import { savesCampGrounds } from "../redux/actionCreator";
-// import { connect } from "react-redux";
 import {
 	CardImg,
 	CardBody,
@@ -19,7 +13,6 @@ import {
 	Col,
 	CardImgOverlay,
 } from "reactstrap";
-
 import "./style.css";
 import StarRating from "../StarRating";
 import DeleteBtn from "../DeleteBtn";
@@ -35,9 +28,9 @@ import { updateFavoritesCount } from "../../redux/actionCreator";
 export function CampGroundList({ children }) {
 
 	return (
-		<div className="list-overflow-container">
-			<ul className="list-group">{children}</ul>
-		</div>
+		<Container>
+			<Row>{children}</Row>
+		</Container>
 	);
 }
 
@@ -49,20 +42,20 @@ export function ListItem(props) {
 
 	const deleteCampGround = (event) => {
 		API.deleteCampGround(event)
-		.then((res) => {
-			API.getCampGround(props.username)
-				.then(res => {
-					console.log("delete from results", res.data)
-					props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
-					window.location.reload()
+			.then((res) => {
+				API.getCampGround(props.username)
+					.then(res => {
+						console.log("delete from results", res.data)
+						props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+						window.location.reload()
 
-				})
-				.catch((err => console.log(err)));
-			console.log("delete from mongo", res)
-		})
+					})
+					.catch((err => console.log(err)));
+				console.log("delete from mongo", res)
+			})
 
-		.catch((err) => console.log(err));
-};
+			.catch((err) => console.log(err));
+	};
 
 	return (
 		<div className="card-div">
@@ -89,14 +82,14 @@ export function ListItem(props) {
 							<>
 								<StarRating>{props.rating}</StarRating>
 								{props.number_of_ratings ?
-								<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
-									
-									{"("}
-									{props.number_of_ratings}
-									{")"}
-									
-								</span>
-								: ""}
+									<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
+
+										{"("}
+										{props.number_of_ratings}
+										{")"}
+
+									</span>
+									: ""}
 							</>
 							: ""}
 					</CardTitle>
@@ -106,19 +99,19 @@ export function ListItem(props) {
 								{props.city}, {props.state}
 							</span>{" "}
 							{props.distance > 0 ?
-							<>
-							({props.distance} miles away)
+								<>
+									({props.distance} miles away)
 							</>
-							: "" }
+								: ""}
 						</h6>
 					</CardSubtitle>
-					{props.campsite_equipment_name.length > 0 ?
+					{props.campsite_equipment_name.length > 0 && props.campsite_equipment_name ?
 						<>
 							<hr></hr>
 							<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
 							<hr></hr>
 						</>
-						 : ""}
+						: ""}
 					<div style={{ float: "right" }}>
 						<a
 							style={{ color: "black" }}
@@ -164,6 +157,5 @@ export function ListItem(props) {
 				</CardBody>
 			</Col>
 		</div>
-
 	);
 }

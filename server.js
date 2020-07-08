@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true },
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/campground", { useNewUrlParser: true, useUnifiedTopology: true },
   () => { console.log('connected to Mongo DB') });
 
 // Start the API server
