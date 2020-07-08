@@ -43,7 +43,7 @@ class Explore extends Component {
         result: {},
         isValidZipCode: false,
     };
-    // zipCodeArray = ["87001", "58001"]
+    // zipCodeArray = ["20001", "78550"]
     zipCodeArray = ["78550", "87001", "58001", "46001", "20001", "71601", "33001", "98001", "35004", "99501"];
     zipCode = "78550";
 

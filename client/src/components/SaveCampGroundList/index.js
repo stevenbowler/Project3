@@ -49,20 +49,20 @@ export function ListItem(props) {
 
 	const deleteCampGround = (event) => {
 		API.deleteCampGround(event)
-		.then((res) => {
-			API.getCampGround(props.username)
-				.then(res => {
-					console.log("delete from results", res.data)
-					props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
-					window.location.reload()
+			.then((res) => {
+				API.getCampGround(props.username)
+					.then(res => {
+						console.log("delete from results", res.data)
+						props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+						window.location.reload()
 
-				})
-				.catch((err => console.log(err)));
-			console.log("delete from mongo", res)
-		})
+					})
+					.catch((err => console.log(err)));
+				console.log("delete from mongo", res)
+			})
 
-		.catch((err) => console.log(err));
-};
+			.catch((err) => console.log(err));
+	};
 
 	return (
 		<div className="card-div">
@@ -89,14 +89,14 @@ export function ListItem(props) {
 							<>
 								<StarRating>{props.rating}</StarRating>
 								{props.number_of_ratings ?
-								<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
-									
-									{"("}
-									{props.number_of_ratings}
-									{")"}
-									
-								</span>
-								: ""}
+									<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
+
+										{"("}
+										{props.number_of_ratings}
+										{")"}
+
+									</span>
+									: ""}
 							</>
 							: ""}
 					</CardTitle>
@@ -106,19 +106,19 @@ export function ListItem(props) {
 								{props.city}, {props.state}
 							</span>{" "}
 							{props.distance > 0 ?
-							<>
-							({props.distance} miles away)
+								<>
+									({props.distance} miles away)
 							</>
-							: "" }
+								: ""}
 						</h6>
 					</CardSubtitle>
-					{props.campsite_equipment_name.length > 0 ?
+					{props.campsite_equipment_name.length > 0 && props.campsite_equipment_name ?
 						<>
 							<hr></hr>
 							<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
 							<hr></hr>
 						</>
-						 : ""}
+						: ""}
 					<div style={{ float: "right" }}>
 						<a
 							style={{ color: "black" }}

@@ -110,11 +110,15 @@ export function ListItem(props) {
 								{props.rating ?
 									<>
 										<StarRating>{props.rating}</StarRating>
-										<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
-											{"("}
-											{props.number_of_ratings}
-											{")"}
-										</span>
+										{props.number_of_ratings ?
+											<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
+
+												{"("}
+												{props.number_of_ratings}
+												{")"}
+
+											</span>
+											: ""}
 									</>
 									: ""}
 							</CardTitle>
@@ -126,7 +130,7 @@ export function ListItem(props) {
 							({props.distance} miles away)
 						</h6>
 							</CardSubtitle>
-							{props.campsite_equipment_name ?
+							{ props.campsite_equipment_name && props.campsite_equipment_name.length > 0 ?
 								<>
 									<hr></hr>
 									<EquipmentList>{props.campsite_equipment_name}</EquipmentList>

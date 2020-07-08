@@ -46,22 +46,22 @@ export function ListItem(props) {
 	const saveCampGround = (campGroundData) => {
 		API.saveCampGround(campGroundData)
 
-		.then((res) => {
-			API.getCampGround(props.username)
-				.then(res => {
-					console.log("save results", res.data)
-					props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
-				})
-				.catch((err => console.log(err)));
-			//window.location.reload()
-			console.log("save to mongo", res)
-		})
+			.then((res) => {
+				API.getCampGround(props.username)
+					.then(res => {
+						console.log("save results", res.data)
+						props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+					})
+					.catch((err => console.log(err)));
+				//window.location.reload()
+				console.log("save to mongo", res)
+			})
 
-		.catch((err) => console.log(err));
-};
-	
+			.catch((err) => console.log(err));
+	};
+
 	return (
-<div className="card-div">
+		<div className="card-div">
 			{props.availability !== "unavailable" && props.availability !== "not reservable" ?
 				<>
 					<hr style={{ border: "1px solid black" }}></hr>
@@ -106,11 +106,15 @@ export function ListItem(props) {
 								{props.rating ?
 									<>
 										<StarRating>{props.rating}</StarRating>
-										<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
-											{"("}
-											{props.number_of_ratings}
-											{")"}
-										</span>
+										{props.number_of_ratings ?
+											<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
+
+												{"("}
+												{props.number_of_ratings}
+												{")"}
+
+											</span>
+											: ""}
 									</>
 									: ""}
 							</CardTitle>
@@ -119,10 +123,10 @@ export function ListItem(props) {
 									<span style={{ fontWeight: "bold" }}>
 										{props.city}, {props.state}
 									</span>{" "}
-							{/* ({props.distance} miles away) */}
-						</h6>
+
+								</h6>
 							</CardSubtitle>
-							{props.campsite_equipment_name ?
+							{props.campsite_equipment_name.length > 0 && props.campsite_equipment_name ?
 								<>
 									<hr></hr>
 									<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
