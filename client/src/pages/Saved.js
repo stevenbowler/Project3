@@ -13,6 +13,9 @@ import { connect } from "react-redux";
 
 /**@class */
 class Saved extends Component {
+  constructor(props){
+    super(props)
+  }
   state = {
     savedCampGrounds: []
   };
@@ -57,6 +60,7 @@ class Saved extends Component {
                 {this.props.campGrounds.map((campGround, index) => {
                   return (<div key={index}>
                     <ListItem
+                      props={this.props}
                       key={campGround.id}
                       id={campGround._id}
                       username={campGround.username}
@@ -73,6 +77,7 @@ class Saved extends Component {
 								      price_range_min={campGround.price_range_min}
 								      availability={campGround.availability}
 								      number_of_ratings={campGround.number_of_ratings}
+                      getCampGround={  this.getCampGround }
                     />
                   </div>
                   )
@@ -90,7 +95,10 @@ class Saved extends Component {
   }
 }
 
-/**@function */
+/**
+ * @function mapStateToProps
+ * @param {@} state 
+ */
 function mapStateToProps(state) {
   return {
     campGrounds: state.campGrounds,

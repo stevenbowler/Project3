@@ -23,6 +23,7 @@ import {
 import "./style.css";
 import StarRating from "../StarRating";
 import DeleteBtn from "../DeleteBtn";
+import { updateFavoritesCount } from "../../redux/actionCreator";
 
 
 
@@ -48,21 +49,29 @@ export function ListItem(props) {
 
 	const deleteCampGround = (event) => {
 		API.deleteCampGround(event)
-		.then(res => {
+		.then((res) => {
+			API.getCampGround(props.username)
+				.then(res => {
+					console.log("delete from results", res.data)
+					props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
+					window.location.reload()
+
+				})
+				.catch((err => console.log(err)));
 			console.log("delete from mongo", res)
-		  window.location.reload()
-	   })
-	 	  .catch(err => console.log(err));
-	   }
+		})
+
+		.catch((err) => console.log(err));
+};
 
 	return (
-<div className="card-div">
+		<div className="card-div">
 			<hr style={{ border: "1px solid black" }}></hr>
 			<Col lg="5" className="card-image-wrapper">
 				<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
 				<CardImgOverlay>
-				<DeleteBtn onClick={() => deleteCampGround(props.id)}>
-								</DeleteBtn>
+					<DeleteBtn onClick={() => deleteCampGround(props.id)}>
+					</DeleteBtn>
 				</CardImgOverlay>
 			</Col>
 			<Col lg="7" className="card-body-wrapper">
@@ -76,24 +85,40 @@ export function ListItem(props) {
 						>
 							<h3>{props.campGround}</h3>
 						</a>
-						<StarRating>{props.rating}</StarRating>
-						<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
-							{"("}
-							{props.number_of_ratings}
-							{")"}
-						</span>
+						{props.rating ?
+							<>
+								<StarRating>{props.rating}</StarRating>
+								{props.number_of_ratings ?
+								<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
+									
+									{"("}
+									{props.number_of_ratings}
+									{")"}
+									
+								</span>
+								: ""}
+							</>
+							: ""}
 					</CardTitle>
 					<CardSubtitle>
 						<h6>
 							<span style={{ fontWeight: "bold" }}>
 								{props.city}, {props.state}
 							</span>{" "}
+							{props.distance > 0 ?
+							<>
 							({props.distance} miles away)
+							</>
+							: "" }
 						</h6>
 					</CardSubtitle>
-					<hr></hr>
-					<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
-					<hr></hr>
+					{props.campsite_equipment_name.length > 0 ?
+						<>
+							<hr></hr>
+							<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
+							<hr></hr>
+						</>
+						 : ""}
 					<div style={{ float: "right" }}>
 						<a
 							style={{ color: "black" }}
@@ -103,10 +128,13 @@ export function ListItem(props) {
 						>
 							<h2 style={{ textTransform: "capitalize" }}>{props.availability}</h2>
 						</a>
-						<h6>
-							Price Range: ${props.price_range_min}-{props.price_range_max}
-						</h6>
+						{props.price_range_min > 0 && props.price_range_max > 0 ?
+							<h6>
+								{props.price_range_min !== props.price_range_max ? "Price Range: " + "$" + (Math.round(props.price_range_min)) + " - " + "$" + (Math.round(props.price_range_max)) : "Price Range: " + "$" + (Math.round(props.price_range_min))}
+							</h6>
+							: "View details for price"}
 					</div>
+
 					{/*<CardText>{props.description}</CardText>*/}
 					{/*	<Button>
 						<a
@@ -132,9 +160,10 @@ export function ListItem(props) {
 							{" "}
 							RESERVE
 						</a>
-						</Button>*/}
+					</Button>*/}
 				</CardBody>
 			</Col>
 		</div>
+
 	);
 }

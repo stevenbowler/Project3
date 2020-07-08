@@ -20,6 +20,9 @@ import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
 
 
 class Search extends Component {
+  constructor(props){
+    super(props)
+  }
   state = {
     // campGrounds: [],
     entityId: "",
@@ -50,11 +53,11 @@ class Search extends Component {
    * @function componentDidMount */
   componentDidMount() {
     setTimeout(() => {
-      // console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode);
-      if(this.props.currentLocationZipCode){
-      this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
+      // console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode.replace(" ", "+"));
+      if (this.props.currentLocationZipCode) {
+        this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
       }
-     // this.campGroundSearch();
+      this.campGroundSearch();
       this.forceUpdate();
     }, 1000);
   }
@@ -68,6 +71,7 @@ class Search extends Component {
     API.getCampGrounds(query)
       .then((res) => {
         if (typeof res.data.results !== "undefined") this.props.dispatch(savesCampGrounds(res.data.results));
+      
       })
       .catch((err) => console.log(err));
   };
@@ -197,14 +201,17 @@ class Search extends Component {
                     {this.props.campGrounds.map((campGround, index) => {
                       // console.log("Explore.js line 201 undefined campGround: ", campGround);
 
-                      if (typeof campGround.addresses === "undefined") {    //sb added for addresses=undefined, crashes app
-                        var campGroundAddressesCity = "Unknown";
-                        var campGroundAddressesStateCode = "Unknown";
+
+                        if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code === "" || campGround.addresses[0].city === "") {    //sb added for addresses=undefined, crashes app
+
+                        // var campGroundAddressesCity = "Unknown";
+                        // var campGroundAddressesStateCode = "Unknown";
+
+                        var campGroundAddressesCity = campGround.city;
+                        var campGroundAddressesStateCode = campGround.state_code;
                       } else {
-                        for(var i = 0; i < campGround.addresses.length; i++){
-                        campGroundAddressesCity = campGround.addresses[i].city;
-                        campGroundAddressesStateCode = campGround.addresses[i].state_code;
-                        }
+                        campGroundAddressesCity = campGround.addresses[0].city
+                        campGroundAddressesStateCode = campGround.addresses[0].state_code
                       }
 
                       if (typeof campGround.price_range === "undefined") {    //sb added for price_range=undefined, crashes app
@@ -214,15 +221,12 @@ class Search extends Component {
                         campGroundPriceRangeMax = campGround.price_range.amount_max;
                         campGroundPriceRangeMin = campGround.price_range.amount_min;
                       }
-                      if(typeof campGround.preview_image_url === "undefined"){
-                        var placeholderImage = "./placeholder2.png"
-                      
-                      }else{
-                        placeholderImage = campGround.preview_image_url
-                      }
+                      var placeholderImage = campGround.preview_image_url ? campGround.preview_image_url : './camping.png';
+
                       return (
                         <Col xs={12} key={index}>
                           <ListItem
+                           props={this.props}
                             username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
                             key={campGround._id}
                             entityId={campGround.entity_id}
@@ -242,13 +246,15 @@ class Search extends Component {
                             price_range_min={campGroundPriceRangeMin}                    //sb
                             availability={campGround.availability}
                             number_of_ratings={campGround.number_of_ratings}
+                            campGroundSearch={  this.campGroundSearch }
                           />
                         </Col>
                       );
                     })}
                   </CampGroundList>
                 ) : (
-               this.state.zipCode.length < 6 ?  "": <h2>No camp grounds to display</h2>
+                  // this.state.zipCode.length < 20 ? "" : 
+                  ""
                 )}
             </div>
           </Col>
