@@ -19,7 +19,6 @@ import StarRating from "../StarRating";
 import Description from "../Description";
 import { updateFavoritesCount } from "../../redux/actionCreator";
 
-// 
 /**This file exports both the List and ListItem components
  * @function CampGroundList
  * @param {*} param0 
@@ -31,7 +30,6 @@ export function CampGroundList({ children }) {
 		</Container>
 	);
 }
-
 
 /**Sets every item in the list with a Saved button to save key data to Mongo on clicke
  * @function ListItem
