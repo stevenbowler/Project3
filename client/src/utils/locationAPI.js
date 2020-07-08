@@ -26,7 +26,11 @@ export default {
                     .post(urlFindZip)
                     .then(response => {
                         // console.log("findZipcode zipcode response: ", response.data.results[0].address_components[6].long_name);
+                        if(response.data.results[0].address_components[6].long_name === "United States"){
+                            dispatch(setZipCode(response.data.results[0].address_components[7].long_name))
+                        }else{
                         dispatch(setZipCode(response.data.results[0].address_components[6].long_name));
+                        }
                     }).catch(error => {
                         console.log("Could not get zipcode from GeocodeAPI call in locationAPI.js", error);
                     });

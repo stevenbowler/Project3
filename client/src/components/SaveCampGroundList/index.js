@@ -54,7 +54,7 @@ export function ListItem(props) {
 				.then(res => {
 					console.log("delete from results", res.data)
 					props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
-								window.location.reload()
+					window.location.reload()
 
 				})
 				.catch((err => console.log(err)));
@@ -101,16 +101,20 @@ export function ListItem(props) {
 							<span style={{ fontWeight: "bold" }}>
 								{props.city}, {props.state}
 							</span>{" "}
+							{props.distance > 0 ?
+							<>
 							({props.distance} miles away)
+							</>
+							: "" }
 						</h6>
 					</CardSubtitle>
-					{props.campsite_equipment_name ?
+					{props.campsite_equipment_name || props.campsite_equipment_name[0] === "Boat" ?
 						<>
 							<hr></hr>
 							<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
 							<hr></hr>
 						</>
-						: ""}
+						 : ""}
 					<div style={{ float: "right" }}>
 						<a
 							style={{ color: "black" }}

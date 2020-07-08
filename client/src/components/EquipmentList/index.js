@@ -24,6 +24,9 @@ function EquipmentList({ children }) {
 		if (children[i] === "Trailer") {
 			equipmentArray.push("Trailer");
 		}
+		if (children[i] === "Boat") {
+			equipmentArray.push("Boat");
+		}
 	}
 
 	return (

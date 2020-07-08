@@ -53,11 +53,11 @@ class Search extends Component {
    * @function componentDidMount */
   componentDidMount() {
     setTimeout(() => {
-      // console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode);
+      // console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode.replace(" ", "+"));
       if (this.props.currentLocationZipCode) {
         this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
       }
-      // this.campGroundSearch();
+      this.campGroundSearch();
       this.forceUpdate();
     }, 1000);
   }
@@ -253,7 +253,8 @@ class Search extends Component {
                     })}
                   </CampGroundList>
                 ) : (
-                  this.state.zipCode.length < 6 ? "" : <h2>No camp grounds to display</h2>
+                  // this.state.zipCode.length < 20 ? "" : 
+                  ""
                 )}
             </div>
           </Col>
