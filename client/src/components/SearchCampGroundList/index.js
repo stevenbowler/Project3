@@ -59,7 +59,7 @@ export function ListItem(props) {
 				<>
 					<hr style={{ border: "1px solid black" }}></hr>
 					<Col lg="5" className="card-image-wrapper">
-						<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
+						<CardImg top width="100%" height="300px" alt={props.campGround} src={props.imageURL}></CardImg>
 						<CardImgOverlay>
 							<SaveBtn
 								onClick={() =>
@@ -123,7 +123,12 @@ export function ListItem(props) {
 									<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
 									<hr></hr>
 								</>
-								: ""}
+								: 	
+								<>
+									<hr></hr>
+									See campsite for equipment
+									<hr></hr>
+								</>}
 							<div style={{ float: "right" }}>
 								<a
 									style={{ color: "black" }}
