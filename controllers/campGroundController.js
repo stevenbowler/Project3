@@ -11,7 +11,6 @@ module.exports = {
     // console.log("campgroundControler findAll req.query:", req.query.username);
     db.CampGround
       .find({ username: req.query.username })
-      // .find({})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

@@ -16,9 +16,12 @@ import {
   Container,
 } from "reactstrap";
 import { CampGroundList, ListItem } from "../components/SearchCampGroundList";
-
+import AwesomeComponent from "../components/Spinner"
 
 class Search extends Component {
+  constructor(props){
+    super(props)
+  }
   state = {
     // campGrounds: [],
     entityId: "",
@@ -49,8 +52,10 @@ class Search extends Component {
    * @function componentDidMount */
   componentDidMount() {
     setTimeout(() => {
-      // console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode);
-      this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
+      // console.log("this.props.currentLocationZipCode: ", this.props.currentLocationZipCode.replace(" ", "+"));
+      if (this.props.currentLocationZipCode) {
+        this.setState({ zipCode: this.props.currentLocationZipCode, miles: "500", isValidZipCode: true });
+      }
       this.campGroundSearch();
       this.forceUpdate();
     }, 1000);
@@ -65,10 +70,10 @@ class Search extends Component {
     API.getCampGrounds(query)
       .then((res) => {
         if (typeof res.data.results !== "undefined") this.props.dispatch(savesCampGrounds(res.data.results));
+      
       })
       .catch((err) => console.log(err));
   };
-
 
   /**
    * 
@@ -79,8 +84,6 @@ class Search extends Component {
     if (!pattern) return true;
     // string pattern, one validation rule
     if (typeof pattern === "string") {
-      // console.log(pattern);
-
       const condition = new RegExp(pattern, "g");
       return condition.test(value);
     }
@@ -185,6 +188,7 @@ class Search extends Component {
                   SEARCH
 								</button>
               </div>
+
               {console.log(this.handleValidation(`^\\d`, this.state.zipCode))}
 
               {this.state.isValidZipCode &&
@@ -194,12 +198,16 @@ class Search extends Component {
                     {this.props.campGrounds.map((campGround, index) => {
                       // console.log("Explore.js line 201 undefined campGround: ", campGround);
 
-                      if (typeof campGround.addresses === "undefined") {    //sb added for addresses=undefined, crashes app
-                        var campGroundAddressesCity = "Unknown";
-                        var campGroundAddressesStateCode = "Unknown";
+                        if (typeof campGround.addresses === "undefined" || campGround.addresses[0].state_code === "" || campGround.addresses[0].city === "") {    //sb added for addresses=undefined, crashes app
+
+                        // var campGroundAddressesCity = "Unknown";
+                        // var campGroundAddressesStateCode = "Unknown";
+
+                        var campGroundAddressesCity = campGround.city;
+                        var campGroundAddressesStateCode = campGround.state_code;
                       } else {
-                        campGroundAddressesCity = campGround.addresses[0].city;
-                        campGroundAddressesStateCode = campGround.addresses[0].state_code;
+                        campGroundAddressesCity = campGround.addresses[0].city
+                        campGroundAddressesStateCode = campGround.addresses[0].state_code
                       }
 
                       if (typeof campGround.price_range === "undefined") {    //sb added for price_range=undefined, crashes app
@@ -209,9 +217,12 @@ class Search extends Component {
                         campGroundPriceRangeMax = campGround.price_range.amount_max;
                         campGroundPriceRangeMin = campGround.price_range.amount_min;
                       }
+                      var placeholderImage = campGround.preview_image_url ? campGround.preview_image_url : './camping.png';
+
                       return (
                         <Col xs={12} key={index}>
                           <ListItem
+                           props={this.props}
                             username={this.props.username} //added by Steven, need the username prop to pull getCampgrounds in Saved.js
                             key={campGround._id}
                             entityId={campGround.entity_id}
@@ -223,7 +234,7 @@ class Search extends Component {
                             distance={campGround.distance}
                             rating={campGround.average_rating}
                             description={campGround.description}
-                            imageURL={campGround.preview_image_url}
+                            imageURL={placeholderImage}
                             campsite_equipment_name={campGround.campsite_equipment_name}
                             // price_range_max={campGround.price_range.amount_max}          //sb
                             // price_range_min={campGround.price_range.amount_min}          //sb
@@ -231,13 +242,15 @@ class Search extends Component {
                             price_range_min={campGroundPriceRangeMin}                    //sb
                             availability={campGround.availability}
                             number_of_ratings={campGround.number_of_ratings}
+                            campGroundSearch={  this.campGroundSearch }
                           />
                         </Col>
                       );
                     })}
                   </CampGroundList>
                 ) : (
-                  <h2>No camp grounds to display</h2>
+                  this.campGroundSearch ? <AwesomeComponent/> : 
+                  ""
                 )}
             </div>
           </Col>
