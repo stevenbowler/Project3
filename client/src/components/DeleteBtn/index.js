@@ -4,6 +4,7 @@
 */
 import React from "react";
 import "./style.css";
+import { Button } from 'reactstrap';
 
 /**
  * The ...props means, spread all of the passed props onto this element 
@@ -12,9 +13,9 @@ import "./style.css";
  */
 function DeleteBtn(props) {
   return (
-    <span className="delete-btn" {...props} role="button" tabIndex="0">
-      ✗
-    </span>
+    <Button className="delete-btn" {...props} role="button" tabIndex="0">
+      Delete
+    </Button>
   );
 }
 
