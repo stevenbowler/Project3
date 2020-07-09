@@ -114,7 +114,7 @@ class Search extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-12">
+          <Col>
             <div>
               <Jumbotron>
                 <h1 style={{ fontSize: "60px" }}>
