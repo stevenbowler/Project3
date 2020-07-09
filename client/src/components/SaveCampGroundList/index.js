@@ -1,6 +1,6 @@
 //@ts-check
 /**@module */
-import React from "react";
+import React, { useState } from "react";
 import EquipmentList from "../EquipmentList";
 import API from "../../utils/API";
 import {
@@ -12,21 +12,22 @@ import {
 	Row,
 	Col,
 	CardImgOverlay,
+	Button,
+	Modal,
+	ModalHeader,
+	ModalBody,
+	ModalFooter,
 } from "reactstrap";
 import "./style.css";
 import StarRating from "../StarRating";
 import DeleteBtn from "../DeleteBtn";
 import { updateFavoritesCount } from "../../redux/actionCreator";
 
-
-
-
 /**This file exports both the List and ListItem components
  * @function CampGroundList
- * @param {*} children 
+ * @param {*} children
  */
 export function CampGroundList({ children }) {
-
 	return (
 		<Container>
 			<Row>{children}</Row>
@@ -36,26 +37,27 @@ export function CampGroundList({ children }) {
 
 /**
  * @function ListItem
- * @param {*} props 
+ * @param {*} props
  */
 export function ListItem(props) {
-
 	const deleteCampGround = (event) => {
 		API.deleteCampGround(event)
 			.then((res) => {
 				API.getCampGround(props.username)
-					.then(res => {
-						console.log("delete from results", res.data)
+					.then((res) => {
+						console.log("delete from results", res.data);
 						props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
-						window.location.reload()
-
+						window.location.reload();
 					})
-					.catch((err => console.log(err)));
-				console.log("delete from mongo", res)
+					.catch((err) => console.log(err));
+				console.log("delete from mongo", res);
 			})
 
 			.catch((err) => console.log(err));
 	};
+
+	const [modal, setModal] = useState(false);
+	const toggle = () => setModal(!modal);
 
 	return (
 		<div className="card-div">
@@ -63,8 +65,21 @@ export function ListItem(props) {
 			<Col lg="5" className="card-image-wrapper">
 				<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
 				<CardImgOverlay>
-					<DeleteBtn onClick={() => deleteCampGround(props.id)}>
-					</DeleteBtn>
+					<Button color="danger" onClick={toggle}>
+						Delete
+					</Button>
+					<Modal isOpen={modal} fade={false} toggle={toggle} className="delete-modal">
+						<ModalHeader toggle={toggle}>Delete Favorite</ModalHeader>
+						<ModalBody>
+							Would you like to remove this from your favorites?
+						</ModalBody>
+						<ModalFooter>
+							<Button onClick={() => deleteCampGround(props.id)}>Confirm</Button>{" "}
+							<Button color="secondary" onClick={toggle}>
+								Cancel
+							</Button>
+						</ModalFooter>
+					</Modal>
 				</CardImgOverlay>
 			</Col>
 			<Col lg="7" className="card-body-wrapper">
@@ -78,40 +93,46 @@ export function ListItem(props) {
 						>
 							<h3>{props.campGround}</h3>
 						</a>
-						{props.rating ?
+						{props.rating ? (
 							<>
 								<StarRating>{props.rating}</StarRating>
-								{props.number_of_ratings ?
-									<span style={{ fontSize: "16px", paddingLeft: "5px", marginBottom: "-5px !important" }}>
-
+								{props.number_of_ratings ? (
+									<span
+										style={{
+											fontSize: "16px",
+											paddingLeft: "5px",
+											marginBottom: "-5px !important",
+										}}
+									>
 										{"("}
 										{props.number_of_ratings}
 										{")"}
-
 									</span>
-									: ""}
+								) : (
+									""
+								)}
 							</>
-							: ""}
+						) : (
+							""
+						)}
 					</CardTitle>
 					<CardSubtitle>
 						<h6>
 							<span style={{ fontWeight: "bold" }}>
 								{props.city}, {props.state}
 							</span>{" "}
-							{props.distance > 0 ?
-								<>
-									({props.distance} miles away)
-							</>
-								: ""}
+							{props.distance > 0 ? <>({props.distance} miles away)</> : ""}
 						</h6>
 					</CardSubtitle>
-					{props.campsite_equipment_name.length > 0 && props.campsite_equipment_name ?
+					{props.campsite_equipment_name.length > 0 && props.campsite_equipment_name ? (
 						<>
 							<hr></hr>
 							<EquipmentList>{props.campsite_equipment_name}</EquipmentList>
 							<hr></hr>
 						</>
-						: ""}
+					) : (
+						""
+					)}
 					<div style={{ float: "right" }}>
 						<a
 							style={{ color: "black" }}
@@ -121,11 +142,20 @@ export function ListItem(props) {
 						>
 							<h2 style={{ textTransform: "capitalize" }}>{props.availability}</h2>
 						</a>
-						{props.price_range_min > 0 && props.price_range_max > 0 ?
+						{props.price_range_min > 0 && props.price_range_max > 0 ? (
 							<h6>
-								{props.price_range_min !== props.price_range_max ? "Price Range: " + "$" + (Math.round(props.price_range_min)) + " - " + "$" + (Math.round(props.price_range_max)) : "Price Range: " + "$" + (Math.round(props.price_range_min))}
+								{props.price_range_min !== props.price_range_max
+									? "Price Range: " +
+									  "$" +
+									  Math.round(props.price_range_min) +
+									  " - " +
+									  "$" +
+									  Math.round(props.price_range_max)
+									: "Price Range: " + "$" + Math.round(props.price_range_min)}
 							</h6>
-							: "View details for price"}
+						) : (
+							"View details for price"
+						)}
 					</div>
 
 					{/*<CardText>{props.description}</CardText>*/}
