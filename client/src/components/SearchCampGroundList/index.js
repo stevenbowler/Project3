@@ -38,7 +38,6 @@ export function CampGroundList({ children }) {
 export function ListItem(props) {
 	const saveCampGround = (campGroundData) => {
 		API.saveCampGround(campGroundData)
-
 			.then((res) => {
 				API.getCampGround(props.username)
 					.then(res => {
@@ -46,7 +45,6 @@ export function ListItem(props) {
 						props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
 					})
 					.catch((err => console.log(err)));
-				//window.location.reload()
 				console.log("save to mongo", res)
 			})
 
@@ -144,33 +142,6 @@ export function ListItem(props) {
 									</h6>
 									: "View details for price"}
 							</div>
-
-							{/*<CardText>{props.description}</CardText>*/}
-							{/*	<Button>
-						<a
-							style={{ color: "white" }}
-							target="_blank"
-							rel="noopener noreferrer"
-							href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
-						>
-							{" "}
-							INFO
-						</a>
-					</Button> */}
-							{/* <Button>
-						{" "}
-						<a
-							style={{ color: "white" }}
-							target="_blank"
-							rel="noopener noreferrer"
-							href={
-								"https://www.recreation.gov/camping/campgrounds/" + props.entityId + "/availability"
-							}
-						>
-							{" "}
-							RESERVE
-						</a>
-					</Button>*/}
 						</CardBody>
 					</Col>
 				</>

@@ -23,7 +23,6 @@ class Search extends Component {
     super(props)
   }
   state = {
-    // campGrounds: [],
     entityId: "",
     campGround: "",
     city: "",
@@ -133,7 +132,7 @@ class Search extends Component {
                         autoComplete="off"
                         type="text"
                         name="zipCode"
-                        placeholder="Enter valid Zipcode"
+                        placeholder="Enter valid zip code"
                         onChange={this.handleInputChange}
                         value={this.state.zipCode}
                       />

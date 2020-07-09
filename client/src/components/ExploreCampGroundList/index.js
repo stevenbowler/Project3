@@ -1,14 +1,9 @@
 //@ts-check
 /**@module */
 import React from "react";
-// import "./style.css";
 import SaveBtn from "../SaveBtn";
 import EquipmentList from "../EquipmentList";
-
-//import { Col, Row, Container } from "../Grid";
 import API from "../../utils/API";
-// import { savesCampGrounds } from "../redux/actionCreator";
-// import { connect } from "react-redux";
 import {
 	CardImg,
 	CardBody,
@@ -19,7 +14,6 @@ import {
 	Col,
 	CardImgOverlay,
 } from "reactstrap";
-
 import "./style.css";
 import StarRating from "../StarRating";
 import { updateFavoritesCount } from "../../redux/actionCreator";
@@ -53,7 +47,6 @@ export function ListItem(props) {
 						props.props.dispatch(updateFavoritesCount(res.data.length.toString()));
 					})
 					.catch((err => console.log(err)));
-				//window.location.reload()
 				console.log("save to mongo", res)
 			})
 
@@ -148,33 +141,6 @@ export function ListItem(props) {
 									</h6>
 									: "View details for price"}
 							</div>
-
-							{/*<CardText>{props.description}</CardText>*/}
-							{/*	<Button>
-						<a
-							style={{ color: "white" }}
-							target="_blank"
-							rel="noopener noreferrer"
-							href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
-						>
-							{" "}
-							INFO
-						</a>
-					</Button> */}
-							{/* <Button>
-						{" "}
-						<a
-							style={{ color: "white" }}
-							target="_blank"
-							rel="noopener noreferrer"
-							href={
-								"https://www.recreation.gov/camping/campgrounds/" + props.entityId + "/availability"
-							}
-						>
-							{" "}
-							RESERVE
-						</a>
-					</Button>*/}
 						</CardBody>
 					</Col>
 				</>

@@ -20,7 +20,6 @@ import {
 } from "reactstrap";
 import "./style.css";
 import StarRating from "../StarRating";
-import DeleteBtn from "../DeleteBtn";
 import { updateFavoritesCount } from "../../redux/actionCreator";
 
 /**This file exports both the List and ListItem components
@@ -65,7 +64,7 @@ export function ListItem(props) {
 			<Col lg="5" className="card-image-wrapper">
 				<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
 				<CardImgOverlay>
-					<Button color="danger" style={{backgroundColor:"forestgreen", marginLeft:"10px"}} onClick={toggle}>
+					<Button color="danger" style={{ backgroundColor: "forestgreen", marginLeft: "10px" }} onClick={toggle}>
 						Delete
 					</Button>
 					<Modal isOpen={modal} fade={false} toggle={toggle} className="delete-modal">
@@ -109,12 +108,12 @@ export function ListItem(props) {
 										{")"}
 									</span>
 								) : (
-									""
-								)}
+										""
+									)}
 							</>
 						) : (
-							""
-						)}
+								""
+							)}
 					</CardTitle>
 					<CardSubtitle>
 						<h6>
@@ -131,8 +130,8 @@ export function ListItem(props) {
 							<hr></hr>
 						</>
 					) : (
-						""
-					)}
+							""
+						)}
 					<div style={{ float: "right" }}>
 						<a
 							style={{ color: "black" }}
@@ -146,44 +145,17 @@ export function ListItem(props) {
 							<h6>
 								{props.price_range_min !== props.price_range_max
 									? "Price Range: " +
-									  "$" +
-									  Math.round(props.price_range_min) +
-									  " - " +
-									  "$" +
-									  Math.round(props.price_range_max)
+									"$" +
+									Math.round(props.price_range_min) +
+									" - " +
+									"$" +
+									Math.round(props.price_range_max)
 									: "Price Range: " + "$" + Math.round(props.price_range_min)}
 							</h6>
 						) : (
-							"View details for price"
-						)}
+								"View details for price"
+							)}
 					</div>
-
-					{/*<CardText>{props.description}</CardText>*/}
-					{/*	<Button>
-						<a
-							style={{ color: "white" }}
-							target="_blank"
-							rel="noopener noreferrer"
-							href={"https://www.recreation.gov/camping/campgrounds/" + props.entityId}
-						>
-							{" "}
-							INFO
-						</a>
-					</Button> */}
-					{/* <Button>
-						{" "}
-						<a
-							style={{ color: "white" }}
-							target="_blank"
-							rel="noopener noreferrer"
-							href={
-								"https://www.recreation.gov/camping/campgrounds/" + props.entityId + "/availability"
-							}
-						>
-							{" "}
-							RESERVE
-						</a>
-					</Button>*/}
 				</CardBody>
 			</Col>
 		</div>
