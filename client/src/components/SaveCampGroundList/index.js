@@ -65,7 +65,7 @@ export function ListItem(props) {
 			<Col lg="5" className="card-image-wrapper">
 				<CardImg top width="100%" alt={props.campGround} src={props.imageURL}></CardImg>
 				<CardImgOverlay>
-					<Button color="danger" onClick={toggle}>
+					<Button color="danger" style={{backgroundColor:"forestgreen", marginLeft:"10px"}} onClick={toggle}>
 						Delete
 					</Button>
 					<Modal isOpen={modal} fade={false} toggle={toggle} className="delete-modal">
