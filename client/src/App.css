@@ -48,6 +48,10 @@ margin-left: auto;}
   padding-left: 10px;
 }
 
+/*Fixes spacing issue of last item on equipment list*/
+.list-group-item:last-child {
+  margin-bottom: -1px;
+}
 
 
 
